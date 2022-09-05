@@ -4,6 +4,7 @@ import { faPhone, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import './Header.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
     const [header, setHeader] = useState('');
@@ -36,10 +37,10 @@ function Header() {
             <div className={`header-wrapper ${header}`}>
                 <div className="container wrapper-content">
                     <div className="row wrapper-row">
-                        <div className="col-6 logo">
+                        <div className="col-4 logo">
                             <h2>UNOMO</h2>
                         </div>
-                        <div className="col-6">
+                        <div className="col-8">
                             <ul>
                                 <li>
                                     <a href="/">Trang chủ</a>
@@ -49,6 +50,9 @@ function Header() {
                                 </li>
                                 <li>
                                     <a href="/">Về chúng tôi</a>
+                                </li>
+                                <li>
+                                    <Link to="/system/login">Đăng Nhập</Link>
                                 </li>
                                 <li>
                                     <a href="tel:0869224813" className="Phone">
