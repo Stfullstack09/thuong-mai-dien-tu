@@ -1,3 +1,5 @@
+@import '../../../../.././Styles/base.scss';
+
 .header-wrapper {
     height       : 100px;
     border-bottom: 1px solid rgba(0, 0, 0, .3);
@@ -26,7 +28,7 @@
                 }
             }
 
-            div {
+            .right-content {
                 height: 100%;
 
                 ul {
@@ -91,6 +93,32 @@
 
                     }
                 }
+
+                @include media-breakpoint-down(lg) {
+                    .pc {
+                        display: none;
+                    }
+
+                    .tablet-and-mobile {
+                        li {
+                            position: relative;
+
+                            .sidebar {
+                                position: absolute;
+                                top     : 0;
+                                bottom  : 0;
+                                right   : 0;
+                            }
+                        }
+                    }
+                }
+
+                @include media-breakpoint-up(lg) {
+                    .tablet-and-mobile {
+                        display: none;
+                    }
+                }
+
             }
 
         }
@@ -158,4 +186,66 @@
         bottom : 20px;
         opacity: 1;
     }
+}
+
+.sidebar {
+    width           : 50%;
+    position        : fixed;
+    top             : 0;
+    right           : 0;
+    bottom          : 0;
+    background-color: #fff;
+    z-index         : 999999999999999;
+    padding         : 0;
+    margin          : 0;
+    transform       : translateX(100%);
+    opacity         : 0;
+
+    &.animation {
+
+        transform : translateX(0);
+        opacity   : 1;
+        transition: all ease-in-out .3s;
+    }
+
+    ul {
+        padding: 0;
+        margin : 0;
+
+
+        .closed {
+            display         : flex;
+            justify-content : flex-end;
+            align-items     : center;
+            padding         : 4px 8px;
+            background-color: transparent;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+
+        li {
+            padding      : 6px 10px;
+            margin       : 4px 0;
+            border-radius: 4px;
+
+            a {
+                font-weight    : bold;
+                text-decoration: none;
+                color          : #333;
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, .07);
+            }
+        }
+
+        &::-webkit-scrollbar {
+            display: none !important;
+        }
+
+    }
+
+
 }

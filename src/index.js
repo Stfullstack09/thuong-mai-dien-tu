@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import reduxStore, { persistor } from './redux';
 import IntlProviderWrapper from './Hoc/IntlProvider';
 import { BrowserRouter } from 'react-router-dom';
-import StyleWrapper from './Styles';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,9 +13,7 @@ root.render(
         <BrowserRouter>
             <Provider store={reduxStore}>
                 <IntlProviderWrapper>
-                    <StyleWrapper>
-                        <App persistor={persistor} />
-                    </StyleWrapper>
+                    <App persistor={persistor} />
                 </IntlProviderWrapper>
             </Provider>
         </BrowserRouter>

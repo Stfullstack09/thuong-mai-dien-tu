@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faAngleUp, faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 
 import './Header.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Overlay from '../../../../../components/Overlay';
 
 function Header() {
     const [header, setHeader] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
 
     const listenScrollEvent = () => {
         if (window.scrollY <= 70) {
@@ -40,8 +42,8 @@ function Header() {
                         <div className="col-4 logo">
                             <h2>UNOMO</h2>
                         </div>
-                        <div className="col-8">
-                            <ul>
+                        <div className="col-8 right-content">
+                            <ul className="pc">
                                 <li>
                                     <a href="/">Trang chủ</a>
                                 </li>
@@ -60,6 +62,23 @@ function Header() {
                                     </a>
                                 </li>
                             </ul>
+                            <ul className="tablet-and-mobile">
+                                <li>
+                                    <a href="tel:0869224813" className="Phone">
+                                        <FontAwesomeIcon icon={faPhone} />+ 0869224813
+                                    </a>
+                                </li>
+                                <li
+                                    onClick={() => setIsOpen(true)}
+                                    style={{
+                                        cursor: 'pointer',
+                                        color: '#fff',
+                                        fontSize: 18,
+                                    }}
+                                >
+                                    <FontAwesomeIcon icon={faBars} />
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -67,6 +86,32 @@ function Header() {
             <div className={`scroll-top ${header}`} onClick={(e) => handleScroll(e)}>
                 <FontAwesomeIcon icon={faAngleUp} />
             </div>
+
+            <Overlay isOpen={isOpen} toggle={() => setIsOpen(!isOpen)}>
+                <div className={`sidebar ${isOpen ? 'animation' : ''}`}>
+                    {isOpen && (
+                        <ul>
+                            <li className="closed">
+                                <button className="btn">
+                                    <FontAwesomeIcon icon={faClose} />
+                                </button>
+                            </li>
+                            <li>
+                                <a href="/">Trang chủ</a>
+                            </li>
+                            <li>
+                                <a href="/">Giới thiệu</a>
+                            </li>
+                            <li>
+                                <a href="/">Về chúng tôi</a>
+                            </li>
+                            <li>
+                                <Link to="/system/login">Đăng Nhập</Link>
+                            </li>
+                        </ul>
+                    )}
+                </div>
+            </Overlay>
         </>
     );
 }

@@ -1,31 +1,72 @@
-html * {
-    scroll-behavior: smooth;
-    overflow       : overlay;
+@import './base.scss';
+
+@include media-breakpoint-up(lg) {
+
+    html * {
+        scroll-behavior: smooth;
+        overflow       : overlay;
+    }
+
+    html *::-webkit-scrollbar {
+        border-radius   : 0;
+        width           : 8px;
+        // z-index      : 999999999999999;
+    }
+
+    html *::-webkit-scrollbar-thumb {
+        border-radius      : 4px;
+        background-color   : rgba(0, 0, 0, 0.25);
+        // z-index         : 999999999999999;
+    }
+
+    body {
+        color: #353535;
+    }
+
+    :root {
+        --blue : #0e0620;
+        --white: #fff;
+        --green: #2ccf6d;
+    }
+
+    html *::-webkit-scrollbar-track {
+        border-radius   : 0;
+        background-color: rgba(0, 0, 0, 0);
+    }
 }
 
-html *::-webkit-scrollbar {
-    border-radius: 0;
-    width        : 8px;
-    z-index      : 999999999999999;
-}
+@include media-breakpoint-down(lg) {
 
-html *::-webkit-scrollbar-thumb {
-    border-radius   : 4px;
-    background-color: rgba(0, 0, 0, 0.25);
-    z-index         : 999999999999999;
-}
+    html * {
+        scroll-behavior: smooth;
+        overflow       : overlay;
+    }
 
-html *::-webkit-scrollbar-track {
-    border-radius   : 0;
-    background-color: rgba(0, 0, 0, 0);
-}
+    html *::-webkit-scrollbar {
+        border-radius   : 0;
+        width           : 8px;
+        // z-index      : 999999999999999;
+    }
 
-body {
-    color: #353535;
-}
+    html *::-webkit-scrollbar-thumb {
+        border-radius      : 4px;
+        background-color   : rgba(0, 0, 0, 0.25);
+        // z-index         : 999999999999999;
+        display            : none;
+    }
 
-:root {
-    --blue : #0e0620;
-    --white: #fff;
-    --green: #2ccf6d;
+    body {
+        color: #353535;
+    }
+
+    :root {
+        --blue : #0e0620;
+        --white: #fff;
+        --green: #2ccf6d;
+    }
+
+    html *::-webkit-scrollbar-track {
+        border-radius   : 0;
+        background-color: rgba(0, 0, 0, 0);
+    }
 }
