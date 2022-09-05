@@ -1,0 +1,25 @@
+html * {
+    scroll-behavior: smooth;
+    overflow       : overlay;
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width        : 8px;
+    z-index      : 999999999999999;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius   : 4px;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index         : 999999999999999;
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius   : 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    color: #353535;
+}
