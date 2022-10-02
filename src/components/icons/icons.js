@@ -665,3 +665,32 @@ export const NotFound = () => (
         </g>
     </svg>
 );
+
+export const IconGoogle = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 40 40"
+        version="1.1"
+        // xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="40"
+        height="40"
+    >
+        <circle cx="20" cy="20" r="20" fillRule="evenodd" clipRule="evenodd" fill="#fff"></circle>
+        <path
+            d="M31.5 20.3c0-.8-.1-1.5-.2-2.3H20v4.5h6.5c-.3 1.5-1.1 2.7-2.4 3.6v3H28c2.2-2.1 3.5-5.2 3.5-8.8z"
+            fill="#4285f4"
+        ></path>
+        <path
+            d="M20 32c3.2 0 6-1.1 7.9-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5h-4v3.1C11.3 29.3 15.3 32 20 32z"
+            fill="#34a853"
+        ></path>
+        <path
+            d="M13.3 22.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3v-3.1h-4C8.5 16.2 8 18.1 8 20s.5 3.8 1.3 5.4l4-3.1z"
+            fill="#fbbc05"
+        ></path>
+        <path
+            d="M20 12.8c1.8 0 3.4.6 4.6 1.8l3.4-3.4c-2-2-4.8-3.2-8-3.2-4.7 0-8.7 2.7-10.7 6.6l4 3.1c.9-2.8 3.6-4.9 6.7-4.9z"
+            fill="#ea4335"
+        ></path>
+    </svg>
+);

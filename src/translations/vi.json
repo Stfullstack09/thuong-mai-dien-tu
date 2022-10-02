@@ -1,16 +1,22 @@
 {
-    "home-header": {
-        "speciality": "Chuyên khoa 1223",
-        "search-doctor": " Tìm bác sĩ theo chuyên khoa",
-        "Health-facilities": "Cơ sở y tế",
-        "Choose-hospital-clinic": "Chọn bệnh viện phòng khám",
-        "doctor": "Bác sĩ",
-        "Choose-a-good-doctor": "Chọn bác sĩ giỏi",
-        "Checkup-package": " Gói khám",
-        "General-health-check": " Khám sức khỏe tổng quát",
-        "welcome": "Xin chào"
-    },
-    "title": {
-        "one": "Xin chao cac ban"
+    "authentication": {
+        "together": {
+            "titleLogin": "Đăng nhập tài khoản của bạn",
+            "titleRegister": "Đăng ký tài khoản của bạn",
+            "email": "email",
+            "plaEmail": "Nhập email của bạn eg: abc@gmail.com",
+            "valiEmail": "Email phải có @gmail.com và độ dài lơn hơn 0",
+            "address": "Địa chỉ",
+            "gender": "Giới tính",
+            "plaPassword": "Nhập password của bạn eg: matkhaucauban",
+            "isRequired": "Trường này bắt buộc",
+            "loginWithGoogle": "Đăng nhập với google",
+            "switchRegister": "Bạn muốn đăng ký",
+            "switchLogin": "Bạn muốn đăng nhập",
+            "btnSwitchRegister": "Đăng ký",
+            "btnSwitchLogin": "Đăng nhập",
+            "btnRegister": "Đăng ký",
+            "btnLogin": "Đăng nhập"
+        }
     }
 }

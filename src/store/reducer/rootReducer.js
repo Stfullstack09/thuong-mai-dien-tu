@@ -6,6 +6,7 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 import appReducer from './appReducer';
 import userReducer from './userReducer';
+import SiteReducer from './SiteReducer';
 
 const persistCommonConfig = {
     storage: storage,
@@ -29,4 +30,5 @@ export default () =>
     combineReducers({
         app: persistReducer(appPersistConfig, appReducer),
         user: persistReducer(userPersistConfig, userReducer),
+        SiteReducer: SiteReducer,
     });

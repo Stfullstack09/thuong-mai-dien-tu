@@ -1,4 +1,11 @@
 @import './base.scss';
+@import './_variable.scss';
+
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, 文泉驛正黑, WenQuanYi Zen Hei, Hiragino Sans GB, 儷黑 Pro, LiHei Pro, Heiti TC, 微軟正黑體, Microsoft JhengHei UI, Microsoft JhengHei, sans-serif !important;
+    color      : rgba(0, 0, 0, .8);
+    line-height: 1.2;
+}
 
 @include media-breakpoint-up(lg) {
 
@@ -35,38 +42,62 @@
     }
 }
 
-@include media-breakpoint-down(lg) {
 
-    html * {
-        scroll-behavior: smooth;
-        overflow       : overlay;
+html * {
+    scroll-behavior: smooth;
+    overflow       : overlay;
+}
+
+html *::-webkit-scrollbar {
+    border-radius   : 0;
+    width           : 8px;
+    // z-index      : 999999999999999;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius      : 4px;
+    background-color   : rgba(0, 0, 0, 0.25);
+    // z-index         : 999999999999999;
+    display            : none;
+}
+
+body {
+    color: #353535;
+}
+
+:root {
+    --blue : #0e0620;
+    --white: #fff;
+    --green: #2ccf6d;
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius   : 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
+@font-face {
+    font-family: $font-family !important;
+    src        : url('/assets/font/eb797abfa6a5cca2463e423c07c4f6ea.woff');
+    font-weight: 600;
+}
+
+.logo {
+    display    : flex;
+    align-items: center;
+
+    h2 {
+        overflow: hidden;
+        cursor  : pointer;
+        color   : #eee;
     }
+}
 
-    html *::-webkit-scrollbar {
-        border-radius   : 0;
-        width           : 8px;
-        // z-index      : 999999999999999;
-    }
 
-    html *::-webkit-scrollbar-thumb {
-        border-radius      : 4px;
-        background-color   : rgba(0, 0, 0, 0.25);
-        // z-index         : 999999999999999;
-        display            : none;
-    }
-
-    body {
-        color: #353535;
-    }
-
-    :root {
-        --blue : #0e0620;
-        --white: #fff;
-        --green: #2ccf6d;
-    }
-
-    html *::-webkit-scrollbar-track {
-        border-radius   : 0;
-        background-color: rgba(0, 0, 0, 0);
+.app-title {
+    h2 {
+        color    : #fff;
+        font-size: 18px;
     }
 }

@@ -1,0 +1,12 @@
+@import './base.scss';
+
+* {
+    box-sizing: border-box;
+}
+
+
+@include media-breakpoint-down(sm) {
+    .col-0 {
+        display: none;
+    }
+}

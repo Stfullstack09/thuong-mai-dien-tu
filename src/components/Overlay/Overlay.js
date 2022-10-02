@@ -9,7 +9,7 @@ Overlay.propTypes = {
 
 function Overlay({ children, toggle = () => {}, isOpen = false }) {
     return (
-        <div className={isOpen && 'overlay-wrapper'} onClick={toggle}>
+        <div className={isOpen ? 'overlay-wrapper' : ''} onClick={toggle}>
             {children}
         </div>
     );
