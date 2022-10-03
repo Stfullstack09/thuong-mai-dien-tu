@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import reduxStore, { persistor } from './redux';
 import IntlProviderWrapper from './Hoc/IntlProvider';
 import { BrowserRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,9 @@ root.render(
         <BrowserRouter>
             <Provider store={reduxStore}>
                 <IntlProviderWrapper>
-                    <App persistor={persistor} />
+                    <CookiesProvider>
+                        <App persistor={persistor} />
+                    </CookiesProvider>
                 </IntlProviderWrapper>
             </Provider>
         </BrowserRouter>

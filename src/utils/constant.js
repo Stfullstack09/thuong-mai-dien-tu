@@ -3,6 +3,7 @@ export const path = {
     system: '/system/*',
     stystemRoter: {
         loginandregister: '/login-register-account',
+        logout: '/logout',
     },
 };
 

@@ -2,15 +2,18 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import Typewriter from 'typewriter-effect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { faClose, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import validator from 'email-validator';
 
 import './auth.scss';
 import Redirect from '../../../router/components/redirect';
 import * as actions from '../../.././store/actions';
 import { languages } from '../../../utils/constant';
 import { IconGoogle } from '../../../components/icons/icons';
+import { UserLogin, UserRegister } from '../../../services';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
 
 class Auth extends Component {
     constructor(props) {
@@ -18,6 +21,8 @@ class Auth extends Component {
         this.state = {
             isOpen: false,
             isLogin: true,
+            isLoggedIn: this.props.isLoggedIn,
+            isShowPassword: false,
 
             firstName: '',
             lastName: '',
@@ -40,6 +45,7 @@ class Auth extends Component {
 
     componentDidMount() {
         this.props.getListAddress();
+        this.props.getListGender();
     }
 
     componentDidUpdate(prevProps, prevState, snapShot) {
@@ -50,10 +56,30 @@ class Auth extends Component {
             });
         }
 
+        if (prevProps.language !== this.props.language) {
+            const dataBuild = this.handleBuildData(this.props.listGender);
+            this.setState({
+                listGender: dataBuild,
+            });
+        }
+
         if (prevProps.listAddress !== this.props.listAddress) {
             const dataBuild = this.handleBuildData(this.props.listAddress);
             this.setState({
                 listAddress: dataBuild,
+            });
+        }
+
+        if (prevProps.listGender !== this.props.listGender) {
+            const dataBuild = this.handleBuildData(this.props.listGender);
+            this.setState({
+                listGender: dataBuild,
+            });
+        }
+
+        if (prevProps.isLoggedIn !== this.props.isLoggedIn) {
+            this.setState({
+                isLoggedIn: this.props.isLoggedIn,
             });
         }
     }
@@ -130,6 +156,8 @@ class Auth extends Component {
     handleValidateData = () => {
         let isValidate = true;
 
+        const checkEmail = validator.validate(this.state.email);
+
         if (this.state.isLogin) {
             const cloneState = ['email', 'password'];
 
@@ -154,50 +182,60 @@ class Auth extends Component {
             const cloneState = ['firstName', 'lastName', 'email', 'password', 'selectedAddress', 'selectedGender'];
 
             for (let i = 0; i < cloneState.length; i++) {
-                if (cloneState[i] === 'firstName') {
-                    isValidate = false;
-                    this.setState({
-                        isFirstName: false,
-                    });
-                }
-
-                if (cloneState[i] === 'lastName') {
-                    isValidate = false;
-                    this.setState({
-                        isLastName: false,
-                    });
-                }
-
                 if (!this.state[cloneState[i]]) {
-                    if (cloneState[i] === 'email') {
+                    if (cloneState[i] === 'firstName') {
                         isValidate = false;
                         this.setState({
-                            isEmail: false,
+                            isFirstName: false,
                         });
                     }
 
-                    if (cloneState[i] === 'password') {
+                    if (cloneState[i] === 'lastName') {
                         isValidate = false;
                         this.setState({
-                            isPassword: false,
+                            isLastName: false,
                         });
                     }
 
-                    if (cloneState[i] === 'selectedAddress') {
-                        isValidate = false;
-                        this.setState({
-                            isAddress: false,
-                        });
-                    }
+                    if (!this.state[cloneState[i]]) {
+                        if (cloneState[i] === 'email') {
+                            isValidate = false;
+                            this.setState({
+                                isEmail: false,
+                            });
+                        }
 
-                    if (cloneState[i] === 'selectedGender') {
-                        isValidate = false;
-                        this.setState({
-                            isGender: false,
-                        });
+                        if (cloneState[i] === 'password') {
+                            isValidate = false;
+                            this.setState({
+                                isPassword: false,
+                            });
+                        }
+
+                        if (cloneState[i] === 'selectedAddress') {
+                            isValidate = false;
+                            this.setState({
+                                isAddress: false,
+                            });
+                        }
+
+                        if (cloneState[i] === 'selectedGender') {
+                            isValidate = false;
+                            this.setState({
+                                isGender: false,
+                            });
+                        }
                     }
                 }
             }
+        }
+
+        if (!checkEmail) {
+            isValidate = false;
+
+            this.setState({
+                isEmail: false,
+            });
         }
 
         return isValidate;
@@ -217,6 +255,7 @@ class Auth extends Component {
             password: '',
             selectedAddress: '',
             selectedGender: '',
+            isShowPassword: false,
         });
     };
 
@@ -226,20 +265,67 @@ class Auth extends Component {
         });
     };
 
-    handleSubmit = () => {
+    handleSubmit = async () => {
         const check = this.handleValidateData();
 
         if (check) {
-            console.log('check state :', this.state);
+            if (this.state.isLogin) {
+                const dataBuild = {
+                    email: this.state.email,
+                    password: this.state.password,
+                };
+
+                const Res = await UserLogin(dataBuild);
+
+                console.log('check Res :', Res);
+
+                if (Res && Res.errCode === 0) {
+                    this.props.userLoginSuccess(Res.user);
+                    localStorage.setItem('accessToken', Res.user.accessToken);
+                } else {
+                    alert(Res.errMessage);
+                }
+            } else {
+                const dataBuild = {
+                    email: this.state.email,
+                    password: this.state.password,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    address: this.state.selectedAddress,
+                    gender: this.state.selectedGender,
+                };
+
+                const Res = await UserRegister(dataBuild);
+
+                if (Res && Res.errCode === 0) {
+                    this.props.userLoginSuccess(Res.user);
+                    localStorage.setItem('accessToken', Res.user.accessToken);
+                } else {
+                    alert(Res.errMessage);
+                }
+            }
+        }
+    };
+
+    handleIsShowPassWord = () => {
+        this.setState({
+            isShowPassword: !this.state.isShowPassword,
+        });
+    };
+
+    handleKeyDownSubmit = (e) => {
+        if (e.keyCode === 13) {
+            this.handleSubmit();
         }
     };
 
     render() {
-        const { isLogin } = this.state;
+        const { isLogin, isLoggedIn } = this.state;
         const { language } = this.props;
 
         return (
-            <div className="auth-container">
+            <div className="auth-container" onKeyDown={(e) => this.handleKeyDownSubmit(e)}>
+                {isLoggedIn && <Redirect link="/" />}
                 <div className="content-authentication">
                     <span
                         onClick={() => this.handleChangeLanguage(languages.EN)}
@@ -305,6 +391,7 @@ class Auth extends Component {
                                             <div className="col-12 px-5 jsx-parents-input-and-label login">
                                                 <label>Password</label>
                                                 <input
+                                                    type={this.state.isShowPassword ? 'text' : 'password'}
                                                     value={this.state.password}
                                                     className="jsx-input-authentication"
                                                     placeholder={
@@ -319,6 +406,13 @@ class Auth extends Component {
                                                         <FormattedMessage id="authentication.together.isRequired" />
                                                     </span>
                                                 )}
+                                                <p className="show-password" onClick={this.handleIsShowPassWord}>
+                                                    {this.state.isShowPassword ? (
+                                                        <FontAwesomeIcon icon={faEye} />
+                                                    ) : (
+                                                        <FontAwesomeIcon icon={faEyeSlash} />
+                                                    )}
+                                                </p>
                                             </div>
                                             <div className="col-12 text-center button-submit-jsx login">
                                                 <button onClick={this.handleSubmit}>
@@ -402,20 +496,31 @@ class Auth extends Component {
                                             <div className="col-12 col-md-12 col-lg-6 jsx-parents-input-and-label">
                                                 <label>Password</label>
                                                 <input
+                                                    type={this.state.isShowPassword ? 'text' : 'password'}
                                                     value={this.state.password}
                                                     className="jsx-input-authentication"
                                                     placeholder={
                                                         language === languages.VI
-                                                            ? 'Nhập password của bạn eg: matkhaucauban'
-                                                            : 'Enter your password eg: matkhaucauban'
+                                                            ? 'Nhập password của bạn'
+                                                            : 'Enter your password'
                                                     }
                                                     onChange={(e) => this.handleChangeInputAndSelect(e, 'password')}
                                                 />
                                                 {!this.state.isPassword && (
                                                     <span>
-                                                        <FormattedMessage id="authentication.together.isRequired" />,
+                                                        <FormattedMessage id="authentication.together.isRequired" />
                                                     </span>
                                                 )}
+                                                <p
+                                                    className="show-password register"
+                                                    onClick={this.handleIsShowPassWord}
+                                                >
+                                                    {this.state.isShowPassword ? (
+                                                        <FontAwesomeIcon icon={faEye} />
+                                                    ) : (
+                                                        <FontAwesomeIcon icon={faEyeSlash} />
+                                                    )}
+                                                </p>
                                             </div>
                                             <div className="col-12 col-md-12 col-lg-6 jsx-parents-input-and-label">
                                                 <label>
@@ -466,7 +571,7 @@ class Auth extends Component {
                                                     {this.state.listGender &&
                                                         this.state.listGender.length > 0 &&
                                                         this.state.listGender.map((item, index) => (
-                                                            <option value={item.keyMap} key={index}>
+                                                            <option value={item.value} key={index}>
                                                                 {item.label}
                                                             </option>
                                                         ))}
@@ -549,6 +654,7 @@ const mapStateToProps = (state) => {
     return {
         isLoggedIn: state.user.isLoggedIn,
         listAddress: state.SiteReducer.listAddress,
+        listGender: state.SiteReducer.listGender,
         language: state.app.language,
     };
 };
@@ -556,7 +662,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getListAddress: () => dispatch(actions.getListAddress()),
+        getListGender: () => dispatch(actions.getListGender()),
         ChangeLanguageApp: (language) => dispatch(actions.ChangeLanguageApp(language)),
+        userLoginSuccess: (user) => dispatch(actions.userLoginSuccess(user)),
     };
 };
 

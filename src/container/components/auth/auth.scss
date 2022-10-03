@@ -46,6 +46,7 @@
             -webkit-box-align: center;
             text-decoration  : none;
             cursor           : pointer;
+            color            : rgb(22, 24, 35);
 
             &:hover {
                 font-size: 9px;
@@ -110,7 +111,20 @@
 
                     .jsx-parents-input-and-label {
                         margin-bottom: 1rem;
+                        position     : relative;
 
+                        .show-password {
+                            position: absolute;
+                            z-index : 999999999999999999999999999999;
+                            right   : 55px;
+                            top     : 26px;
+                            cursor  : pointer;
+
+
+                            &.register {
+                                right: 26px;
+                            }
+                        }
 
                         &.login {
                             margin-bottom: 30px;

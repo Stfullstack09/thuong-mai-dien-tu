@@ -2,6 +2,7 @@ import actionType from '../actions/actionTypes';
 
 const initialState = {
     listAddress: [],
+    listGender: [],
 };
 
 const SiteReducer = (state = initialState, action) => {
@@ -17,6 +18,20 @@ const SiteReducer = (state = initialState, action) => {
         }
 
         case actionType.SITE_GET_LIST_ADDRESS_FAILED: {
+            return state;
+        }
+
+        case actionType.SITE_GET_LIST_GENDER_SUCCESS: {
+            const cloneStateListGender = { ...state };
+
+            cloneStateListGender.listGender = action.data;
+
+            return {
+                ...cloneStateListGender,
+            };
+        }
+
+        case actionType.SITE_GET_LIST_GENDER_FAILED: {
             return state;
         }
 
