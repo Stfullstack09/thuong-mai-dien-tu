@@ -1,0 +1,91 @@
+@import '../../../../../../.././Styles/base.scss';
+
+.fixed-jsx {
+    position        : fixed;
+    top             : 0;
+    bottom          : 0;
+    left            : 0;
+    right           : 0;
+    z-index         : 999999999999999999;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition      : all linear .3s;
+
+    .menu-admin-app {
+        position        : absolute;
+        top             : 0;
+        bottom          : 0;
+        left            : 0;
+        width           : 30%;
+        background-color: #fff;
+
+        @include media-breakpoint-down(sm) {
+            width: 70%;
+        }
+
+        .close {
+            position: absolute;
+            right   : 20px;
+            top     : 10px;
+            cursor  : pointer;
+            padding : 4px;
+
+            @include media-breakpoint-down(sm) {
+                top: 6px;
+            }
+        }
+
+        .text {
+            position    : absolute;
+            top         : 10px;
+            padding-left: 10px;
+
+
+            @include media-breakpoint-down(sm) {
+                font-size: 14px;
+            }
+        }
+
+        .body {
+            margin-top: 60px;
+            position  : absolute;
+            top       : 0;
+            bottom    : 0;
+            left      : 0;
+            right     : 0;
+
+            .select-language {
+                padding      : 6px 0;
+                padding-left : 10px;
+                font-weight  : 500%;
+                border-bottom: 0.4px solid #ccc;
+
+                .lang {
+                    padding     : 0;
+                    margin      : 0;
+                    display     : none;
+                    padding-left: -10px;
+
+                    li {
+                        padding: 4px 6px;
+                        cursor : pointer;
+
+                        &:hover {
+                            color: red;
+                        }
+                    }
+                }
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.2);
+                    cursor          : pointer;
+
+                    .lang {
+                        display: block;
+                    }
+                }
+            }
+
+
+        }
+    }
+}

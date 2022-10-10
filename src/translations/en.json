@@ -18,5 +18,86 @@
             "btnRegister": "Register",
             "btnLogin": "Login"
         }
+    },
+    "footer": {
+        "trademark": "UNOMO WELOCOME",
+        "des-one": "UNOMO ",
+        "des-span-one": "developed by ",
+        "des-span-two": "Truong Son Website",
+        "des-two": "Our team gives our customers the most memorable experience. We always hope that your love is as passionate as the journey because love is probably the last thing that exists after all !",
+        "des-three": "Once again we would like to thank you for experiencing the service at ",
+        "des-span": "UNOMO",
+        "send-email": "Please leave information to receive email",
+        "btn-send": "Receive information",
+        "link-to": "Contact us via"
+    },
+    "search": {
+        "noResult": "No search results yet"
+    },
+    "header": {
+        "home": "Home page",
+        "gender": "Women",
+        "viewAccount": "View account",
+        "welecome": "Welcome, honored guests",
+        "language": "Language",
+        "vi": "Tien Viet",
+        "en": "English",
+        "welcomeAdmin": "Hello admin",
+        "pageAdmin": "Admin page",
+        "login": "Login",
+        "nextAdmin": "Continue with admin"
+    },
+    "home": {
+        "introduction": "UNOMO - Commercial Website Suitable for Everyone",
+        "viewPro": "View Products",
+        "titleOne": "FASHION FOR CHILDREN, WOMEN AND MEN",
+        "titleTwo": "BEST - SELLING PRODUCT",
+        "titleThree": "LATEST PRODUCT",
+        "titleFour": "MEN'S FASHION",
+        "titleFive": "WOMEN'S FASHION",
+        "titleSix": "CHILD FASHION"
+    },
+    "admin": {
+        "product": {
+            "title": "Product Management",
+            "addPro": "More new products",
+            "editPro": "Edit product",
+            "managePro": "Manage your products",
+            "postPro": "Articles about products",
+            "postBanner": "Brand article",
+            "titleAdd": "Add new products to your store",
+            "chooseImg": "Choose a Product Photo",
+            "chooseCategory": "Select product category",
+            "chooseCategorySelect": "Choose your category",
+            "inputName": "Enter product name",
+            "inputPrice": "Enter product price",
+            "isDiscount": "Does this product have a discount?",
+            "inputDiscount": "Enter price % discount",
+            "isDiscountAgain": "Cancel changes",
+            "priceNoDiscount": "Product price",
+            "priceYesDiscount": "Product price has not been discounted",
+            "priceDiscountEnd": "Product price has been reduced",
+            "description": "Product Description",
+            "chooseImgAgain": "Select Product Photo Again",
+            "btnNewProduct": "Create New Product",
+            "titleEdit": "Edit your store products",
+            "chooseProEdit": "Select the product to be repaired",
+            "choosePro": "Select product",
+            "btnUpdate": "Product Update",
+            "allPro": "All products",
+            "namePro": "Product's name",
+            "price": "price",
+            "discount": "discount",
+            "trashPro": "Deleted product",
+            "action": "action",
+            "noTrash": "No products have been deleted"
+        },
+        "manageShop": {
+            "title": "Store manager"
+        },
+        "managePost": {
+            "title": "Manage Posts",
+            "portWithShop": "Posts about shops"
+        }
     }
 }

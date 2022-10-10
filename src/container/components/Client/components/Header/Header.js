@@ -1,15 +1,22 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faAngleUp, faBars, faClose } from '@fortawesome/free-solid-svg-icons';
-
-import './Header.scss';
+import { faPhone, faAngleUp, faBars, faClose, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+
+import './Header.scss';
 import Overlay from '../../../../../components/Overlay';
+import MenuAdmin from './components/MenuAdmin';
+import SearchHeader from './components/Search/Search';
 
 function Header() {
     const [header, setHeader] = useState('');
     const [isOpen, setIsOpen] = useState(false);
+    const [isShowMenu, setIsShowMenu] = useState(false);
+    const [isOpenSearch, setIsOpenSearch] = useState(false);
+
+    const isLogin = true;
 
     const listenScrollEvent = () => {
         if (window.scrollY <= 70) {
@@ -26,6 +33,10 @@ function Header() {
         });
     };
 
+    const handleClose = () => {
+        setIsShowMenu(!isShowMenu);
+    };
+
     useEffect(() => {
         window.addEventListener('scroll', listenScrollEvent);
 
@@ -37,48 +48,75 @@ function Header() {
     return (
         <>
             <div className={`header-wrapper ${header}`}>
-                <div className="container wrapper-content">
-                    <div className="row wrapper-row">
-                        <div className="col-4 logo">
-                            <h2>UNOMO</h2>
-                        </div>
-                        <div className="col-8 right-content">
-                            <ul className="pc">
-                                <li>
-                                    <a href="/">Trang chủ</a>
-                                </li>
-                                <li>
-                                    <a href="/">Giới thiệu</a>
-                                </li>
-                                <li>
-                                    <a href="/">Về chúng tôi</a>
-                                </li>
-                                <li>
-                                    <Link to="/system/login-register-account">Đăng Nhập</Link>
-                                </li>
-                                <li>
-                                    <a href="tel:0869224813" className="Phone">
-                                        <FontAwesomeIcon icon={faPhone} />+ 0869224813
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul className="tablet-and-mobile">
-                                <li>
-                                    <a href="tel:0869224813" className="Phone">
-                                        <FontAwesomeIcon icon={faPhone} />+ 0869224813
-                                    </a>
-                                </li>
-                                <li
-                                    onClick={() => setIsOpen(true)}
-                                    style={{
-                                        cursor: 'pointer',
-                                        color: '#fff',
-                                        fontSize: 18,
-                                    }}
-                                >
-                                    <FontAwesomeIcon icon={faBars} />
-                                </li>
-                            </ul>
+                <div className="wrapper-content">
+                    <div className="jsx-nav d-inline-block" onClick={handleClose}>
+                        <FontAwesomeIcon icon={faBars} />
+                    </div>
+                    <div className="container">
+                        <div className="row wrapper-row">
+                            <div className="col-4 logo">
+                                <h2>UNOMO</h2>
+                            </div>
+                            <div className="col-8 right-content">
+                                <ul className="pc">
+                                    <li>
+                                        <a href="/">
+                                            <FormattedMessage id="header.home" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/">
+                                            <FormattedMessage id="header.gender" />
+                                        </a>
+                                    </li>
+                                    <li className="li-search" title="Tìm kiếm sản phẩm">
+                                        <a
+                                            href="/"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setIsOpenSearch(!isOpenSearch);
+                                            }}
+                                        >
+                                            <FontAwesomeIcon icon={faSearch} />
+                                        </a>
+                                    </li>
+                                    {isLogin ? (
+                                        <li>
+                                            <Link to="/system/login-register-account">
+                                                <FormattedMessage id="header.viewAccount" />
+                                            </Link>
+                                        </li>
+                                    ) : (
+                                        <li>
+                                            <Link to="/system/login-register-account">
+                                                <FormattedMessage id="header.login" />
+                                            </Link>
+                                        </li>
+                                    )}
+                                    <li>
+                                        <a href="tel:0869224813" className="Phone">
+                                            <FontAwesomeIcon icon={faPhone} />+ 0869224813
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul className="tablet-and-mobile">
+                                    <li>
+                                        <a href="tel:0869224813" className="Phone">
+                                            <FontAwesomeIcon icon={faPhone} />+ 0869224813
+                                        </a>
+                                    </li>
+                                    <li
+                                        onClick={() => setIsOpen(true)}
+                                        style={{
+                                            cursor: 'pointer',
+                                            color: '#fff',
+                                            fontSize: 18,
+                                        }}
+                                    >
+                                        <FontAwesomeIcon icon={faBars} />
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -97,21 +135,57 @@ function Header() {
                                 </button>
                             </li>
                             <li>
-                                <a href="/">Trang chủ</a>
+                                <a href="/">
+                                    <FormattedMessage id="header.home" />
+                                </a>
                             </li>
                             <li>
-                                <a href="/">Giới thiệu</a>
+                                <a href="/">
+                                    <FormattedMessage id="header.gender" />
+                                </a>
                             </li>
-                            <li>
-                                <a href="/">Về chúng tôi</a>
+                            <li className="li-search align-items-center" title="Tìm kiếm sản phẩm">
+                                <a
+                                    href="/"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setIsOpenSearch(!isOpenSearch);
+                                    }}
+                                >
+                                    <span className="me-1">Tìm kiếm</span>
+                                    <FontAwesomeIcon icon={faSearch} />
+                                </a>
                             </li>
-                            <li>
-                                <Link to="/system/login">Đăng Nhập</Link>
+                            {isLogin ? (
+                                <li>
+                                    <Link to="/system/login-register-account">
+                                        <FormattedMessage id="header.viewAccount" />
+                                    </Link>
+                                </li>
+                            ) : (
+                                <li>
+                                    <Link to="/system/login-register-account">
+                                        <FormattedMessage id="header.login" />
+                                    </Link>
+                                </li>
+                            )}
+                            <li className="li-search align-items-center" title="Tìm kiếm sản phẩm">
+                                <a
+                                    href="/"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleClose();
+                                    }}
+                                >
+                                    Quản trị viên
+                                </a>
                             </li>
                         </ul>
                     )}
                 </div>
             </Overlay>
+            {isShowMenu && <MenuAdmin handleClose={handleClose} />}
+            <SearchHeader isOpenSearch={isOpenSearch} setIsOpenSearch={setIsOpenSearch} />
         </>
     );
 }

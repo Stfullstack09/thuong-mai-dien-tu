@@ -1,44 +1,106 @@
-import { async } from 'q';
-import { useEffect } from 'react';
-import { GetOneUser } from '../../../../services';
-import Header from '../components/Header/Header';
+import { FormattedMessage } from 'react-intl';
 
+import Footer from '../components/Footer';
+import Header from '../components/Header/Header';
+import ProductChildren from './components/SecsionIntroduction/ProductChildren';
+import ProductFeMale from './components/SecsionIntroduction/ProductFeMale';
+import ProductMale from './components/SecsionIntroduction/ProductMale';
+import ProductNew from './components/SecsionIntroduction/ProductNew';
+import ProductTrend from './components/SecsionIntroduction/ProductTrend';
+import SectionIntroduction from './components/SecsionIntroduction/SectionIntroduction';
 import './Home.scss';
 
 function HomePage() {
-    const handleClickAPI = async () => {
-        const Res = await GetOneUser(2);
-
-        if (Res && Res.errCode === 0) {
-            console.log('check data  responsive :', Res.data);
-        } else {
-            console.log('check data responsive failed');
-        }
-    };
-
-    useEffect(() => {
-        const Fetch = async () => {
-            const Res = await GetOneUser(2);
-
-            if (Res && Res.errCode === 0) {
-                console.log('check data  responsive :', Res.data);
-            } else {
-                console.log('check data responsive failed');
-            }
-        };
-
-        Fetch();
-    }, []);
-
     return (
         <div className="home-page">
             <Header />
-            <p onClick={handleClickAPI}></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p id="home-page-test"></p>
+            <div className="introduction-section-home">
+                <SectionIntroduction />
+            </div>
+            <div className="jsx-home-body">
+                <div className="text-introduce">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12 jsx-responsive text-center p-5">
+                                <h2>
+                                    <FormattedMessage id="home.titleOne" />
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="jsx-home-production-trending">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12 jsx-responsive text-center p-5">
+                                <h2>
+                                    <FormattedMessage id="home.titleTwo" />
+                                </h2>
+                            </div>
+                            <div className="jsx-section-slider col-12">
+                                <ProductTrend />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="jsx-home-production-trending product-new mt-5">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12 jsx-responsive text-center p-5">
+                                <h2>
+                                    <FormattedMessage id="home.titleThree" />
+                                </h2>
+                            </div>
+                            <div className="jsx-section-slider col-12">
+                                <ProductNew />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="jsx-home-production-trending product-gender-male mt-5">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12 jsx-responsive text-center p-5">
+                                <h2>
+                                    <FormattedMessage id="home.titleFour" />
+                                </h2>
+                            </div>
+                            <div className="jsx-section-slider col-12">
+                                <ProductMale />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="jsx-home-production-trending product-gender-female mt-5">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12 jsx-responsive text-center p-5">
+                                <h2>
+                                    <FormattedMessage id="home.titleFive" />
+                                </h2>
+                            </div>
+                            <div className="jsx-section-slider col-12">
+                                <ProductFeMale />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="jsx-home-production-trending product-children mt-5 mb-4">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12 jsx-responsive text-center p-5">
+                                <h2>
+                                    <FormattedMessage id="home.titleSix" />
+                                </h2>
+                            </div>
+                            <div className="jsx-section-slider col-12">
+                                <ProductChildren />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <Footer />
         </div>
     );
 }

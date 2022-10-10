@@ -7,15 +7,62 @@
     top          : 0;
     left         : 0;
     right        : 0;
+    z-index      : 99999999999999999999;
     transition   : all .3s;
 
 
     .wrapper-content {
-        height: 100%;
+        height  : 100%;
+        position: relative;
+
+        .container {
+            height: 100%;
+        }
+
+        .jsx-nav {
+            position : absolute;
+            color    : #fff;
+            font-size: 24px;
+            left     : 38px;
+            top      : 50%;
+            transform: translateY(-50%);
+            cursor   : pointer;
+
+            .nav-jsx-children {
+                position        : fixed;
+                padding         : 0;
+                margin          : 0;
+                background-color: #fff;
+                left            : 0;
+                bottom          : 0;
+                top             : 0;
+                width           : 400px;
+
+                li {
+                    padding: 4px 8px;
+                }
+            }
+
+            @include media-breakpoint-down(sm) {
+                display: none !important;
+            }
+
+            @include media-breakpoint-down(lg) {
+                display: none !important;
+            }
+        }
 
         .wrapper-row {
             height     : 100%;
             align-items: center;
+
+            .logo {
+
+                h2 {
+                    padding: 0;
+                    margin : 0;
+                }
+            }
 
             .right-content {
                 height: 100%;
@@ -136,105 +183,8 @@
     }
 
 
-
-}
-
-
-.scroll-top {
-    position        : fixed;
-    width           : 50px;
-    height          : 50px;
-    background-color: #fff;
-    color           : #000;
-    display         : flex;
-    justify-content : center;
-    align-items     : center;
-    border-radius   : 50%;
-    right           : 20px;
-    display         : none;
-    animation       : FadeIn ease-in .6s alternate;
-
-    &.header__slide__down {
-        display  : flex;
-        animation: FadeIn ease-in .3s forwards;
+    .li-search {
+        border-radius: 50%;
     }
-
-    &:hover {
-        background-color: #eee;
-        cursor          : pointer;
-    }
-}
-
-@keyframes FadeIn {
-    from {
-        bottom : 0;
-        opacity: 0;
-    }
-
-    to {
-        bottom : 20px;
-        opacity: 1;
-    }
-}
-
-.sidebar {
-    width           : 50%;
-    position        : fixed;
-    top             : 0;
-    right           : 0;
-    bottom          : 0;
-    background-color: #fff;
-    z-index         : 999999999999999;
-    padding         : 0;
-    margin          : 0;
-    transform       : translateX(100%);
-    opacity         : 0;
-
-    &.animation {
-
-        transform : translateX(0);
-        opacity   : 1;
-        transition: all ease-in-out .3s;
-    }
-
-    ul {
-        padding: 0;
-        margin : 0;
-
-
-        .closed {
-            display         : flex;
-            justify-content : flex-end;
-            align-items     : center;
-            padding         : 4px 8px;
-            background-color: transparent;
-
-            &:hover {
-                background-color: transparent;
-            }
-        }
-
-        li {
-            padding      : 6px 10px;
-            margin       : 4px 0;
-            border-radius: 4px;
-
-            a {
-                font-weight    : bold;
-                text-decoration: none;
-                color          : #333;
-            }
-
-            &:hover {
-                background-color: rgba(0, 0, 0, .07);
-            }
-        }
-
-        &::-webkit-scrollbar {
-            display: none !important;
-        }
-
-    }
-
 
 }

@@ -18,5 +18,86 @@
             "btnRegister": "Đăng ký",
             "btnLogin": "Đăng nhập"
         }
+    },
+    "footer": {
+        "trademark": "UNOMO XIN CHÀO",
+        "des-one": "UNOMO ",
+        "des-span-one": "được phát triển bởi",
+        "des-span-two": "Trường Sơn Wesite",
+        "des-two": "Đội ngũ chúng tôi mang lại cho khách hàng một sự trải nghiệm đáng nhớ nhất. Chúng tôi luôn mong rằng tình cảm của các bạn cũng nhiệt huyết như những chuyến đi bởi lẽ tình cảm có lẽ là thứ tồn tại cuối cùng sau tất cả !",
+        "des-three": "Một lần nữa chúng tôi xin cảm ơn bạn đã trải nghiệm dịch vụ tại ",
+        "des-span": "UNOMO",
+        "send-email": "Hãy để lại thông tin để nhận email",
+        "btn-send": "Nhận thông tin",
+        "link-to": "Liên hệ đến chúng tôi qua"
+    },
+    "search": {
+        "noResult": "Chưa có kết quả tìm kiếm"
+    },
+    "header": {
+        "home": "Trang chủ",
+        "gender": "Phụ nữ",
+        "viewAccount": "Xem tài khoản",
+        "welecome": "Xin chào quý khách",
+        "language": "Ngôn ngữ",
+        "vi": "Tiến việt",
+        "en": "Tiếng anh",
+        "welcomeAdmin": "Xin chào người quản trị",
+        "pageAdmin": "Trang quản trị",
+        "login": "Đăng nhập",
+        "nextAdmin": "Tiếp tục với admin"
+    },
+    "home": {
+        "introduction": "UNOMO - Website Thương Mại Phù Hợp Với Mọi Người",
+        "viewPro": "Xem Sản Phẩm",
+        "titleOne": "THỜI TRANG TRẺ EM, PHỤ NỮ VÀ NAM GIỚI",
+        "titleTwo": "SẢN PHẨM BÁN CHẠY NHẤT",
+        "titleThree": "SẢN PHẨM MỚI NHẤT",
+        "titleFour": "THỜI TRANG NAM",
+        "titleFive": "THỜI TRANG CỦA PHỤ NỮ",
+        "titleSix": "THỜI TRANG TRẺ EM"
+    },
+    "admin": {
+        "product": {
+            "title": "Quản lí sản phẩm",
+            "addPro": "Thêm sản phẩm mới",
+            "editPro": "Sửa sản phẩm",
+            "managePro": "Quản lí sản phẩm của bạn",
+            "postPro": "Bài viết về sản phẩm",
+            "postBanner": "Bài viết thương hiệu",
+            "titleAdd": "Thêm sản phẩm mới cho cửa hàng của bạn",
+            "chooseImg": "Chọn Ảnh Cho Sản Phẩm",
+            "chooseImgAgain": "Chọn Lại Ảnh Cho Sản Phẩm",
+            "chooseCategory": "Chọn danh mục sản phẩm",
+            "chooseCategorySelect": "Chọn danh mục của bạn",
+            "inputName": "Nhập tên sản phẩm",
+            "inputPrice": "Nhập giá sản phẩm",
+            "isDiscount": "Sản phẩm này có giảm giá ?",
+            "inputDiscount": "Nhập giá % giảm giá",
+            "isDiscountAgain": "Hủy bỏ thay đổi",
+            "priceNoDiscount": "Giá sản phẩm",
+            "priceYesDiscount": "Giá sản phẩm chưa giảm giá",
+            "priceDiscountEnd": "Giá sản phẩm đã giảm giá",
+            "description": "Mô tả sản phẩm",
+            "btnNewProduct": "Tạo Mới Sản Phẩm",
+            "titleEdit": "Chỉnh sửa sản phẩm cửa hàng của bạn",
+            "chooseProEdit": "Chọn sản phẩm cần sửa",
+            "choosePro": "Chọn sản phẩm",
+            "btnUpdate": "Cập Nhật Sản Phẩm",
+            "allPro": "Tất cả sản phẩm",
+            "trashPro": "Sản phẩm đã xóa",
+            "namePro": "Tên sản phẩm",
+            "price": "giá",
+            "discount": "discount",
+            "action": "action",
+            "noTrash": "Không có sản phẩm nào đã xóa"
+        },
+        "manageShop": {
+            "title": "Quản lí cửa hàng"
+        },
+        "managePost": {
+            "title": "Quản lí bài viết",
+            "portWithShop": "Bài viết về shop"
+        }
     }
 }

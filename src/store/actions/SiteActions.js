@@ -1,4 +1,11 @@
-import { GetListAddress, GetListGender, RefreshToken } from '../../services';
+import {
+    GetAllProductByAdmin,
+    GetCateGory,
+    GetDetailProductByAdmin,
+    GetListAddress,
+    GetListGender,
+    RefreshToken,
+} from '../../services';
 import actionType from './actionTypes';
 import { userLoginSuccess } from './userActions';
 
@@ -77,5 +84,98 @@ export const RefreshTokenAction = () => {
             console.log(error);
             return;
         }
+    };
+};
+
+export const setIsLoading = () => {
+    return {
+        type: actionType.SET_IS_LOADING,
+    };
+};
+
+export const getCateGory = () => {
+    return async (dispatch, getState) => {
+        try {
+            const Res = await GetCateGory();
+
+            if (Res && Res.errCode === 0) {
+                dispatch(getCateGorySuccess(Res.data));
+            } else {
+                dispatch(getCateGoryFailed());
+            }
+        } catch (error) {
+            dispatch(getCateGoryFailed());
+        }
+    };
+};
+
+export const getCateGorySuccess = (data) => {
+    return {
+        type: actionType.GET_CATEGORY_SUCCESS,
+        data,
+    };
+};
+
+export const getCateGoryFailed = () => {
+    return {
+        type: actionType.GET_CATEGORY_FAILED,
+    };
+};
+
+export const getDetailProductByAdmin = (id) => {
+    return async (dispatch, getState) => {
+        try {
+            const Res = await GetDetailProductByAdmin(id);
+
+            if (Res && Res.errCode === 0) {
+                dispatch(getDetailProductByAdminSuccess(Res.data));
+            } else {
+                dispatch(getDetailProductByAdminFailed());
+            }
+        } catch (error) {
+            dispatch(getDetailProductByAdminFailed());
+        }
+    };
+};
+
+export const getDetailProductByAdminSuccess = (data) => {
+    return {
+        type: actionType.GET_DETAIL_PRODUCT_BY_ADMIN_SUCCESS,
+        data,
+    };
+};
+
+export const getDetailProductByAdminFailed = () => {
+    return {
+        type: actionType.GET_DETAIL_PRODUCT_BY_ADMIN_FAILED,
+    };
+};
+
+export const getAllProductByAdmin = () => {
+    return async (dispatch, getState) => {
+        try {
+            const Res = await GetAllProductByAdmin();
+
+            if (Res && Res.errCode === 0) {
+                dispatch(getAllProductByAdminSuccess(Res.data));
+            } else {
+                dispatch(getAllProductByAdminFailed());
+            }
+        } catch (error) {
+            dispatch(getAllProductByAdminFailed());
+        }
+    };
+};
+
+export const getAllProductByAdminSuccess = (data) => {
+    return {
+        type: actionType.GET_ALL_PRODUCT_BY_ADMIN_SUCCESS,
+        data,
+    };
+};
+
+export const getAllProductByAdminFailed = () => {
+    return {
+        type: actionType.GET_ALL_PRODUCT_BY_ADMIN_FAILED,
     };
 };

@@ -1,0 +1,182 @@
+@import '../../../.././Styles/base.scss';
+
+.auth-admin-wrapper {
+    height          : 100vh;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    background-color: #d1e5ec;
+    position        : relative;
+
+    .jsx-introduce-next {
+        position       : absolute;
+        top            : 0;
+        right          : 0;
+        left           : 0;
+        bottom         : 0;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+    }
+
+    .container {
+        height          : 80vh;
+        background-color: #fff;
+        border-radius   : 4px;
+
+        .row {
+            height: 100%;
+
+            .left-content {
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+
+                div {
+                    width              : 80%;
+                    height             : 70%;
+                    background-image   : url('../../../../assets/image/admin.jpg');
+                    background-repeat  : no-repeat;
+                    background-size    : cover;
+                    background-position: center center;
+                }
+            }
+
+            .right-content {
+
+                .content-authentication {
+                    // position: relative;
+                }
+
+                .nav-authentication {
+                    position         : absolute;
+                    right            : 10px;
+                    top              : 10px;
+                    border           : none;
+                    outline          : none;
+                    border-radius    : 50%;
+                    background-color : #f5bd4f;
+                    height           : 20px;
+                    width            : 20px;
+                    display          : inline-flex;
+                    justify-content  : center;
+                    align-items      : center;
+                    font-size        : 0px;
+                    -webkit-box-align: center;
+                    text-decoration  : none;
+                    cursor           : pointer;
+                    color            : rgb(22, 24, 35);
+
+                    &:hover {
+                        font-size: 9px;
+                    }
+
+                    &.vi {
+                        right: 40px;
+                    }
+
+                    &.en {
+                        right : 64px;
+                        margin: 0 6px;
+                    }
+
+
+                    @include media-breakpoint-down(lg) {
+                        font-size: 9px;
+                    }
+
+                }
+
+
+                .title-authentication {
+                    text-align   : center;
+                    margin-bottom: 20px;
+                    margin-top   : 40px;
+
+                    h1 {
+                        font-size : 1.4rem;
+                        font-style: italic;
+                        overflow  : hidden;
+                    }
+
+                    &.login {
+                        margin-bottom: 30px;
+                    }
+
+
+                    @include media-breakpoint-down(sm) {
+                        margin-top: 60px;
+                    }
+                }
+
+                .jsx-parents-input-and-label {
+                    margin-bottom: 1rem;
+                    position     : relative;
+
+                    .show-password {
+                        position: absolute;
+                        z-index : 999999999999999999999999999999;
+                        right   : 55px;
+                        top     : 26px;
+                        cursor  : pointer;
+
+
+                        &.register {
+                            right: 26px;
+                        }
+                    }
+
+                    &.login {
+                        margin-bottom: 30px;
+                    }
+
+                    label {
+                        font-size : 12px;
+                        margin-top: 2px;
+                    }
+
+                    span {
+                        color             : red;
+                        font-size         : 10px;
+                        padding           : 3px 4px 0 0;
+                        margin            : 0;
+                        display           : -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 1;
+                        overflow          : hidden;
+                    }
+                }
+
+                .jsx-input-authentication {
+                    border       : none;
+                    outline      : none;
+                    border-bottom: 0.3px solid #ddd;
+                    margin-bottom: 2px;
+                    font-size    : 12px;
+                    width        : 100%;
+                }
+
+                .button-submit-jsx {
+
+                    &.login {
+                        margin-bottom: 20px;
+                    }
+
+                    button {
+                        border-radius   : 999999999999999px;
+                        border          : none;
+                        outline         : none;
+                        background-color: #ea4c89;
+                        color           : #fff;
+                        padding         : 4px 26px;
+
+
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

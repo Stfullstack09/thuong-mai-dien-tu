@@ -1,9 +1,11 @@
 export const path = {
-    home: '/',
+    home: '/*',
     system: '/system/*',
     stystemRoter: {
         loginandregister: '/login-register-account',
         logout: '/logout',
+        loginadmin: '/admin-auth',
+        pageAdmin: '/admin-page/*',
     },
 };
 

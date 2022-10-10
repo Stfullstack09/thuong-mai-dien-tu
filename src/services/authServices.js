@@ -8,8 +8,11 @@ export const UserLogin = (data) => {
     return axios.post('/api/v1/auth/login', data, { withCredentials: true });
 };
 
+export const UserLoginAdmin = (data) => {
+    return axios.post('/api/v1/auth/login-admin', data, { withCredentials: true });
+};
+
 export const LogoutServices = (userId, Token) => {
-    console.log('check Token :', Token);
     return axios.post(
         `/api/v1/auth/logout`,
         { userId },

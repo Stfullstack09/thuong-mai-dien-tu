@@ -9,14 +9,14 @@
     background-color : #707774;
 
     .content-authentication {
-        width           : 70%;
-        min-height      : 60%;
-        border          : 1px solid #ccc;
-        border-radius   : 2px;
-        overflow        : hidden;
-        position        : relative;
-        background-color: #fff;
-        box-shadow      : 1px 1px 10px 1px rgba(0, 0, 0, 0.003);
+        width              : 70%;
+        // min-height      : 60%;
+        border             : 1px solid #ccc;
+        border-radius      : 2px;
+        overflow           : hidden;
+        position           : relative;
+        background-color   : #fff;
+        box-shadow         : 1px 1px 10px 1px rgba(0, 0, 0, 0.003);
 
         @include media-breakpoint-down(lg) {
             min-height: auto;
