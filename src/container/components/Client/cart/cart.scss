@@ -1,0 +1,227 @@
+.cart-wrapper {
+
+    .jsx-chuk {
+        // height: 100vh;
+
+        .nav-jsx-cart {
+            span {
+                font-size: 13px;
+            }
+
+            .home-jsx-cart {
+                user-select: none;
+
+                &:hover {
+                    text-decoration: underline;
+                    cursor         : pointer;
+                }
+            }
+        }
+
+        .header-wrapper {
+            background-color: #ffffff;
+            border-color    : transparent;
+
+            .Phone {
+                color : rgba(0, 0, 0, 0.65) !important;
+                border: 2px solid rgba(0, 0, 0, 0.65) !important;
+            }
+
+            .jsx-responsive {
+                color: rgba(0, 0, 0, 0.65) !important;
+            }
+
+            .wrapper-content {
+
+                .jsx-nav {
+                    color: rgba(0, 0, 0, 0.65) !important;
+
+                }
+
+                .logo {
+
+                    h2 {
+                        color: rgba(0, 0, 0, 0.65) !important;
+                    }
+                }
+
+                .pc {
+
+                    li {
+
+                        a {
+                            color: rgba(0, 0, 0, 0.65) !important;
+
+
+                            &:hover {
+                                color       : rgba(255, 0, 0, 0.7) !important;
+                                border-color: transparent !important;
+                            }
+                        }
+
+                        .Phone {
+                            border: 2px solid rgba(0, 0, 0, 0.65) !important;
+                        }
+                    }
+                }
+            }
+
+
+            &.header__slide__down {
+                background-color: #f5f5f5;
+                box-shadow      : 0 0 50px 2px rgb(1 1 1 / 16%);
+            }
+        }
+
+        .body-jsx {
+            margin-top: 110px;
+
+            .header-cart {
+                height          : 60px;
+                background-color: #f8f9fa;
+                border-radius   : 1px;
+            }
+
+            .jsx-render-pro {
+
+                .item {
+                    height         : 100px;
+                    display        : inline-flex;
+                    justify-content: center;
+                    overflow       : hidden;
+                    flex-direction : column;
+                    margin         : 10px 0;
+
+                    .row {
+                        height: 90%;
+                    }
+
+                    .introduce {
+                        display    : flex;
+                        align-items: center;
+
+                        .image {
+                            background-image   : url('https://t004.gokisoft.com/uploads/2021/07/p-7537-ao-polo-nam.jpg');
+                            background-position: center center;
+                            background-repeat  : no-repeat;
+                            background-size    : cover;
+                            width              : 80px;
+                            height             : 100%;
+                            margin-right       : 8px;
+                            flex-shrink        : 0;
+                            border-radius      : 2px;
+                        }
+
+                        p {
+                            padding           : 0;
+                            margin            : 0;
+                            font-size         : 15px;
+                            display           : -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 2;
+                            overflow          : hidden;
+
+                            &:hover {
+                                text-decoration: underline;
+                                cursor         : pointer;
+                            }
+                        }
+
+                        span {
+                            font-size: 12px;
+                            color    : #868e96 !important;
+                        }
+                    }
+
+                    .count-pro {
+                        display        : inline-flex;
+                        justify-content: center;
+                        overflow       : hidden;
+
+                        input {
+                            height    : 30px;
+                            width     : 40px;
+                            max-width : 50px;
+                            text-align: center;
+                            border    : 0.1px solid #eee;
+                        }
+
+                        button {
+                            border   : none;
+                            outline  : none;
+                            height   : 30px;
+                            width    : 40px;
+                            max-width: 50px;
+                        }
+                    }
+                }
+            }
+
+            .detail-cart {
+                padding         : 14px 18px;
+                background-color: #f8f9fa;
+                border-radius   : 2px;
+                font-family     : Arial, Helvetica, sans-serif !important;
+
+                .title-cart {
+                    padding: 6px 0;
+                }
+
+                .math-price {
+                    font-size: 13px;
+                }
+
+                .jsx-chuk-extend {
+                    padding        : 10px 0;
+                    display        : flex;
+                    justify-content: space-between;
+                    font-size      : 14px;
+                    border-bottom  : 1px solid #eee;
+                }
+
+                .price {
+                    @extend .jsx-chuk-extend;
+                }
+
+                .price-vc {
+                    @extend .jsx-chuk-extend;
+                }
+
+                .price-thue {
+                    @extend .jsx-chuk-extend;
+                }
+
+                .sd-total {
+                    border-color: transparent;
+                }
+            }
+
+            .checkout-ds {
+
+                span {
+                    color      : #868e96 !important;
+                    font-size  : 13px;
+                    font-weight: 600;
+
+                    svg {
+                        margin-right: 4px;
+                        ;
+                    }
+
+                    &:hover {
+                        text-decoration: underline;
+                        cursor         : pointer;
+                    }
+                }
+
+                button {
+                    font-size: 14px;
+
+                    svg {
+                        margin-left: 4px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import {
     GetAllProductByAdmin,
+    GetAllProductToCart,
     GetCateGory,
     GetDetailProductByAdmin,
     GetListAddress,
@@ -177,5 +178,35 @@ export const getAllProductByAdminSuccess = (data) => {
 export const getAllProductByAdminFailed = () => {
     return {
         type: actionType.GET_ALL_PRODUCT_BY_ADMIN_FAILED,
+    };
+};
+
+export const getAllProductToCart = (id) => {
+    return async (dispatch, state) => {
+        try {
+            const Res = await GetAllProductToCart(id);
+
+            if (Res && Res.errCode === 0) {
+                dispatch(getAllProductToCartSuccess(Res.data));
+            } else {
+                dispatch(getAllProductToCartFailed());
+            }
+        } catch (error) {
+            console.log(error);
+            dispatch(getAllProductToCartFailed());
+        }
+    };
+};
+
+export const getAllProductToCartSuccess = (data) => {
+    return {
+        type: actionType.GET_ALL_PRODUCT_TO_CART_SUCCESS,
+        data,
+    };
+};
+
+export const getAllProductToCartFailed = () => {
+    return {
+        type: actionType.GET_ALL_PRODUCT_TO_CART_FAILED,
     };
 };

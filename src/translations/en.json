@@ -99,5 +99,34 @@
             "title": "Manage Posts",
             "portWithShop": "Posts about shops"
         }
+    },
+    "detail": {
+        "home": "Home page",
+        "production": "Product",
+        "stocking": "stocking",
+        "countPro": "PRODUCT NUMBER",
+        "addCart": "Add To Cart",
+        "viewCart": "View Cart",
+        "description": "Product Description",
+        "csvc": "Shipping Policy",
+        "orderPro": "Some Related Products"
+    },
+    "cart": {
+        "home": "Home Page",
+        "cartCountOne": "Shopping Cart - You are now ",
+        "cartCountTwo": " products in cart",
+        "header": {
+            "pro": "PRODUCT",
+            "price": "PRICE",
+            "count": "COUNT",
+            "total": "TOTAL",
+            "des": "ORDER SUMMARY",
+            "mathPrice": "Order cost = Order value + shipping fee + Tax",
+            "priceOne": "Order Value",
+            "priceShip": "Transport Fee",
+            "priceTwo": "Tax",
+            "continue": "Continue Shopping",
+            "bankment": "PAY"
+        }
     }
 }

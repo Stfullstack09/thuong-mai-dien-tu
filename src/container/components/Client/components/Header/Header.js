@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faAngleUp, faBars, faClose, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import './Header.scss';
@@ -17,6 +17,8 @@ function Header() {
     const [isOpenSearch, setIsOpenSearch] = useState(false);
 
     const isLogin = true;
+
+    const history = useNavigate();
 
     const listenScrollEvent = () => {
         if (window.scrollY <= 70) {
@@ -45,6 +47,10 @@ function Header() {
         };
     }, []);
 
+    const handleRedirect = () => {
+        history('/');
+    };
+
     return (
         <>
             <div className={`header-wrapper ${header}`}>
@@ -55,7 +61,7 @@ function Header() {
                     <div className="container">
                         <div className="row wrapper-row">
                             <div className="col-4 logo">
-                                <h2>UNOMO</h2>
+                                <h2 onClick={handleRedirect}>UNOMO</h2>
                             </div>
                             <div className="col-8 right-content">
                                 <ul className="pc">
@@ -112,6 +118,7 @@ function Header() {
                                             color: '#fff',
                                             fontSize: 18,
                                         }}
+                                        className="jsx-responsive"
                                     >
                                         <FontAwesomeIcon icon={faBars} />
                                     </li>

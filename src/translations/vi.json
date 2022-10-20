@@ -22,7 +22,7 @@
     "footer": {
         "trademark": "UNOMO XIN CHÀO",
         "des-one": "UNOMO ",
-        "des-span-one": "được phát triển bởi",
+        "des-span-one": "được phát triển bởi ",
         "des-span-two": "Trường Sơn Wesite",
         "des-two": "Đội ngũ chúng tôi mang lại cho khách hàng một sự trải nghiệm đáng nhớ nhất. Chúng tôi luôn mong rằng tình cảm của các bạn cũng nhiệt huyết như những chuyến đi bởi lẽ tình cảm có lẽ là thứ tồn tại cuối cùng sau tất cả !",
         "des-three": "Một lần nữa chúng tôi xin cảm ơn bạn đã trải nghiệm dịch vụ tại ",
@@ -98,6 +98,35 @@
         "managePost": {
             "title": "Quản lí bài viết",
             "portWithShop": "Bài viết về shop"
+        }
+    },
+    "detail": {
+        "home": "Trang Chủ",
+        "production": "Sản Phẩm",
+        "stocking": "còn hàng",
+        "countPro": "SỐ SẢN PHẨM",
+        "addCart": "Thêm Vào Giỏ Hàng",
+        "viewCart": "Xem Giỏ Hàng",
+        "description": "Mô Tả Sản Phẩm",
+        "csvc": "Chính Sách Vận Chuyển",
+        "orderPro": "Một Số Sản Phẩm Có Liên Quan"
+    },
+    "cart": {
+        "home": "Trang Chủ",
+        "cartCountOne": "Giỏ Hàng - Bạn đang có ",
+        "cartCountTwo": " sản phẩm trong giỏ hàng",
+        "header": {
+            "pro": "SẢN PHẨM",
+            "price": "GIÁ",
+            "count": "SỐ LƯỢNG",
+            "total": "TỔNG",
+            "des": "TÓM TẮT ĐƠN HÀNG",
+            "mathPrice": "Chi phí đơn hàng = Giá trị đơn hàng + phí vận chuyển + Thuế",
+            "priceOne": "Giá Trị Đơn Hàng",
+            "priceShip": "Phí Vận Chuyển",
+            "priceTwo": "Thuế",
+            "continue": "Tiếp Tục Mua Sắm",
+            "bankment": "THANH TOÁN"
         }
     }
 }

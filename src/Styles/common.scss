@@ -95,3 +95,39 @@
         }
     }
 }
+
+.ReactModal__Overlay {
+    z-index: 99999999999999999999999 !important;
+}
+
+.customize-jsx-format {
+    input {
+        border          : none;
+        outline         : none;
+        text-align      : end;
+        background-color: transparent;
+    }
+
+    &.font-weight {
+        input {
+            font-weight: 600;
+        }
+    }
+}
+
+
+@include media-breakpoint-down(sm) {
+    .w-sm-600 {
+        width: 600px;
+    }
+
+    .sm-scroll-none {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .mt-mobile-2 {
+        margin-top: 1rem;
+    }
+}

@@ -8,6 +8,8 @@ const initialState = {
     detailProductByAdmin: {},
     listAllProductByAdmin: [],
 
+    listAllProduct: [],
+
     isLoading: false,
 };
 
@@ -53,6 +55,16 @@ const SiteReducer = (state = initialState, action) => {
 
         case actionType.GET_CATEGORY_FAILED: {
             return state;
+        }
+
+        case actionType.GET_ALL_PRODUCT_TO_CART_SUCCESS: {
+            const cloneStateListProductToCart = { ...state };
+
+            cloneStateListProductToCart.listAllProduct = action.data;
+
+            return {
+                ...cloneStateListProductToCart,
+            };
         }
 
         case actionType.GET_DETAIL_PRODUCT_BY_ADMIN_SUCCESS: {

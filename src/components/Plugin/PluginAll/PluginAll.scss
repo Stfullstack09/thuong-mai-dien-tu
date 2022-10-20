@@ -78,6 +78,20 @@
         border-radius: 50%;
     }
 
+    .jsx-count-cart {
+        position        : absolute;
+        width           : 40px;
+        height          : 30px;
+        border-radius   : 50%;
+        background-color: #50af00;
+        color           : #fff;
+        display         : inline-flex;
+        justify-content : center;
+        align-items     : center;
+        font-size       : 12px;
+        left            : -6px;
+    }
+
     &:hover {
         opacity: 0.8;
     }

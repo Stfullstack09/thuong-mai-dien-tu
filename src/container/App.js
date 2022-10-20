@@ -8,6 +8,8 @@ import NotFound from './components/Client/components/404NotFound/404NotFound';
 import './App.scss';
 import Loading from '../components/loading/loading';
 import PluginAll from '../components/Plugin/PluginAll';
+import Cart from './components/Client/cart/cart';
+import CheckOut from './components/Client/checkout';
 
 function App() {
     const System = lazy(() => import('../router/System'));
@@ -20,6 +22,8 @@ function App() {
                     <Routes>
                         <Route path={path.home} element={<HomeRouter />} />
                         <Route path={path.system} element={<System />} />
+                        <Route path={path.cart} element={<Cart />} />
+                        <Route path={path.checkout} element={<CheckOut />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Suspense>

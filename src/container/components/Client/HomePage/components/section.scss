@@ -3,6 +3,10 @@
 .section-introduction-wrapper {
     height: 363px;
 
+    a {
+        text-decoration: none;
+    }
+
     &.trend-product {
         height: 330px;
     }

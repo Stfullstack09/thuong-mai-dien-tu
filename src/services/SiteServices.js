@@ -92,3 +92,57 @@ export const RestoreProductDeletedByAdmin = (id) => {
         },
     );
 };
+
+export const GetDetailProductByCustomer = (id) => {
+    return axios.get(`/api/v1/app/get-detail-product-by-customer?id=${id}`);
+};
+
+export const GetAllSizeProduct = () => {
+    return axios.get(`/api/v1/app/get-all-size-product`);
+};
+
+export const AddProductToCart = (data) => {
+    return axios.post(`/api/v1/app/add-product-to-cart`, data, {
+        withCredentials: true,
+    });
+};
+
+export const GetAllProductToCart = (userId) => {
+    return axios.get(`/api/v1/app/get-all-product-cart?userId=${userId}`, {
+        withCredentials: true,
+    });
+};
+
+export const RemoveProductCart = (id, userId) => {
+    return axios.post(
+        `/api/v1/app/remove-product-to-cart?id=${id}&userId=${userId}`,
+        {},
+        {
+            withCredentials: true,
+        },
+    );
+};
+
+export const ChangeCountProductToCart = (type, id, count) => {
+    return axios.post(
+        `/api/v1/app/change-count-product-to-cart?type=${type}&id=${id}`,
+        {
+            count,
+        },
+        {
+            withCredentials: true,
+        },
+    );
+};
+
+export const GetInformationUserCheckOut = () => {
+    return axios.get('/api/v1/app/get-information-user-checkout', {
+        withCredentials: true,
+    });
+};
+
+export const GetTotalMoney = () => {
+    return axios.get('/api/v1/app/get-totalMoney-checkout', {
+        withCredentials: true,
+    });
+};
