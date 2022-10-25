@@ -128,5 +128,25 @@
             "continue": "Tiếp Tục Mua Sắm",
             "bankment": "THANH TOÁN"
         }
+    },
+    "checkout": {
+        "fullTime": "Đơn hàng của bạn tự động hủy sau",
+        "home": "Trang Chủ",
+        "cart": "Giỏ Hàng",
+        "shipAddress": "Địa Chỉ Ship Hàng",
+        "fullName": "Họ & Tên (*)",
+        "email": "Email (*)",
+        "phoneNumber": "Số Điện Thoại (*)",
+        "address": "Địa Chỉ (*)",
+        "note": "Ghi Chú",
+        "pay": "Thanh Toán",
+        "PaymentOnDelivery": "Thanh Toán Khi Nhận Hàng",
+        "paycart": "Chuyển Khoản",
+        "payBtn": "Thanh Toán",
+        "yourOrder": "Đơn Hàng Của Bạn",
+        "total": "Tổng Tiền",
+        "desOne": " Thương Mại Điện Tử Phù Hợp Với Tất Cả Mọi Người | © 2022 Trường Sơn Website - Thiết Kế Web Chuyên Nghiệp",
+        "desTwo": "Nếu Bạn Quan Tâm Đến Sản Phẩm UNOMO Này Hãy Liên Hệ Tới Tôi ",
+        "desThree": "tại đây"
     }
 }

@@ -88,9 +88,9 @@ function Header() {
                                     </li>
                                     {isLogin ? (
                                         <li>
-                                            <Link to="/system/login-register-account">
+                                            <a href="http://localhost:3002" target="_blank" rel="noreferrer">
                                                 <FormattedMessage id="header.viewAccount" />
-                                            </Link>
+                                            </a>
                                         </li>
                                     ) : (
                                         <li>
@@ -165,9 +165,9 @@ function Header() {
                             </li>
                             {isLogin ? (
                                 <li>
-                                    <Link to="/system/login-register-account">
+                                    <a href="http://localhost:3002/dashboard/app" target="_blank" rel="noreferrer">
                                         <FormattedMessage id="header.viewAccount" />
-                                    </Link>
+                                    </a>
                                 </li>
                             ) : (
                                 <li>

@@ -1,3 +1,5 @@
+@import '../../../.././Styles/base.scss';
+
 .checkout-wrapper {
     background-color: #f8f9fa;
 
@@ -39,6 +41,16 @@
                 font-weight: 400;
                 color      : #2d3436;
                 font-family: Arial, Helvetica, sans-serif !important;
+            }
+
+            @include media-breakpoint-down(sm) {
+                width: 90%;
+
+                p {
+                    font-style: pre-wrap;
+                    text-align: center;
+                    padding   : 0 6px;
+                }
             }
         }
     }
@@ -123,6 +135,7 @@
 
                 span {
                     font-size: 13px;
+                    flex     : 1;
                 }
 
                 .title-checkout-item-jsx {
@@ -177,6 +190,8 @@
         text-align      : end;
         font-weight     : 600;
         color           : rgb(22, 24, 35);
+        overflow        : hidden;
+        width           : 100%;
     }
 
     .count-cart {

@@ -128,5 +128,25 @@
             "continue": "Continue Shopping",
             "bankment": "PAY"
         }
+    },
+    "checkout": {
+        "fullTime": "Your order will be automatically canceled later",
+        "home": "Home",
+        "cart": "Cart",
+        "shipAddress": "Shipping Address",
+        "fullName": "Full Name (*)",
+        "email": "Email (*)",
+        "phoneNumber": "Phone number (*)",
+        "address": "Address (*)",
+        "note": "Note",
+        "pay": "Pay",
+        "PaymentOnDelivery": "Payment On Delivery",
+        "paycart": "Transfer",
+        "payBtn": "Pay",
+        "yourOrder": "Your Order",
+        "total": "Total Money",
+        "desOne": " E-Commerce Fits Everyone | © 2022 Truong Son Website - Professional Web Design",
+        "desTwo": "If You Are Interested In This UNOMO Product Please Contact Me ",
+        "desThree": "here"
     }
 }

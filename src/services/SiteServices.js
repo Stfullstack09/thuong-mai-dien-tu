@@ -146,3 +146,27 @@ export const GetTotalMoney = () => {
         withCredentials: true,
     });
 };
+
+export const PostDataOrder = (data) => {
+    return axios.post('/api/v1/app/post-data-order', data, {
+        withCredentials: true,
+    });
+};
+
+export const GetProductOrderNoConfirm = () => {
+    return axios.get('/api/v1/app/get-product-order', {
+        withCredentials: true,
+    });
+};
+
+export const GetCurrentUser = () => {
+    return axios.get(`/api/v1/app/get-current-user`, {
+        withCredentials: true,
+    });
+};
+
+export const UpdateCurrentUser = (data) => {
+    return axios.post('/api/v1/app/update-user-current', data, {
+        withCredentials: true,
+    });
+};

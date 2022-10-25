@@ -5,15 +5,18 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import _ from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import CurrencyFormat from 'react-currency-format';
+import { FormattedMessage } from 'react-intl';
 
 import './checkout.scss';
-import { GetInformationUserCheckOut, GetTotalMoney } from '../../../../services';
+import { GetInformationUserCheckOut, GetTotalMoney, PostDataOrder } from '../../../../services';
 import * as actions from '../../../../store/actions';
 import { handlePriceDisCount } from '../../../../components/handlePriceDisCount';
 import ModalCancel from './components/modalCancel/modalCancel';
+import { languages } from '../../../../utils/constant';
+import Loading from '../../../../components/loading/loading';
 
 function CheckOut() {
-    const [time, setTime] = useState(10);
+    const [time, setTime] = useState(300);
     const [minute, setMinute] = useState(5);
     const [second, setSecond] = useState(0);
     const [isValid, setIsValid] = useState(true);
@@ -23,6 +26,8 @@ function CheckOut() {
     const [listCart, setListCart] = useState([]);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [note, setNote] = useState('');
+    const [address, setAddress] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     // ghi chú thường không quá 200 ký tự
 
@@ -32,6 +37,7 @@ function CheckOut() {
     const userInfo = useSelector((state) => state.user.userInfo);
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
     const listAllProduct = useSelector((state) => state.SiteReducer.listAllProduct);
+    const language = useSelector((state) => state.app.language);
 
     const handleRedirect = (link = '/') => {
         history(link);
@@ -96,7 +102,7 @@ function CheckOut() {
     const handleOnchangeNote = (e) => {
         if (note.length > 200) {
             alert('Ghi chú không quá 200 ký tự');
-            // vì trên data base là kiểu string chỉ lưu tối đa 250 ký tự ( varchar )
+            // vì trên data base là kiểu string chỉ lưu tối đa 255 ký tự ( varchar )
             return;
         }
 
@@ -119,7 +125,7 @@ function CheckOut() {
         return isValid;
     };
 
-    const handleSubmitData = () => {
+    const handleSubmitData = async () => {
         const check = handleValidate();
 
         if (!check) {
@@ -129,9 +135,21 @@ function CheckOut() {
         const dataBuild = {
             phoneNumber, // ES6
             note,
+            totalMoney: money,
+            address,
         };
 
-        console.log('check data send database :', dataBuild);
+        // còn nằm trong thời gian thanh toán mới được thanh toán
+        if (isValid) {
+            setIsLoading(true);
+
+            const Res = await PostDataOrder(dataBuild);
+
+            if (Res && Res.errCode === 0) {
+                setIsLoading(false);
+                history('/checkout/checkout-done');
+            }
+        }
     };
 
     return (
@@ -150,12 +168,23 @@ function CheckOut() {
                                     <div className="content-too-time">
                                         {isValid ? (
                                             <p>
-                                                Đơn hàng của bạn tự động hủy sau
+                                                <FormattedMessage id="checkout.fullTime" />
                                                 <span>{` ${minute}:${second >= 10 ? second : `0${second}`}`}</span>{' '}
-                                                {minute >= 1 ? 'phút' : 'giây'}.
+                                                {minute >= 1
+                                                    ? language === languages.VI
+                                                        ? 'phút'
+                                                        : 'minute'
+                                                    : language === languages.VI
+                                                    ? 'giây'
+                                                    : 'second'}
+                                                .
                                             </p>
                                         ) : (
-                                            <p>Đơn hàng của bạn đã hết thời gian chờ.</p>
+                                            <p>
+                                                {language === languages.VI
+                                                    ? 'Đơn hàng của bạn đã hết thời gian chờ.'
+                                                    : 'Your order has timed out.'}
+                                            </p>
                                         )}
                                     </div>
                                 </div>
@@ -163,21 +192,25 @@ function CheckOut() {
                             <div className="body-wrapper-checkout overflow-hidden p-4">
                                 <p className="header-checkout m-0 py-3">
                                     <span className="home-jsx" onClick={() => handleRedirect('/')}>
-                                        Trang Chủ
+                                        <FormattedMessage id="checkout.home" />
                                     </span>
                                     <span className="mx-2">
                                         <FontAwesomeIcon icon={faAngleRight} />
                                     </span>
                                     <span className="cursor-pointer" onClick={() => handleRedirect('/cart')}>
-                                        Giỏ Hàng
+                                        <FormattedMessage id="checkout.cart" />
                                     </span>
                                 </p>
                                 <div className="row">
                                     <div className="col-12 col-lg-7 left-content">
-                                        <h2 className="my-3">Địa Chỉ Ship Hàng</h2>
+                                        <h2 className="my-3">
+                                            <FormattedMessage id="checkout.shipAddress" />
+                                        </h2>
                                         <div className="row">
                                             <div className="col-12 mb-3">
-                                                <label>Họ & Tên (*)</label>
+                                                <label>
+                                                    <FormattedMessage id="checkout.fullName" />
+                                                </label>
                                                 <input
                                                     placeholder={`${information.firstName} ${information.lastName}`}
                                                     className="form-control-customize"
@@ -186,7 +219,9 @@ function CheckOut() {
                                                 />
                                             </div>
                                             <div className="col-12 mb-3">
-                                                <label>Email (*)</label>
+                                                <label>
+                                                    <FormattedMessage id="checkout.email" />
+                                                </label>
                                                 <input
                                                     className="form-control-customize"
                                                     type="text"
@@ -195,7 +230,9 @@ function CheckOut() {
                                                 />
                                             </div>
                                             <div className="col-12 mb-3">
-                                                <label>Số Điện Thoại (*)</label>
+                                                <label>
+                                                    <FormattedMessage id="checkout.phoneNumber" />
+                                                </label>
                                                 <input
                                                     value={phoneNumber}
                                                     className="form-control-customize"
@@ -205,16 +242,21 @@ function CheckOut() {
                                                 />
                                             </div>
                                             <div className="col-12 mb-3">
-                                                <label>Địa Chỉ (*)</label>
+                                                <label>
+                                                    <FormattedMessage id="checkout.address" />
+                                                </label>
                                                 <input
                                                     className="form-control-customize"
-                                                    disabled
+                                                    value={address}
                                                     type="text"
                                                     placeholder={information.addressData.valueVI}
+                                                    onChange={(e) => setAddress(e.target.value)}
                                                 />
                                             </div>
                                             <div className="col-12 mb-3">
-                                                <label>Ghi Chú</label>
+                                                <label>
+                                                    <FormattedMessage id="checkout.note" />
+                                                </label>
                                                 <textarea
                                                     value={note}
                                                     className="form-control-customize"
@@ -226,7 +268,9 @@ function CheckOut() {
                                         </div>
 
                                         <div className="bank-checkout">
-                                            <p className="title-bank fw-bolder">Thanh Toán</p>
+                                            <p className="title-bank fw-bolder">
+                                                <FormattedMessage id="checkout.pay" />
+                                            </p>
                                             <p>
                                                 <input
                                                     checked={checked}
@@ -235,7 +279,9 @@ function CheckOut() {
                                                     id="checkout-1"
                                                     name="checked"
                                                 />
-                                                <label htmlFor="checkout-1">Thanh Toán Khi Nhận Hàng</label>
+                                                <label htmlFor="checkout-1">
+                                                    <FormattedMessage id="checkout.PaymentOnDelivery" />
+                                                </label>
                                             </p>
                                             <p>
                                                 <input
@@ -245,7 +291,9 @@ function CheckOut() {
                                                     id="checkout-2"
                                                     name="checked"
                                                 />
-                                                <label htmlFor="checkout-2">Chuyển Khoản</label>
+                                                <label htmlFor="checkout-2">
+                                                    <FormattedMessage id="checkout.paycart" />
+                                                </label>
                                             </p>
                                             {!checked && (
                                                 <div className="bank-checkout-cart">
@@ -269,14 +317,16 @@ function CheckOut() {
                                         </div>
                                         <div className="checkout-end mt-4">
                                             <button onClick={handleSubmitData} className="w-100 btn btn-primary">
-                                                Thanh Toán
+                                                <FormattedMessage id="checkout.pay" />
                                             </button>
                                         </div>
                                     </div>
                                     <div className="col-12 col-lg-5 right-content px-4 mt-mobile-2">
                                         <p className="my-3 p-0 d-flex justify-content-between align-items-center">
                                             <span>
-                                                <strong>Đơn Hàng Của Bạn</strong>
+                                                <strong>
+                                                    <FormattedMessage id="checkout.yourOrder" />
+                                                </strong>
                                             </span>
                                             <span className="count-cart">{listCart ? listCart.length : 0}</span>
                                         </p>
@@ -323,7 +373,9 @@ function CheckOut() {
                                                     ))}
 
                                                 <div className="total-checkout d-flex justify-content-between align-items-center">
-                                                    <span>Tổng Tiền</span>
+                                                    <span>
+                                                        <FormattedMessage id="checkout.total" />
+                                                    </span>
                                                     <span>
                                                         <strong>
                                                             <CurrencyFormat
@@ -346,17 +398,16 @@ function CheckOut() {
                         <div className="footer-checkout pt-5 pb-2">
                             <div className="text-center">
                                 <p>
-                                    <span>UNOMO</span> Thương Mại Điện Tử Phù Hợp Với Tất Cả Mọi Người | © 2022 Trường
-                                    Sơn Website - Thiết Kế Web Chuyên Nghiệp
+                                    <span>UNOMO</span> <FormattedMessage id="checkout.desOne" />
                                 </p>
                                 <p>
-                                    Nếu Bạn Quan Tâm Đến Sản Phẩm <strong>UNOMO</strong> Này Hãy Liên Hệ Tới Tôi{' '}
+                                    <FormattedMessage id="checkout.desTwo" />
                                     <a
                                         target="_blank"
                                         rel="noreferrer"
                                         href="https://gioi-thieu-doi-chut-son-khum-muon-di-hoc.vercel.app/#"
                                     >
-                                        tại đây
+                                        <FormattedMessage id="checkout.desThree" />
                                     </a>
                                 </p>
                             </div>
@@ -365,6 +416,7 @@ function CheckOut() {
                 )}
             </div>
             {!isValid && <ModalCancel />}
+            {isLoading && <Loading />}
         </>
     );
 }

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CurrencyFormat from 'react-currency-format';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import Footer from '../components/Footer';
@@ -143,8 +143,7 @@ function Cart() {
                                         </span>
                                     </div>
                                     <div className="row jsx-render-pro w-sm-600">
-                                        {listCart &&
-                                            listCart.length > 0 &&
+                                        {listCart && listCart.length > 0 ? (
                                             listCart.map((item) => (
                                                 <div className="col-12 item" key={item.id}>
                                                     <div className="row">
@@ -245,7 +244,15 @@ function Cart() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            ))}
+                                            ))
+                                        ) : (
+                                            <p className="mt-5 pt-5 text-center">
+                                                <span>
+                                                    Hiện tại trong giỏ hàng của bạn không có sản phẩm. ấn vào{' '}
+                                                    <Link to="/">đây</Link> để tiếp tục mua sắm ❤️
+                                                </span>
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="col-12 col-lg-4 mt-mobile-2">
