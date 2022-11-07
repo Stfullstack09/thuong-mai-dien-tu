@@ -1,5 +1,6 @@
 @import './base.scss';
 @import './_variable.scss';
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body {
     font-family: Helvetica Neue, Helvetica, Arial, 文泉驛正黑, WenQuanYi Zen Hei, Hiragino Sans GB, 儷黑 Pro, LiHei Pro, Heiti TC, 微軟正黑體, Microsoft JhengHei UI, Microsoft JhengHei, sans-serif !important;
@@ -451,4 +452,39 @@ html *::-webkit-scrollbar-track {
 
 .col-8-customize {
     width: 80%;
+}
+
+.jsx-hover-underline {
+    font-weight: 500;
+
+    &:hover {
+        text-decoration: underline;
+        cursor         : pointer;
+    }
+}
+
+.customize-modal-confirm {
+    z-index: 99999;
+}
+
+.jsx-hsd-title {
+    font-size: 16px;
+}
+
+.fz-20 {
+    font-size: 20px;
+}
+
+.jax-mt-100 {
+    margin-top: 100px;
+}
+
+._2p3a {
+    width: 100% !important;
+}
+
+.border-radius-4 {
+    border-radius: 4px !important;
+    height       : 135px;
+    display      : inline-block;
 }

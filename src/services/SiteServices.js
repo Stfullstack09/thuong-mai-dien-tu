@@ -25,6 +25,17 @@ export const UploadImage = (data) => {
     });
 };
 
+export const UploadImageComment = (data) => {
+    const name = process.env.REACT_APP_NAME_UPLOAD_IMAGE_COMMENT;
+
+    return axios.post(`https://api.cloudinary.com/v1_1/${name}/image/upload`, data, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            Accept: 'application/json',
+        },
+    });
+};
+
 export const CreateNewProduct = (data) => {
     return axios.post(`/api/v1/app/product-create-new-product`, data, {
         withCredentials: true,
@@ -167,6 +178,72 @@ export const GetCurrentUser = () => {
 
 export const UpdateCurrentUser = (data) => {
     return axios.post('/api/v1/app/update-user-current', data, {
+        withCredentials: true,
+    });
+};
+
+export const UpdateStatusOderByCustomer = (id) => {
+    return axios.post(
+        `/api/v1/app/update-status-products-by-customer`,
+        {
+            id,
+        },
+        {
+            withCredentials: true,
+        },
+    );
+};
+
+export const RegisterSellByCustomer = () => {
+    return axios.post(
+        '/api/v1/app/sales-registration-by-customer',
+        {},
+        {
+            withCredentials: true,
+        },
+    );
+};
+
+export const CheckVerifyEmail = (data) => {
+    return axios.post('/api/v1/app/check-email-valid-services', data, {
+        withCredentials: true,
+    });
+};
+
+export const GetOrderByID = (id) => {
+    return axios.get(`/api/v1/app/get-oder-products-by-customer?id=${id}`, {
+        withCredentials: true,
+    });
+};
+
+export const RestoreProductByCustomer = (data) => {
+    return axios.post(`/api/v1/app/restore-product-order-by-customer`, data, {
+        withCredentials: true,
+    });
+};
+
+export const CreateNewPostServices = (data) => {
+    return axios.post('/api/v1/app/create-new-post', data, {
+        withCredentials: true,
+    });
+};
+
+export const GetLimitPosts = (limit) => {
+    return axios.get(`/api/v1/app/get-all-posts?limit=${limit}`);
+};
+
+export const GetDetailPost = (id) => {
+    return axios.get(`/api/v1/app/get-detail-post?id=${id}`, {
+        withCredentials: true,
+    });
+};
+
+export const GetPostRelated = (id, limit) => {
+    return axios.get(`/api/v1/app/get-post-related-limit?id=${id}&limit=${limit}`);
+};
+
+export const HeartPost = (data) => {
+    return axios.post(`/api/v1/app/heart-post`, data, {
         withCredentials: true,
     });
 };

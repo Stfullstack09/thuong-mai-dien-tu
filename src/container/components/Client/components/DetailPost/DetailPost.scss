@@ -1,0 +1,371 @@
+@import '../../../../.././Styles/base.scss';
+
+.detail-post-wrapper {
+    min-height      : 100vh;
+    background-color: #fff;
+
+
+    .wrapper-post-parents {
+        height  : 100%;
+        position: relative;
+
+
+        .header-wrapper {
+            background-color: #ffffff;
+            border-color    : transparent;
+
+            .Phone {
+                color : rgba(0, 0, 0, 0.65) !important;
+                border: 2px solid rgba(0, 0, 0, 0.65) !important;
+            }
+
+            .jsx-responsive {
+                color: rgba(0, 0, 0, 0.65) !important;
+            }
+
+            .wrapper-content {
+
+                .jsx-nav {
+                    color: rgba(0, 0, 0, 0.65) !important;
+
+                }
+
+                .logo {
+
+                    h2 {
+                        color: rgba(0, 0, 0, 0.65) !important;
+                    }
+                }
+
+                .pc {
+
+                    li {
+
+                        a {
+                            color: rgba(0, 0, 0, 0.65) !important;
+
+
+                            &:hover {
+                                color       : rgba(255, 0, 0, 0.7) !important;
+                                border-color: transparent !important;
+                            }
+                        }
+
+                        .Phone {
+                            border: 2px solid rgba(0, 0, 0, 0.65) !important;
+                        }
+                    }
+                }
+            }
+
+
+            &.header__slide__down {
+                background-color: #f5f5f5;
+                box-shadow      : 0 0 50px 2px rgb(1 1 1 / 16%);
+            }
+        }
+
+        .body-content {
+            .left-content {
+                position: fixed;
+                padding : 0 10px;
+
+                .name-author {
+                    padding-right     : 13px;
+                    display           : -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow          : hidden;
+                    font-size         : 14px;
+                }
+
+                .border-jax {
+                    width           : 100%;
+                    height          : 1px;
+                    background-color: #ccc;
+                    border-radius   : 1px;
+                }
+
+                .jax-heart-cmt {}
+
+                @include media-breakpoint-down(md) {
+                    display: none;
+                }
+
+                @include media-breakpoint-down(lg) {
+                    display: none;
+                }
+
+            }
+
+            .right-content {
+                padding-left: 16.66666667%;
+
+                .fb-comments {
+                    width: 100% !important;
+
+                    span {
+                        width : 100% !important;
+                        height: 100% !important;
+                    }
+
+                    .u_0_0_Sl {
+                        width: 100% !important;
+                    }
+                }
+
+
+                @include media-breakpoint-down(lg) {
+                    padding: 0;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    padding: 0 10px;
+                }
+
+                .plugin-page {
+
+
+                    .video-jax {
+                        flex         : 1;
+                        flex-shrink  : 0;
+                        height       : 135px;
+                        border-radius: 4px;
+
+                        @include media-breakpoint-down(sm) {
+                            margin-top: 4px;
+                            display   : none;
+                        }
+                    }
+
+                    .jsx-two-ifame {
+                        gap      : 6px;
+                        flex-wrap: wrap;
+                    }
+                }
+
+                .title-post {
+                    font-size         : 36px;
+                    color             : rgb(22, 24, 35);
+                    font-weight       : 600;
+                    display           : -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 4;
+                    overflow          : hidden;
+
+                    .jax-show-mobile {
+                        display: none;
+                    }
+
+                    @include media-breakpoint-down(sm) {
+                        font-size: 18px;
+
+                        .jax-show-mobile {
+                            display: inline-block;
+                        }
+                    }
+                }
+
+                .profile-author {
+                    display         : flex;
+                    align-items     : center;
+                    justify-content : space-between;
+                    background-color: rgba(0, 0, 0, 0.032);
+                    border-radius   : 4px;
+
+                    img {
+                        width        : 48px;
+                        height       : 48px;
+                        border-radius: 50%;
+                        object-fit   : cover;
+                        flex-shrink  : 0;
+                        border       : 0.1px solid #eee;
+                        cursor       : pointer;
+                    }
+
+                    div {
+                        height: 100%;
+                    }
+
+                    p {
+                        padding    : 0;
+                        margin     : 0;
+                        margin-left: 8px;
+                        font-size  : 12px;
+
+                        strong {
+                            font-size: 16px;
+                            cursor   : pointer;
+                        }
+
+                    }
+
+                }
+
+                .render-content {
+
+                    blockquote {
+
+                        p {
+                            border-left: 3px solid #ccc;
+                            color      : #757575;
+                            margin-left: 0;
+                            padding    : 0 0 2px 20px;
+                        }
+                    }
+
+                    h2 {
+                        font-size  : 20px;
+                        font-weight: 600;
+                        margin     : 2px 0 12px 0;
+                    }
+
+                    p {
+                        font-size    : 15px;
+                        margin-bottom: 10px;
+                        white-space  : pre-wrap;
+                    }
+
+                    img {
+                        width        : 90%;
+                        padding      : 6px;
+                        margin       : 6px auto;
+                        display      : block;
+                        border-radius: 6px;
+                        overflow     : hidden;
+
+                    }
+
+                    @include media-breakpoint-down(sm) {
+                        p {
+                            padding: 0 6px;
+                        }
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                }
+
+
+                .post-related-post {
+
+                    .post-title-related {
+
+                        p {
+                            font-size : 34px;
+                            margin    : 0;
+                            margin    : 10px 0;
+                            margin-top: 30px;
+                        }
+
+                    }
+
+                    .post-related-render {
+                        border-bottom : 1px solid #ccc;
+                        width         : 60%;
+                        padding-bottom: 16px !important;
+
+
+                        @include media-breakpoint-down(lg) {
+                            width: 73%;
+                        }
+
+                        @include media-breakpoint-down(sm) {
+                            width: 100%;
+                        }
+
+                        a {
+                            display        : block;
+                            text-decoration: none;
+                            color          : rgb(22, 24, 35);
+                        }
+
+
+                        h3 {
+                            padding    : 0;
+                            margin     : 0;
+                            font-size  : 20px;
+                            font-weight: 600;
+                            margin     : 6px 0;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+
+                        .image {
+                            height         : 236px;
+                            width          : 80%;
+                            position       : relative;
+                            display        : flex;
+                            justify-content: center;
+                            align-items    : center;
+                            transition     : all linear .3s;
+                            border-radius  : 8px;
+                            overflow       : hidden;
+
+                            @include media-breakpoint-down(sm) {
+                                width: 100%;
+                            }
+
+                            &:hover {
+
+                                .overlay-img {
+                                    background-color: rgba(0, 0, 0, 0.5);
+                                }
+
+                                span {
+                                    transform: translateY(0);
+                                    opacity  : 1;
+                                    cursor   : pointer;
+                                }
+
+                            }
+                        }
+
+                        img {
+                            width     : 100%;
+                            height    : 100%;
+                            border    : 0.1px solid #eee;
+                            cursor    : pointer;
+                            transition: all linear .2s;
+                        }
+
+                        &:last-child {
+                            border-color: transparent;
+                        }
+
+                        .overlay-img {
+                            position  : absolute;
+                            top       : 0;
+                            right     : 0;
+                            bottom    : 0;
+                            left      : 0;
+                            width     : 100%;
+                            height    : 100%;
+                            transition: all linear .3s;
+                        }
+
+                        span {
+                            position        : absolute;
+                            background-color: #fff;
+                            padding         : 6px;
+                            border-radius   : 99999999999999px;
+                            border          : 0.2px solid #ccc;
+                            font-weight     : 500;
+                            font-size       : 14px;
+                            transform       : translateY(50px);
+                            opacity         : 0;
+                            transition      : all linear .3s;
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+
+}

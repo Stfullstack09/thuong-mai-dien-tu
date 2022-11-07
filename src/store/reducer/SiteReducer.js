@@ -10,6 +10,8 @@ const initialState = {
 
     listAllProduct: [],
 
+    listPostRelated: [],
+
     isLoading: false,
 };
 
@@ -102,6 +104,15 @@ const SiteReducer = (state = initialState, action) => {
 
             return {
                 ...cloneState,
+            };
+        }
+
+        case actionType.GET_POST_RELATED_SUCCESS: {
+            const cloneStatePostRelated = { ...state };
+
+            cloneStatePostRelated.listPostRelated = action.data;
+            return {
+                ...cloneStatePostRelated,
             };
         }
 

@@ -29,7 +29,8 @@
         "des-span": "UNOMO",
         "send-email": "Please leave information to receive email",
         "btn-send": "Receive information",
-        "link-to": "Contact us via"
+        "link-to": "Contact us via",
+        "error": "Nếu bạn gặp sự cố hãy liên hệ với chúng tôi"
     },
     "search": {
         "noResult": "No search results yet"
@@ -148,5 +149,20 @@
         "desOne": " E-Commerce Fits Everyone | © 2022 Truong Son Website - Professional Web Design",
         "desTwo": "If You Are Interested In This UNOMO Product Please Contact Me ",
         "desThree": "here"
+    },
+    "detailOrder": {
+        "title": "Your order details",
+        "btnBack": "Come back",
+        "ID": "ORDER ID.",
+        "desOne": "Orders Placed",
+        "desTwo": "Payment Information Confirmed",
+        "desThree": "Delivered to the Carrier",
+        "desFour": "Order Received",
+        "contactTitle": "Contact seller if you have questions",
+        "btnContact": "Contact Seller",
+        "btnCancel": "Cancel Order",
+        "btnRestore": "Repurchase",
+        "addRess": "Delivery Address",
+        "note": "Reminder to the shop owner"
     }
 }

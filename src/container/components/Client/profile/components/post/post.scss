@@ -1,0 +1,135 @@
+.post-wrapper {
+
+    .create-new-post-wrapper {
+
+        .jax-image-wrapper {
+
+            .jax-sd-parents {
+                position           : relative;
+                height             : 200px;
+                width              : 100%;
+                border-radius      : 6px;
+                background-image   : url('http://4.bp.blogspot.com/-K9XTn_BFNxQ/UMB-xSxCWSI/AAAAAAAAAfw/j3XflcT8wlg/s1600/anh-bia-facebook-time-doc-dao-33.jpg');
+                background-position: center center;
+                background-repeat  : no-repeat;
+                background-size    : cover;
+
+                .overlay-filter {
+                    height          : 100%;
+                    position        : absolute;
+                    top             : 0;
+                    right           : 0;
+                    left            : 0;
+                    bottom          : 0;
+                    width           : 100%;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    backdrop-filter : blur(13px);
+                }
+
+                .select-image {
+                    backdrop-filter: blur(0px);
+                    width          : 100%;
+                    height         : 100%;
+                    display        : flex;
+                    justify-content: center;
+                    align-items    : center;
+
+                    span {
+                        padding      : 8px;
+                        border       : 1px solid #eee;
+                        border-radius: 3px;
+                        font-size    : 13px;
+                        font-weight  : 600;
+                        color        : #fff;
+                        user-select  : none;
+                        cursor       : pointer;
+
+                        &:hover {
+                            border-color    : green;
+                            background-color: rgba(0, 0, 0, 0.3);
+                            color           : #fff;
+                            opacity         : 0.8;
+                            transition      : all linear .4s;
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+
+        .body-content {
+
+            .title-post {
+                height      : 48px;
+                margin      : 8px 0;
+                position    : relative;
+                border      : none;
+                font-size   : 28px;
+                color       : rgb(22, 24, 35);
+                align-items : center;
+                display     : flex;
+                padding-left: 6px;
+                outline     : none;
+                line-height : 48px;
+                padding     : 0 8px;
+
+                &::before {
+                    position      : absolute;
+                    left          : 14px;
+                    color         : #b3b3b1;
+                    content       : attr(data-empty-text);
+                    pointer-events: none;
+                }
+
+                &.empty {
+
+                    &::before {
+                        display: none;
+                    }
+
+                }
+            }
+        }
+
+        .rc-md-editor {
+            background-color: transparent;
+            border-radius   : 4px;
+            border-color    : transparent;
+
+            .button {
+                overflow: hidden;
+            }
+
+            .editor-container {
+                background-color: transparent;
+            }
+
+            .section {
+                background-color: transparent;
+            }
+
+            .section-container {
+                background-color: transparent;
+            }
+
+            .rc-md-navigation {
+                background-color: transparent;
+                border-color    : transparent;
+            }
+        }
+
+        .mark-down-wrapper {
+            position: relative;
+
+            .notify-save {
+                position : absolute;
+                left     : 44%;
+                font-size: 14px;
+                top      : 8px;
+                color    : rgb(117, 117, 117);
+            }
+        }
+    }
+}

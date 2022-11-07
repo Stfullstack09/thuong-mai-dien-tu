@@ -1,6 +1,8 @@
 @import '../../../../.././Styles/base.scss';
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 .header-wrapper {
+    font-family  : 'Quicksand', sans-serif !important;
     height       : 100px;
     border-bottom: 1px solid rgba(0, 0, 0, .3);
     position     : fixed;

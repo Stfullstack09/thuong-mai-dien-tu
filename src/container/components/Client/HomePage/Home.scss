@@ -78,8 +78,12 @@
             }
 
             &.product-children {
-                background-color: #fff;
+                background-color: #f8f9fa;
                 padding-bottom  : 10px;
+
+                &.jsx-post-home {
+                    border-top: 0.1px solid #eee;
+                }
             }
         }
     }

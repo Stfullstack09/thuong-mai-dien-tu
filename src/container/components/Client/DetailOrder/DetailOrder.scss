@@ -1,0 +1,396 @@
+@import '../../../../Styles/base.scss';
+
+.detail-oder-wrapper {
+    background-color: #f5f5f5;
+
+    .header-wrapper {
+        background-color: #f5f5f5;
+        border-color    : transparent;
+        z-index         : 99999999999999;
+
+        .Phone {
+            color : rgba(0, 0, 0, 0.65) !important;
+            border: 2px solid rgba(0, 0, 0, 0.65) !important;
+        }
+
+        .jsx-responsive {
+            color: rgba(0, 0, 0, 0.65) !important;
+        }
+
+        .wrapper-content {
+
+            .jsx-nav {
+                color: rgba(0, 0, 0, 0.65) !important;
+
+            }
+
+            .logo {
+
+                h2 {
+                    color: rgba(0, 0, 0, 0.65) !important;
+                }
+            }
+
+            .pc {
+
+                li {
+
+                    a {
+                        color: rgba(0, 0, 0, 0.65) !important;
+
+
+                        &:hover {
+                            color       : rgba(255, 0, 0, 0.7) !important;
+                            border-color: transparent !important;
+                        }
+                    }
+
+                    .Phone {
+                        border: 2px solid rgba(0, 0, 0, 0.65) !important;
+                    }
+                }
+            }
+        }
+
+
+        &.header__slide__down {
+            background-color: #f5f5f5;
+            box-shadow      : 0 0 50px 2px rgb(1 1 1 / 16%);
+        }
+    }
+
+    .content-jsx {
+        margin-top: 100px;
+        min-height: calc(100vh - 100px - 241px);
+        z-index   : 1;
+
+        .container {
+            // background-color: #eee;
+            border-radius   : 6px;
+            background-color: #fff;
+
+            .id-order {
+                font-size  : 14px;
+                line-height: 16px;
+            }
+
+            .status-order {
+                color         : #ee4d2d;
+                text-transform: uppercase;
+                font-size     : 14px;
+                line-height   : 16px;
+            }
+
+            .jsx-btn-back {
+                font-size: 14px;
+
+                &:hover {
+                    color: blue;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    margin: 4px 0;
+                }
+            }
+
+            .jsx-chart {
+
+                display        : flex;
+                justify-content: space-between;
+                padding        : 10px 0 20px 0;
+                position       : relative;
+                flex-wrap      : nowrap;
+
+                .jsx-item-chuk {
+                    width        : 25%;
+                    z-index      : 100;
+                    border-radius: 4px;
+                    flex-shrink  : 0;
+
+                    .item-svg-jsx {
+                        width           : 66px;
+                        height          : 66px;
+                        display         : flex;
+                        justify-content : center;
+                        align-items     : center;
+                        color           : #2dc258;
+                        border          : 5px solid #2dc258;
+                        border-radius   : 50%;
+                        margin-top      : 6px;
+                        background-color: #fff;
+                        z-index         : 999;
+
+                        @include media-breakpoint-down(md) {
+                            width : 55px;
+                            height: 55px;
+                        }
+
+                        @include media-breakpoint-down(sm) {
+                            width : 66px;
+                            height: 66px;
+                        }
+
+                        svg {
+                            width : 26px;
+                            height: 26px;
+                        }
+
+                        &.active {
+                            background-color: #2dc258;
+                            color           : #fff;
+                        }
+                    }
+
+                    .jax-chuk-title {
+                        text-transform: capitalize;
+                        font-size     : 12px;
+                        font-weight   : 500;
+                        margin-top    : 3px;
+                        color         : rgba(0, 0, 0, .8);
+                        line-height   : 1.25rem;
+                        text-align    : center;
+                    }
+
+                    .jax-ds-render {
+                        color        : rgba(0, 0, 0, .26);
+                        font-size    : 10px;
+                        min-height   : 8px;
+                        margin-bottom: 2px;
+                        margin-top   : 2px;
+                    }
+                }
+
+                @include media-breakpoint-down(sm) {
+                    justify-content: center;
+                    flex-wrap      : wrap;
+
+                    .jsx-item-chuk {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .line-nowrap-jsx {
+                height  : 4px;
+                width   : 100%;
+                top     : 48px;
+                position: absolute;
+                margin  : 0 40px;
+                left    : 20px;
+                z-index : 9;
+
+
+                .stepper__line-background {
+                    background: transparent;
+                    position  : absolute;
+                    width     : calc(100% - 20%);
+                    margin    : 0 70px;
+                    height    : 100%;
+                    box-sizing: border-box;
+                    z-index   : 0;
+                }
+
+                .stepper__line-foreground {
+                    background: rgb(45, 194, 88);
+                    position  : absolute;
+                    width     : calc(100% - 23%);
+                    margin    : 0 60px;
+                    height    : 100%;
+                    box-sizing: border-box;
+                    z-index   : 0;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    display: none;
+                }
+
+                @include media-breakpoint-down(lg) {
+                    left : 0;
+                    width: 98%;
+                }
+
+                @include media-breakpoint-down(md) {
+                    left : -64px;
+                    width: 95%;
+                    top  : 43px;
+                }
+            }
+        }
+
+        .contact-jsx-overview {
+
+            .jsx-chuk-contact-overview {
+                padding         : 16px 10px;
+                min-height      : 46px;
+                background-color: #fffcf5;
+                border-top      : 1px dotted rgba(0, 0, 0, .09);
+
+
+                span {
+                    font-size  : 10px;
+                    text-align : left;
+                    word-wrap  : break-word;
+                    color      : rgba(0, 0, 0, .54);
+                    line-height: 16px;
+                }
+
+                .jsx-button-chuk-details {
+                    color           : #555;
+                    border          : 1px solid rgba(0, 0, 0, .09);
+                    width           : 220px;
+                    outline         : none;
+                    overflow        : hidden;
+                    text-overflow   : ellipsis;
+                    border-radius   : 4px;
+                    padding         : 9px 6px;
+                    font-size       : 14px;
+                    background-color: transparent;
+
+                    &:hover {
+                        background-color: rgba(0, 0, 0, .02);
+                        border          : 1px solid rgba(0, 0, 0, .09);
+                    }
+
+
+                    &.jax-contact-shop {
+                        background-color: #ee4d2d;
+                        border-color    : #cd3011;
+                        color           : #fff;
+                        text-decoration : none;
+                        display         : inline-flex;
+                        justify-content : center;
+                        align-items     : center;
+                    }
+
+                    &.jax-contact-shop:hover {
+                        background-color: #d73211;
+                        border-color    : #ba2b0f;
+                    }
+                }
+
+                @include media-breakpoint-down(sm) {
+                    justify-content: center !important;
+                }
+
+                &.jsx-sd-he-sm {
+
+                    @include media-breakpoint-down(sm) {
+                        flex-direction: column !important;
+                        align-items   : center;
+                    }
+                }
+            }
+
+            .jsx-border-overview {
+                height             : 4px;
+                background-position: center;
+                background-repeat  : no-repeat;
+                background-size    : cover;
+                background-image   : repeating-linear-gradient(45deg, #6fa6d6, #6fa6d6 33px, transparent 0, transparent 41px, #f18d9b 0, #f18d9b 74px, transparent 0, transparent 82px);
+            }
+        }
+    }
+
+    .jsx-render-data {
+        p {
+            margin-bottom: 4px;
+            color        : rgba(0, 0, 0, .54);
+            font-size    : 12px;
+            white-space  : pre-line;
+        }
+    }
+
+    .right-content {
+
+        div {
+
+            p {
+                margin-bottom: 4px;
+                color        : rgba(0, 0, 0, .54);
+                font-size    : 12px;
+                white-space  : pre-line;
+            }
+        }
+    }
+
+    .product-jax {
+        padding     : 14px;
+        border-width: 1px 0 1px 0;
+        border-style: dotted;
+        border-color: #ccc;
+
+        .jax-item {
+            height: 82px;
+
+            .left-content {
+                display    : flex;
+                align-items: center;
+                overflow   : hidden;
+                max-width  : 60%;
+
+                .image {
+                    width           : 80px;
+                    height          : 80px;
+                    background-image: url('http://res.cloudinary.com/dnn5yfz32/image/upload/v1665201786/mbmbk5xe127fhdqldivb.jpg');
+                    background-size : cover;
+                    border-radius   : 2px;
+                    margin-right    : 10px;
+                    flex-shrink     : 0;
+                    cursor          : pointer;
+                }
+
+                .introduction {
+                    height: 100%;
+                }
+
+                p {
+                    margin-bottom     : 0px;
+                    display           : -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow          : hidden;
+                    font-size         : 13px;
+
+                    strong {
+
+                        &:hover {
+                            text-decoration: underline;
+                            cursor         : pointer;
+                        }
+                    }
+                }
+
+                .om-jax {
+                    display        : flex;
+                    flex-direction : column;
+                    justify-content: flex-end;
+
+                    .size {
+                        font-size: 10px;
+                    }
+
+                    span {
+                        font-size: 10px;
+                    }
+                }
+
+            }
+
+            .right-content {
+                flex           : 1;
+                align-items    : center;
+                display        : flex;
+                justify-content: flex-end;
+
+                input {
+                    text-align      : end;
+                    border          : none;
+                    outline         : none;
+                    background-color: transparent;
+                    pointer-events  : none;
+                }
+            }
+
+        }
+    }
+}

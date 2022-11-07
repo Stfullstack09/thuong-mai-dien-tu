@@ -168,7 +168,7 @@ function HomeProfile() {
         <>
             {isLoading && <Loadingske />}
             <div className="home-profile-jsx">
-                <div className="text-center fw-bold my-4">Xin chào bạn Trường Sơn bên đưới là thông tin của bạn</div>
+                <div className="text-center fw-bold my-4">Xin chào bạn Trườnghông tin của bạn</div>
                 <div className="image">
                     <div
                         className="show-img"

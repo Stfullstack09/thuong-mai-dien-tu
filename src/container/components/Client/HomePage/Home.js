@@ -2,6 +2,7 @@ import { FormattedMessage } from 'react-intl';
 
 import Footer from '../components/Footer';
 import Header from '../components/Header/Header';
+import PostNews from './components/SecsionIntroduction/PostNews';
 import ProductChildren from './components/SecsionIntroduction/ProductChildren';
 import ProductFeMale from './components/SecsionIntroduction/ProductFeMale';
 import ProductMale from './components/SecsionIntroduction/ProductMale';
@@ -95,6 +96,18 @@ function HomePage() {
                             </div>
                             <div className="jsx-section-slider col-12">
                                 <ProductChildren />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="jsx-home-production-trending product-children jsx-post-home mt-5 mb-4">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12 jsx-responsive text-center p-5">
+                                <h2>Một số bài viết nổi bật từ khách hàng</h2>
+                            </div>
+                            <div className="jsx-section-slider col-12">
+                                <PostNews />
                             </div>
                         </div>
                     </div>

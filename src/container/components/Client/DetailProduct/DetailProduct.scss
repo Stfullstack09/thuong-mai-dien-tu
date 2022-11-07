@@ -424,7 +424,14 @@
             }
         }
 
-        .plugin-comment-fb {}
+        .plugin-comment-fb {
+
+            .fb-comments {
+                span {
+                    height: 100% !important;
+                }
+            }
+        }
 
         .product-can-like {
             .jsx-home-production-trending {

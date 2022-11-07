@@ -5,6 +5,7 @@ import {
     GetDetailProductByAdmin,
     GetListAddress,
     GetListGender,
+    GetPostRelated,
     RefreshToken,
 } from '../../services';
 import actionType from './actionTypes';
@@ -208,5 +209,35 @@ export const getAllProductToCartSuccess = (data) => {
 export const getAllProductToCartFailed = () => {
     return {
         type: actionType.GET_ALL_PRODUCT_TO_CART_FAILED,
+    };
+};
+
+export const getPostRelated = (id, limit) => {
+    return async (dispatch, state) => {
+        try {
+            const Res = await GetPostRelated(id, limit);
+
+            if (Res && Res.errCode === 0) {
+                dispatch(getPostRelatedSuccess(Res.data));
+            } else {
+                dispatch(getPostRelatedFailed());
+            }
+        } catch (error) {
+            console.log(error);
+            dispatch(getPostRelatedFailed());
+        }
+    };
+};
+
+export const getPostRelatedSuccess = (data) => {
+    return {
+        type: actionType.GET_POST_RELATED_SUCCESS,
+        data,
+    };
+};
+
+export const getPostRelatedFailed = () => {
+    return {
+        type: actionType.GET_POST_RELATED_FAILED,
     };
 };

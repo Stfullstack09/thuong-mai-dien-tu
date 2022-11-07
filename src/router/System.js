@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
+import jwt_decode from 'jwt-decode';
+import _ from 'lodash';
 
 import Auth from '../container/components/auth';
 import { path } from '../utils/constant';
@@ -11,13 +13,36 @@ import NotFound from '../container/components/Client/components/404NotFound/404N
 import PageAdmin from '../container/components/Admin/page/PageAdmin';
 
 class System extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isValid: false,
+        };
+    }
+
+    componentDidMount() {
+        const token = localStorage.getItem('accessToken') ? localStorage.getItem('accessToken') : '';
+
+        if (token) {
+            const decoded = jwt_decode(token);
+
+            if (!_.isEmpty(decoded) && decoded.roleId !== 'R3') {
+                this.setState({
+                    isValid: true,
+                });
+            }
+        }
+    }
+
     render() {
+        const { isValid } = this.state;
+
         return (
             <div>
                 <Routes>
                     <Route path={path.stystemRoter.loginandregister} element={<Auth />} />
                     <Route path={path.stystemRoter.loginadmin} element={<AuthAdmin />} />
-                    <Route path={path.stystemRoter.pageAdmin} element={<PageAdmin />} />
+                    {isValid && <Route path={path.stystemRoter.pageAdmin} element={<PageAdmin />} />}
                     <Route path={path.stystemRoter.logout} element={<Logout />} />
                     <Route path="/" element={<Redirect link={'/system/login'} />} />
                     <Route path="*" element={<NotFound />} />

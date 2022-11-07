@@ -5,12 +5,14 @@ import { lazy, Suspense } from 'react';
 import HomeRouter from '../router/Home';
 import { path } from '../utils/constant';
 import NotFound from './components/Client/components/404NotFound/404NotFound';
-import './App.scss';
 import Loading from '../components/loading/loading';
 import PluginAll from '../components/Plugin/PluginAll';
 import Cart from './components/Client/cart/cart';
 import RouterCheckOut from './components/Client/checkout/RouterCheckOut';
 import Profile from './components/Client/profile/profile';
+import DetailOrder from './components/Client/DetailOrder';
+import DetailPost from './components/Client/components/DetailPost';
+import './App.scss';
 
 function App() {
     const System = lazy(() => import('../router/System'));
@@ -26,6 +28,8 @@ function App() {
                         <Route path={path.cart} element={<Cart />} />
                         <Route path={path.checkout} element={<RouterCheckOut />} />
                         <Route path={path.profile} element={<Profile />} />
+                        <Route path={path.detailOrder} element={<DetailOrder />} />
+                        <Route path={path.detailPost} element={<DetailPost />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Suspense>

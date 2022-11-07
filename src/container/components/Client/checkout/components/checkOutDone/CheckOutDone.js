@@ -61,7 +61,7 @@ function CheckOutDone() {
                             <h2 className="text-h2-jsx">Đơn hàng mà bạn đã đặt tại trang web của chúng tôi</h2>
                             <div className="h-90vh">
                                 <div className="mt-3 table">
-                                    <table class="table">
+                                    <table className="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>

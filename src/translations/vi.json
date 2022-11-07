@@ -29,7 +29,8 @@
         "des-span": "UNOMO",
         "send-email": "Hãy để lại thông tin để nhận email",
         "btn-send": "Nhận thông tin",
-        "link-to": "Liên hệ đến chúng tôi qua"
+        "link-to": "Liên hệ đến chúng tôi qua",
+        "error": "If you have a problem please contact us"
     },
     "search": {
         "noResult": "Chưa có kết quả tìm kiếm"
@@ -148,5 +149,20 @@
         "desOne": " Thương Mại Điện Tử Phù Hợp Với Tất Cả Mọi Người | © 2022 Trường Sơn Website - Thiết Kế Web Chuyên Nghiệp",
         "desTwo": "Nếu Bạn Quan Tâm Đến Sản Phẩm UNOMO Này Hãy Liên Hệ Tới Tôi ",
         "desThree": "tại đây"
+    },
+    "detailOrder": {
+        "title": "Chi tiết đơn hàng của bạn",
+        "btnBack": "Quay lại",
+        "ID": "ID ĐƠN HÀNG.",
+        "desOne": "Đơn Hàng Đã Đặt",
+        "desTwo": "Đã Xác Nhận Thông Tin Thanh Toán",
+        "desThree": "Đã Giao Cho ĐVVC",
+        "desFour": "Đơn Hàng Đã Nhận",
+        "contactTitle": "liên hệ với người bán nếu bạn có thắc mắc",
+        "btnContact": "Liên Hệ Người Bán",
+        "btnCancel": "Hủy Đơn Hàng",
+        "btnRestore": "Mua Lại",
+        "addRess": "Địa Chỉ Nhận Hàng",
+        "note": "Lời nhắc với chủ shop"
     }
 }

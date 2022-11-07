@@ -10,6 +10,8 @@ export const path = {
         loginadmin: '/admin-auth',
         pageAdmin: '/admin-page/*',
     },
+    detailOrder: '/order-details-you-have-placed/:id',
+    detailPost: '/detail-post-create-new-by-customer/:id',
 };
 
 export const languages = {
