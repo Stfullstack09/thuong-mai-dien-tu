@@ -1,0 +1,56 @@
+.profile-wrapper {
+    .header-wrapper {
+        background-color: #ffffff;
+        border-color    : transparent;
+
+        .Phone {
+            color : rgba(0, 0, 0, 0.65) !important;
+            border: 2px solid rgba(0, 0, 0, 0.65) !important;
+        }
+
+        .jsx-responsive {
+            color: rgba(0, 0, 0, 0.65) !important;
+        }
+
+        .wrapper-content {
+
+            .jsx-nav {
+                color: rgba(0, 0, 0, 0.65) !important;
+
+            }
+
+            .logo {
+
+                h2 {
+                    color: rgba(0, 0, 0, 0.65) !important;
+                }
+            }
+
+            .pc {
+
+                li {
+
+                    a {
+                        color: rgba(0, 0, 0, 0.65) !important;
+
+
+                        &:hover {
+                            color       : rgba(255, 0, 0, 0.7) !important;
+                            border-color: transparent !important;
+                        }
+                    }
+
+                    .Phone {
+                        border: 2px solid rgba(0, 0, 0, 0.65) !important;
+                    }
+                }
+            }
+        }
+
+
+        &.header__slide__down {
+            background-color: #f5f5f5;
+            box-shadow      : 0 0 50px 2px rgb(1 1 1 / 16%);
+        }
+    }
+}

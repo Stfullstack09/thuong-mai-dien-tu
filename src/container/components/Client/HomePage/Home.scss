@@ -13,18 +13,25 @@
 
     .jsx-home-body {
 
+        .jsx-responsive {
+            @include media-breakpoint-down(sm) {
+                padding: 2rem !important;
+
+                h2 {
+                    font-size: 1.5rem !important;
+                }
+            }
+        }
+
         .text-introduce {
             background-color: #f8f9fa;
             padding-bottom  : 10px;
 
-            .jsx-responsive {
-                @include media-breakpoint-down(sm) {
-                    padding: 2.5rem !important;
-
-                    h2 {
-                        font-size: 1.9rem;
-                    }
-                }
+            @include media-breakpoint-down(sm) {
+                display        : flex;
+                align-items    : center;
+                padding-bottom : 0;
+                justify-content: center;
             }
 
             h2 {
@@ -78,8 +85,12 @@
             }
 
             &.product-children {
-                background-color: #fff;
+                background-color: #f8f9fa;
                 padding-bottom  : 10px;
+
+                &.jsx-post-home {
+                    border-top: 0.1px solid #eee;
+                }
             }
         }
     }

@@ -51,6 +51,28 @@ function Footer() {
                                     <FormattedMessage id="footer.btn-send" />
                                 </button>
                             </div>
+                            {/* <div className="col-12">
+                                <label className="my-2">
+                                    <FormattedMessage id="footer.error" />
+                                </label>
+                                <div className="border-radius-4 overflow-hidden">
+                                    <iframe
+                                        className="jax-customize"
+                                        title="myFrame"
+                                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100087270383166&tabs=timeline&width=340&height=135&small_header=false&adapt_container_width=false&hide_cover=true&show_facepile=true&appId=584691163324326"
+                                        width="400"
+                                        height="135"
+                                        style={{
+                                            border: 'none',
+                                            overflow: 'hidden',
+                                        }}
+                                        scrolling="no"
+                                        frameBorder="0"
+                                        allowFullScreen
+                                        allow="autoplay, clipboard-write, encrypted-media, picture-in-picture, web-share"
+                                    />
+                                </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="col-12 d-flex fsoesdsds-s align-items-center">

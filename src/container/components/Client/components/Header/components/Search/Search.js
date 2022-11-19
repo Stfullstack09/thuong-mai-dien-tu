@@ -86,9 +86,6 @@ function SearchHeader({ isOpenSearch, setIsOpenSearch }) {
         fetchApi();
     }, [debounceValue]);
 
-    console.log('check value :', text);
-    console.log('check debounceValue :', debounceValue);
-
     return (
         <>
             {isOpenSearch && (

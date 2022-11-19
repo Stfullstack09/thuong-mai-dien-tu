@@ -31,17 +31,12 @@ instance.interceptors.request.use(
 
                 const { data } = Res;
 
-                console.log('token het han 1');
-
-                console.log('check data :', data);
-
                 if (data.errCode === 0) {
                     localStorage.setItem('accessToken', data.user.accessToken);
                     dispatch(userLoginSuccess(data.user));
                 }
             }
         }
-
         return config;
     },
     (error) => Promise.reject(error),

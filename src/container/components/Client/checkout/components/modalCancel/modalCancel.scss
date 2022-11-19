@@ -1,0 +1,61 @@
+@import '../../../../../../Styles/base.scss';
+
+.modal-cancel-wrapper {
+    position        : fixed;
+    top             : 0;
+    height          : 100vh;
+    left            : 0;
+    right           : 0;
+    bottom          : 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    z-index         : 99999999999999999999999999999999999999999999999;
+
+    .content {
+        width           : 60%;
+        height          : 50%;
+        color           : rgb(22, 24, 35);
+        background-image: url('https://cdn.24h.com.vn/upload/4-2019/images/2019-12-17/1576580871-929bdf4f16b86295376a79e7a8a0b7fe.jpg');
+        border-radius   : 8px;
+        overflow        : hidden;
+        padding         : 10px;
+        display         : flex;
+        flex-direction  : column;
+        align-items     : center;
+        justify-content : center;
+        position        : relative;
+        box-shadow      : 1px 1px 0 rgba(0, 0, 0, 0.09);
+
+        @include media-breakpoint-down(md) {
+            width        : 100%;
+            height       : 100%;
+            border-radius: 0px;
+
+        }
+
+
+        .blur {
+            position        : absolute;
+            top             : 0;
+            left            : 0;
+            right           : 0;
+            bottom          : 0;
+            backdrop-filter : blur(70px);
+            background-color: rgba(255, 255, 255, 0.1);
+            width           : 100%;
+        }
+
+        h1 {
+            font-size      : 16px;
+            backdrop-filter: blur(0px);
+        }
+
+        .content-children {
+            backdrop-filter: blur(0px);
+            z-index        : 10;
+            text-align     : center;
+        }
+    }
+}

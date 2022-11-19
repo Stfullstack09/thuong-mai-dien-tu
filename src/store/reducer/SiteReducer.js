@@ -8,7 +8,13 @@ const initialState = {
     detailProductByAdmin: {},
     listAllProductByAdmin: [],
 
+    listAllProduct: [],
+
+    listPostRelated: [],
+
     isLoading: false,
+    toggleIsLoading: false,
+    currentUser: {},
 };
 
 const SiteReducer = (state = initialState, action) => {
@@ -55,6 +61,16 @@ const SiteReducer = (state = initialState, action) => {
             return state;
         }
 
+        case actionType.GET_ALL_PRODUCT_TO_CART_SUCCESS: {
+            const cloneStateListProductToCart = { ...state };
+
+            cloneStateListProductToCart.listAllProduct = action.data;
+
+            return {
+                ...cloneStateListProductToCart,
+            };
+        }
+
         case actionType.GET_DETAIL_PRODUCT_BY_ADMIN_SUCCESS: {
             const cloneStateDetailProductByAdmin = { ...state };
 
@@ -90,6 +106,35 @@ const SiteReducer = (state = initialState, action) => {
 
             return {
                 ...cloneState,
+            };
+        }
+
+        case actionType.GET_POST_RELATED_SUCCESS: {
+            const cloneStatePostRelated = { ...state };
+
+            cloneStatePostRelated.listPostRelated = action.data;
+            return {
+                ...cloneStatePostRelated,
+            };
+        }
+
+        case actionType.TOGGLE_IS_LOADING: {
+            const cloneStateToggleLoading = { ...state };
+
+            cloneStateToggleLoading.toggleIsLoading = !state.toggleIsLoading;
+
+            return {
+                ...cloneStateToggleLoading,
+            };
+        }
+
+        case actionType.GET_CURRENT_USER_SUCCESS: {
+            const cloneStateCurrentUser = { ...state };
+
+            cloneStateCurrentUser.currentUser = action.data;
+
+            return {
+                ...cloneStateCurrentUser,
             };
         }
 

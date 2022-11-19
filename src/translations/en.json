@@ -29,7 +29,8 @@
         "des-span": "UNOMO",
         "send-email": "Please leave information to receive email",
         "btn-send": "Receive information",
-        "link-to": "Contact us via"
+        "link-to": "Contact us via",
+        "error": "Nếu bạn gặp sự cố hãy liên hệ với chúng tôi"
     },
     "search": {
         "noResult": "No search results yet"
@@ -99,5 +100,69 @@
             "title": "Manage Posts",
             "portWithShop": "Posts about shops"
         }
+    },
+    "detail": {
+        "home": "Home page",
+        "production": "Product",
+        "stocking": "stocking",
+        "countPro": "PRODUCT NUMBER",
+        "addCart": "Add To Cart",
+        "viewCart": "View Cart",
+        "description": "Product Description",
+        "csvc": "Shipping Policy",
+        "orderPro": "Some Related Products"
+    },
+    "cart": {
+        "home": "Home Page",
+        "cartCountOne": "Shopping Cart - You are now ",
+        "cartCountTwo": " products in cart",
+        "header": {
+            "pro": "PRODUCT",
+            "price": "PRICE",
+            "count": "COUNT",
+            "total": "TOTAL",
+            "des": "ORDER SUMMARY",
+            "mathPrice": "Order cost = Order value + shipping fee + Tax",
+            "priceOne": "Order Value",
+            "priceShip": "Transport Fee",
+            "priceTwo": "Tax",
+            "continue": "Continue Shopping",
+            "bankment": "PAY"
+        }
+    },
+    "checkout": {
+        "fullTime": "Your order will be automatically canceled later",
+        "home": "Home",
+        "cart": "Cart",
+        "shipAddress": "Shipping Address",
+        "fullName": "Full Name (*)",
+        "email": "Email (*)",
+        "phoneNumber": "Phone number (*)",
+        "address": "Address (*)",
+        "note": "Note",
+        "pay": "Pay",
+        "PaymentOnDelivery": "Payment On Delivery",
+        "paycart": "Transfer",
+        "payBtn": "Pay",
+        "yourOrder": "Your Order",
+        "total": "Total Money",
+        "desOne": " E-Commerce Fits Everyone | © 2022 Truong Son Website - Professional Web Design",
+        "desTwo": "If You Are Interested In This UNOMO Product Please Contact Me ",
+        "desThree": "here"
+    },
+    "detailOrder": {
+        "title": "Your order details",
+        "btnBack": "Come back",
+        "ID": "ORDER ID.",
+        "desOne": "Orders Placed",
+        "desTwo": "Payment Information Confirmed",
+        "desThree": "Delivered to the Carrier",
+        "desFour": "Order Received",
+        "contactTitle": "Contact seller if you have questions",
+        "btnContact": "Contact Seller",
+        "btnCancel": "Cancel Order",
+        "btnRestore": "Repurchase",
+        "addRess": "Delivery Address",
+        "note": "Reminder to the shop owner"
     }
 }

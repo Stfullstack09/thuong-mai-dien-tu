@@ -1,0 +1,49 @@
+.checkout-done-wrapper {
+    height             : 100vh;
+    background-position: center center;
+    position           : relative;
+    overflow           : hidden;
+
+    .blur {
+        position        : absolute;
+        top             : 0;
+        right           : 0;
+        bottom          : 0;
+        left            : 0;
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter : blur(50px);
+        height          : 100%;
+    }
+
+    .container {
+        backdrop-filter: blur(0px);
+    }
+
+    .container-parents {
+        overflow: scroll;
+        height  : 100vh;
+        width   : 100%;
+    }
+
+    .table {
+        overflow-y: scroll;
+        max-height: 100%;
+    }
+
+
+    .title {
+        font-size: 24px;
+    }
+
+    .text-h2-jsx {
+        font-size  : 14px;
+        font-weight: 500;
+    }
+
+    .jsx-input-add {
+        background-color: transparent;
+        border          : none;
+        outline         : none;
+        text-align      : center;
+    }
+}

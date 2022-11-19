@@ -1,12 +1,18 @@
 export const path = {
     home: '/*',
     system: '/system/*',
+    cart: '/cart',
+    profile: '/@:email',
+    checkout: '/checkout/*',
+    dashboard: '/dashboard/*',
     stystemRoter: {
         loginandregister: '/login-register-account',
         logout: '/logout',
         loginadmin: '/admin-auth',
         pageAdmin: '/admin-page/*',
     },
+    detailOrder: '/order-details-you-have-placed/:id',
+    detailPost: '/detail-post-create-new-by-customer/:id',
 };
 
 export const languages = {

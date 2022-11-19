@@ -96,6 +96,12 @@ html *::-webkit-scrollbar-track {
     font-weight: 600;
 }
 
+
+@font-face {
+    font-family: "Public Sans", sans-serif !important;
+    src        : url('/assets/font/ijwRs572Xtc6ZYQws9YVwnNGfJ4.woff2');
+}
+
 .logo {
     display    : flex;
     align-items: center;
@@ -429,5 +435,119 @@ html *::-webkit-scrollbar-track {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.h-10vh {
+    height  : 10%;
+    overflow: hidden;
+}
+
+.h-90vh {
+    height: 90%;
+}
+
+.col-4-customize {
+    width: 16%;
+}
+
+.col-8-customize {
+    width: 84%;
+}
+
+.jsx-hover-underline {
+    font-weight: 500;
+
+    &:hover {
+        text-decoration: underline;
+        cursor         : pointer;
+    }
+}
+
+.customize-modal-confirm {
+    z-index: 99999;
+}
+
+.jsx-hsd-title {
+    font-size: 16px;
+}
+
+.fz-20 {
+    font-size: 20px;
+}
+
+.jax-mt-100 {
+    margin-top: 100px;
+}
+
+._2p3a {
+    width: 100% !important;
+}
+
+.border-radius-4 {
+    border-radius: 4px !important;
+    height       : 135px;
+    display      : inline-block;
+}
+
+@include media-breakpoint-down(sm) {
+    .p-5 {
+        padding: 1.8rem !important;
+    }
+}
+
+.fz-13 {
+    font-size: 13px;
+}
+
+.jax-no-access {
+    color     : #000 !important;
+    z-index   : 9999999;
+    margin-top: 120px !important;
+}
+
+.css-1ra0vbb {
+    display                    : inline-flex;
+    -webkit-box-align          : center;
+    align-items                : center;
+    -webkit-box-pack           : center;
+    justify-content            : center;
+    position                   : relative;
+    box-sizing                 : border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline                    : 0px;
+    border                     : 0px;
+    margin                     : 0px;
+    cursor                     : pointer;
+    user-select                : none;
+    vertical-align             : middle;
+    appearance                 : none;
+    text-decoration            : none;
+    font-weight                : 700;
+    line-height                : 1.71429;
+    font-size                  : 0.875rem;
+    text-transform             : capitalize;
+    font-family                : "Public Sans", sans-serif;
+    min-width                  : 64px;
+    padding                    : 6px 16px;
+    border-radius              : 8px;
+    transition                 : background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    color                      : rgb(255, 255, 255) !important;
+    background-color           : rgb(32, 101, 209);
+    box-shadow                 : rgb(32 101 209 / 24%) 0px 8px 16px 0px;
+}
+
+
+.redirect-link {
+    @extend .css-1ra0vbb;
+    // width: % !important;
+
+    &:hover {
+        background-color: rgb(32, 101, 209) !important;
+        box-shadow      : none;
     }
 }
