@@ -1,3 +1,4 @@
+import React from 'react';
 import { faCartPlus, faHeart, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormattedMessage } from 'react-intl';

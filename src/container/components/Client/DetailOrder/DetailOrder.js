@@ -1,3 +1,4 @@
+import React from 'react';
 import { faCalendarWeek, faHandHoldingHeart, faMoneyCheck, faTruckArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { faProductHunt } from '@fortawesome/free-brands-svg-icons';
 import { faChevronRight, faNewspaper, faPeopleRoof } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

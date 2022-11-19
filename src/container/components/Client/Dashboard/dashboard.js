@@ -1,3 +1,4 @@
+import React from 'react';
 import { faDev, faUsps } from '@fortawesome/free-brands-svg-icons';
 import { faHelicopter, faHistory, faNetworkWired, faShop } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

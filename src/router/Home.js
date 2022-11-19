@@ -1,3 +1,4 @@
+import React from 'react';
 import { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NotFound from '../container/components/Client/components/404NotFound/404NotFound';
