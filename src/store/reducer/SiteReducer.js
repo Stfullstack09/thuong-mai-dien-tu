@@ -13,6 +13,8 @@ const initialState = {
     listPostRelated: [],
 
     isLoading: false,
+    toggleIsLoading: false,
+    currentUser: {},
 };
 
 const SiteReducer = (state = initialState, action) => {
@@ -113,6 +115,26 @@ const SiteReducer = (state = initialState, action) => {
             cloneStatePostRelated.listPostRelated = action.data;
             return {
                 ...cloneStatePostRelated,
+            };
+        }
+
+        case actionType.TOGGLE_IS_LOADING: {
+            const cloneStateToggleLoading = { ...state };
+
+            cloneStateToggleLoading.toggleIsLoading = !state.toggleIsLoading;
+
+            return {
+                ...cloneStateToggleLoading,
+            };
+        }
+
+        case actionType.GET_CURRENT_USER_SUCCESS: {
+            const cloneStateCurrentUser = { ...state };
+
+            cloneStateCurrentUser.currentUser = action.data;
+
+            return {
+                ...cloneStateCurrentUser,
             };
         }
 

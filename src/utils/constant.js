@@ -2,8 +2,9 @@ export const path = {
     home: '/*',
     system: '/system/*',
     cart: '/cart',
+    profile: '/@:email',
     checkout: '/checkout/*',
-    profile: '/profile/*',
+    dashboard: '/dashboard/*',
     stystemRoter: {
         loginandregister: '/login-register-account',
         logout: '/logout',

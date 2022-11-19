@@ -59,15 +59,17 @@ function History() {
         }
     };
 
-    const handleRestoreProduct = async (id) => {
+    const handleRestoreProduct = async (id, productId) => {
         // eslint-disable-next-line no-restricted-globals
-        const check = confirm('Bạn chắc chắn mua lại sản phẩm này chứ?');
+        const check = confirm(
+            'Bạn chắc chắn mua lại sản phẩm này chứ? khi thực hiện mua lại bạn sẽ phải chịu sự thay đổi về giá nếu của hàng thay đổi sau khi bạn hủy đơn hàng trước đó',
+        );
 
         if (!check) return;
 
         setIsLoading(true);
 
-        const res = await RestoreProductByCustomer({ id });
+        const res = await RestoreProductByCustomer({ id, productId });
 
         setIsLoading(false);
 
@@ -88,6 +90,7 @@ function History() {
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">count</th>
                                     <th scope="col">Giá</th>
                                     <th scope="col" className="text-center">
                                         Hành động
@@ -113,13 +116,11 @@ function History() {
                                                     {item.productDataOder.title}
                                                 </span>
                                             </td>
-                                            <td>
+                                            <td className="text-center">x{item.count}</td>
+                                            <td className="text-center">
                                                 <CurrencyFormat
                                                     onValueChange={() => () => {}}
-                                                    value={handlePriceDisCount(
-                                                        item.productDataOder.price,
-                                                        item.productDataOder.discount,
-                                                    )}
+                                                    value={item.count * handlePriceDisCount(item.price, item.discount)}
                                                     thousandSeparator={true}
                                                     suffix={' VND'}
                                                     disabled
@@ -130,7 +131,7 @@ function History() {
                                                 {item.statusId === 'S4' ? (
                                                     <button
                                                         className="btn btn-primary mx-1 mb-1"
-                                                        onClick={() => handleRestoreProduct(item.id)}
+                                                        onClick={() => handleRestoreProduct(item.id, item.productId)}
                                                         title="Khôi Phục"
                                                     >
                                                         <FontAwesomeIcon icon={faRotateLeft} />
@@ -141,7 +142,7 @@ function History() {
                                                         onClick={() => handleSubmit(item)}
                                                         title="Hủy đơn hàng"
                                                     >
-                                                        <i class="bi bi-trash2"></i>
+                                                        <i className="bi bi-trash2"></i>
                                                     </button>
                                                 )}
                                                 <button
@@ -151,7 +152,7 @@ function History() {
                                                     }
                                                     title="Xem chi tiết"
                                                 >
-                                                    <i class="bi bi-terminal"></i>
+                                                    <i className="bi bi-terminal"></i>
                                                 </button>
                                             </td>
                                             <td>

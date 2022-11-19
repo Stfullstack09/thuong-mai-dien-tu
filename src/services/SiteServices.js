@@ -64,8 +64,8 @@ export const GetDetailProductByAdmin = (id) => {
     });
 };
 
-export const GetAllProductByAdmin = () => {
-    return axios.get(`/api/v1/app/get-all-product-by-admin`, {
+export const GetAllProductByAdmin = (limit, page) => {
+    return axios.get(`/api/v1/app/get-all-product-by-admin?limit=${limit}&page=${page}`, {
         withCredentials: true,
     });
 };
@@ -244,6 +244,37 @@ export const GetPostRelated = (id, limit) => {
 
 export const HeartPost = (data) => {
     return axios.post(`/api/v1/app/heart-post`, data, {
+        withCredentials: true,
+    });
+};
+
+export const GetAllPostManage = (limit, page) => {
+    return axios.get(`/api/v1/app/get-all-post-manage?limit=${limit}&page=${page}`, {
+        withCredentials: true,
+    });
+};
+
+export const UpdateStatusPost = (id, status) => {
+    return axios.patch(
+        `/api/v1/app/update-status-post-manage`,
+        {
+            id,
+            status,
+        },
+        {
+            withCredentials: true,
+        },
+    );
+};
+
+export const GetDetailPostEdit = (id) => {
+    return axios.get(`/api/v1/app/get-detail-post-edit-by-id?id=${id}`, {
+        withCredentials: true,
+    });
+};
+
+export const UpdatePostEdit = (data) => {
+    return axios.patch(`/api/v1/app/update-edit-post`, data, {
         withCredentials: true,
     });
 };

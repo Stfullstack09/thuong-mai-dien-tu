@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -155,7 +155,7 @@ function CheckOut() {
     return (
         <>
             <div className="checkout-wrapper">
-                {!_.isEmpty(information) && (
+                {!_.isEmpty(information) ? (
                     <>
                         <div className="container">
                             <div>
@@ -413,6 +413,13 @@ function CheckOut() {
                             </div>
                         </div>
                     </>
+                ) : (
+                    <p className="text-center pt-5 mt-5">
+                        <strong>Có lỗi xảy ra với server ErrCode: 503</strong>
+                        <p className="my-3">
+                            <Link to="/">Click để quay lại</Link>
+                        </p>
+                    </p>
                 )}
             </div>
             {!isValid && <ModalCancel />}

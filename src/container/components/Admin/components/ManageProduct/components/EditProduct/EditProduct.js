@@ -57,7 +57,7 @@ function EditProduct() {
                 setDiscount(detailProductByAdmin.discount);
             } else {
                 setIsDiscount(false);
-                setDiscount(1);
+                setDiscount(null);
             }
         }
     }, [detailProductByAdmin]);
@@ -145,6 +145,8 @@ function EditProduct() {
 
     const handleClickAgainNoDisCount = () => {
         setIsDiscount(false);
+
+        console.log('check discount :', disCount);
     };
 
     const hanedleValidate = () => {
@@ -182,9 +184,8 @@ function EditProduct() {
             disCount,
             id: selectProduct,
         };
-        if (!isDiscount) {
-            databuild.disCount = null;
-        } else {
+
+        if (isDiscount) {
             if (disCount <= 0) {
                 alert('Phần trăm giảm giá phải lớn hơn 0');
                 return;

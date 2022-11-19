@@ -246,7 +246,7 @@ function Cart() {
                                                 </div>
                                             ))
                                         ) : (
-                                            <p className="mt-5 pt-5 text-center">
+                                            <p className="mt-5 pt-5 text-center fz-13">
                                                 <span>
                                                     Hiện tại trong giỏ hàng của bạn không có sản phẩm. ấn vào{' '}
                                                     <Link to="/">đây</Link> để tiếp tục mua sắm ❤️

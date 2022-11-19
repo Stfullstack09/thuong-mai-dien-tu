@@ -83,10 +83,7 @@ function CheckOutDone() {
                                                         <td>
                                                             <CurrencyFormat
                                                                 onValueChange={() => () => {}}
-                                                                value={handlePriceDisCount(
-                                                                    item.productDataOder.price,
-                                                                    item.productDataOder.discount,
-                                                                )}
+                                                                value={handlePriceDisCount(item.price, item.discount)}
                                                                 thousandSeparator={true}
                                                                 suffix={' VND'}
                                                                 disabled

@@ -16,6 +16,7 @@ import Comment from '../../../../../components/Plugin/Comment';
 function DetailPost() {
     const [detail, setDetail] = useState({});
     const [listPost, setListPost] = useState([]);
+    const [isValid, setIsValid] = useState(true);
 
     const dispatch = useDispatch();
     const params = useParams();
@@ -25,7 +26,7 @@ function DetailPost() {
 
     useEffect(() => {
         if (params.id) {
-            dispatch(actions.getPostRelated(params.id, 3));
+            dispatch(actions.getPostRelated(params.id, 4));
         }
     }, [params, dispatch]);
 
@@ -38,8 +39,14 @@ function DetailPost() {
             if (params.id) {
                 const Res = await GetDetailPost(params.id);
 
-                if (Res && !_.isEmpty(Res.data)) {
+                if (Res && Res.errCode === 0 && !_.isEmpty(Res.data)) {
                     setDetail(Res.data);
+                }
+
+                console.log('check Res.errCode === 4', Res.errCode === 4);
+
+                if (Res && Res.errCode === 4) {
+                    setIsValid(false);
                 }
             }
         };
@@ -139,10 +146,8 @@ function DetailPost() {
                                                         >{`${detail.userDataPost.firstName} ${detail.userDataPost.lastName}`}</strong>
                                                     </p>
                                                     <p>
-                                                        Bài viết từ{' '}
-                                                        {new Date(+detail.time).toLocaleDateString('en', {
-                                                            timeZone: 'Asia/Ho_Chi_Minh',
-                                                        })}
+                                                        Bài viết từ {new Date(+detail.time).toLocaleTimeString('vi-VI')}{' '}
+                                                        {new Date(+detail.time).toLocaleDateString('vi-VI')}
                                                     </p>
                                                 </div>
                                             </div>
@@ -191,42 +196,49 @@ function DetailPost() {
                                                     <strong>Bài viết nổi bật khác</strong>
                                                 </p>
                                             </div>
-                                            {listPost &&
-                                                listPost.length > 0 &&
-                                                listPost.map((item) => (
-                                                    <div className="post-related-render py-2" key={item.id}>
-                                                        {/* <a href={`/detail-post-create-new-by-customer/${item.id}`}> */}
-                                                        <h3
-                                                            className="py-2"
-                                                            onClick={() =>
-                                                                handleRedirect(
-                                                                    `/detail-post-create-new-by-customer/${item.id}`,
-                                                                )
-                                                            }
-                                                        >
-                                                            {item.title}
-                                                        </h3>
-                                                        <div
-                                                            className="image"
-                                                            onClick={() =>
-                                                                handleRedirect(
-                                                                    `/detail-post-create-new-by-customer/${item.id}`,
-                                                                )
-                                                            }
-                                                        >
-                                                            <div className="overlay-img"></div>
-                                                            <span>xem bài viết</span>
-                                                            <img src={item.thumbnail} alt={item.thumbnail} />
+                                            <div className="post-related">
+                                                {listPost &&
+                                                    listPost.length > 0 &&
+                                                    listPost.map((item) => (
+                                                        <div className="post-related-render py-2" key={item.id}>
+                                                            {/* <a href={`/detail-post-create-new-by-customer/${item.id}`}> */}
+                                                            <h3
+                                                                className="py-2"
+                                                                onClick={() =>
+                                                                    handleRedirect(
+                                                                        `/detail-post-create-new-by-customer/${item.id}`,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {item.title}
+                                                            </h3>
+                                                            <div
+                                                                className="image"
+                                                                onClick={() =>
+                                                                    handleRedirect(
+                                                                        `/detail-post-create-new-by-customer/${item.id}`,
+                                                                    )
+                                                                }
+                                                            >
+                                                                <div className="overlay-img"></div>
+                                                                <span>xem bài viết</span>
+                                                                <img src={item.thumbnail} alt={item.thumbnail} />
+                                                            </div>
+                                                            {/* </a> */}
                                                         </div>
-                                                        {/* </a> */}
-                                                    </div>
-                                                ))}
+                                                    ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         )}
                     </div>
+                    {!isValid && (
+                        <p className="jax-no-access text-center py-2 fw-bold">
+                            There is no access to this resource or the resource does not exist!
+                        </p>
+                    )}
                 </div>
             </div>
             <Footer />
@@ -235,23 +247,3 @@ function DetailPost() {
 }
 
 export default DetailPost;
-
-/* 
- <div
-                    className="fb-page"
-                    dataHref="https://www.facebook.com/truongsonworkspace09112003"
-                    dataTabs="timeline"
-                    dataWidth="300"
-                    dataHeight=""
-                    dataSmall-header="false"
-                    dataAdapt-container-width="true"
-                    dataHide-cover="false"
-                    dataShowFacepile="true"
-                >
-                    <blockquote
-                        cite="https://www.facebook.com/truongsonworkspace09112003"
-                        class="fb-xfbml-parse-ignore"
-                    >
-                        <a href="https://www.facebook.com/truongsonworkspace09112003">Trường Sơn Wesite</a>
-                    </blockquote>
-                </div> */

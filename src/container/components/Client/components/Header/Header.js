@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { useSelector } from 'react-redux';
 
 import './Header.scss';
 import Overlay from '../../../../../components/Overlay';
@@ -16,7 +17,7 @@ function Header() {
     const [isShowMenu, setIsShowMenu] = useState(false);
     const [isOpenSearch, setIsOpenSearch] = useState(false);
 
-    const isLogin = true;
+    const isLogin = useSelector((state) => state.user.isLoggedIn);
 
     const history = useNavigate();
 
@@ -88,7 +89,7 @@ function Header() {
                                     </li>
                                     {isLogin ? (
                                         <li>
-                                            <Link to="/profile/me">
+                                            <Link to="/dashboard/profile/me">
                                                 <FormattedMessage id="header.viewAccount" />
                                             </Link>
                                         </li>
@@ -165,7 +166,7 @@ function Header() {
                             </li>
                             {isLogin ? (
                                 <li>
-                                    <Link to="/profile/me">
+                                    <Link to="/dashboard/profile/me">
                                         <FormattedMessage id="header.viewAccount" />
                                     </Link>
                                 </li>

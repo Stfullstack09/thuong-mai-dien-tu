@@ -2,6 +2,7 @@ import {
     GetAllProductByAdmin,
     GetAllProductToCart,
     GetCateGory,
+    GetCurrentUser,
     GetDetailProductByAdmin,
     GetListAddress,
     GetListGender,
@@ -95,6 +96,12 @@ export const setIsLoading = () => {
     };
 };
 
+export const toggleIsLoading = () => {
+    return {
+        type: actionType.TOGGLE_IS_LOADING,
+    };
+};
+
 export const getCateGory = () => {
     return async (dispatch, getState) => {
         try {
@@ -153,10 +160,10 @@ export const getDetailProductByAdminFailed = () => {
     };
 };
 
-export const getAllProductByAdmin = () => {
+export const getAllProductByAdmin = (limit, page) => {
     return async (dispatch, getState) => {
         try {
-            const Res = await GetAllProductByAdmin();
+            const Res = await GetAllProductByAdmin(limit, page);
 
             if (Res && Res.errCode === 0) {
                 dispatch(getAllProductByAdminSuccess(Res.data));
@@ -239,5 +246,37 @@ export const getPostRelatedSuccess = (data) => {
 export const getPostRelatedFailed = () => {
     return {
         type: actionType.GET_POST_RELATED_FAILED,
+    };
+};
+
+export const getCurrentUser = () => {
+    return async (dispatch, getState) => {
+        try {
+            const Res = await GetCurrentUser();
+
+            console.log('check Res', Res.data);
+
+            if (Res && Res.errCode === 0) {
+                dispatch(getCurrentUserSuccess(Res.data));
+            } else {
+                dispatch(getCurrentUserFailed());
+            }
+        } catch (error) {
+            console.log(error);
+            dispatch(getCurrentUserFailed());
+        }
+    };
+};
+
+const getCurrentUserSuccess = (data) => {
+    return {
+        type: actionType.GET_CURRENT_USER_SUCCESS,
+        data,
+    };
+};
+
+const getCurrentUserFailed = () => {
+    return {
+        type: actionType.GET_CURRENT_USER_FAILED,
     };
 };

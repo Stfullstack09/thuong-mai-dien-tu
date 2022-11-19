@@ -74,7 +74,7 @@ function TrashProduct() {
                                         className="btn"
                                         title="Khôi phục"
                                     >
-                                        <i class="bi bi-arrow-repeat"></i>
+                                        <i className="bi bi-arrow-repeat"></i>
                                     </button>
                                 </td>
                             </tr>

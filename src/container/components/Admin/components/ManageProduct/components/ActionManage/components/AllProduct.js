@@ -1,30 +1,43 @@
 import { useEffect, useState } from 'react';
 import CurrencyFormat from 'react-currency-format';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import * as actions from '../../../../../../../.././store/actions';
-import { DeleteProductByAdmin } from '../../../../../../../../services';
+import { DeleteProductByAdmin, GetAllProductByAdmin } from '../../../../../../../../services';
+
+const limit = 8;
 
 function AllProduct() {
     const dispatch = useDispatch();
-    const listAllProductByAdmin = useSelector((state) => state.SiteReducer.listAllProductByAdmin);
     const history = useNavigate();
 
     const [listProduct, setListProduct] = useState([]);
-
-    useEffect(() => {
-        setListProduct(listAllProductByAdmin);
-    }, [listAllProductByAdmin]);
-
-    useEffect(() => {
-        dispatch(actions.getAllProductByAdmin());
-    }, [dispatch]);
+    const [page, setPage] = useState(1);
+    const [isValidNextPage, setIsValidNextPage] = useState(false);
 
     const handleRedirect = (id) => {
         history(`/system/admin-page/manage-product/edit-product?id=${id}`);
     };
+
+    useEffect(() => {
+        const fetch = async () => {
+            const Res = await GetAllProductByAdmin(limit, page);
+
+            if (Res && Res.errCode === 0) {
+                setListProduct((prev) => {
+                    return [...prev, ...Res.data];
+                });
+                setIsValidNextPage(Res.isValidNextPage);
+            } else {
+                console.error(Res.msg);
+                alert(Res.msg);
+            }
+        };
+
+        fetch();
+    }, [page]);
 
     const handleDeleteProduct = async (id) => {
         dispatch(actions.setIsLoading());
@@ -36,6 +49,10 @@ function AllProduct() {
         if (Res && Res.errCode === 0) {
             dispatch(actions.getAllProductByAdmin());
         }
+    };
+
+    const handleNextPage = () => {
+        setPage((prev) => prev + 1);
     };
 
     return (
@@ -87,6 +104,13 @@ function AllProduct() {
                         ))}
                 </tbody>
             </table>
+            {isValidNextPage && (
+                <div className="d-flex justify-content-center align-items-center">
+                    <button onClick={handleNextPage} className="btn btn-primary m-2">
+                        Xem Thêm
+                    </button>
+                </div>
+            )}
         </>
     );
 }

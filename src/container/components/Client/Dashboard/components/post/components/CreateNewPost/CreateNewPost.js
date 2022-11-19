@@ -7,6 +7,7 @@ import Lightbox from 'react-image-lightbox';
 
 import { CreateNewPostServices, UploadImageComment } from '../../../../../../../../services';
 import Loadingske from '../../../../../../../../components/loadingSkeloton/Loadingske';
+import PacmanLoaderLoading from '../../../../../../../../components/loading/PacmanLoader';
 
 function CreateNewPost() {
     const [valueTitle, setValueTitle] = useState('');
@@ -16,6 +17,7 @@ function CreateNewPost() {
     const [linkPreview, setLinkPreview] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [loadingTwo, setLoadingTwo] = useState(false);
     const [isOpenLightBox, setIsOpenLightBox] = useState(false);
 
     const contentEditable = createRef();
@@ -156,6 +158,7 @@ function CreateNewPost() {
         if (!checkConfirm) return;
 
         setIsLoading(true);
+        setLoadingTwo(true);
 
         const ResThumbnail = await UploadImageComment({
             file: thumbnail,
@@ -178,6 +181,7 @@ function CreateNewPost() {
         const Res = await CreateNewPostServices(dataBuild);
 
         setIsLoading(false);
+        setLoadingTwo(false);
 
         if (Res && Res.errCode === 0) {
             alert('Bạn đã tạo thành công bài viết !');
@@ -202,6 +206,7 @@ function CreateNewPost() {
     return (
         <>
             {isLoading && <Loadingske />}
+            {loadingTwo && <PacmanLoaderLoading />}
             <div className="create-new-post-wrapper">
                 <h2 className="fw-bold text-center py-4">Tạo bài viết hãy viết những rì bạn thấy thỏa mái</h2>
                 <div className="body-content py-3">

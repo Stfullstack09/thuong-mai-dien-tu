@@ -52,15 +52,17 @@ function DetailOrder() {
         history(link);
     };
 
-    const handleRestoreProduct = async (id) => {
+    const handleRestoreProduct = async (id, productId) => {
         // eslint-disable-next-line no-restricted-globals
-        const check = confirm('Bạn chắc chắn mua lại sản phẩm này chứ?');
+        const check = confirm(
+            'Bạn chắc chắn mua lại sản phẩm này chứ? khi thực hiện mua lại bạn sẽ phải chịu sự thay đổi về giá nếu của hàng thay đổi sau khi bạn hủy đơn hàng trước đó',
+        );
 
         if (!check) return;
 
         setIsLoading(true);
 
-        const res = await RestoreProductByCustomer({ id });
+        const res = await RestoreProductByCustomer({ id, productId });
 
         setIsLoading(false);
 
@@ -137,7 +139,15 @@ function DetailOrder() {
                                                         <p className="mb-0 jax-chuk-title">
                                                             <FormattedMessage id="detailOrder.desOne" />
                                                         </p>
-                                                        <p className="jax-ds-render">{detail.createdAt}</p>
+                                                        <p className="jax-ds-render">
+                                                            {detail.timeOder
+                                                                ? `${new Date(+detail.timeOder).toLocaleTimeString(
+                                                                      'vi-VI',
+                                                                  )} ${new Date(+detail.timeOder).toLocaleDateString(
+                                                                      'vi-VI',
+                                                                  )}`
+                                                                : 'Đang cập nhật'}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div className="jsx-item-chuk">
@@ -156,7 +166,15 @@ function DetailOrder() {
                                                         <p className="mb-0 jax-chuk-title">
                                                             <FormattedMessage id="detailOrder.desTwo" />
                                                         </p>
-                                                        <p className="jax-ds-render">01:03 24-10-2022</p>
+                                                        <p className="jax-ds-render">
+                                                            {detail.timeBank
+                                                                ? `${new Date(+detail.timeBank).toLocaleTimeString(
+                                                                      'vi-VI',
+                                                                  )} ${new Date(+detail.timeBank).toLocaleDateString(
+                                                                      'vi-VI',
+                                                                  )}`
+                                                                : 'Đang cập nhật'}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div className="jsx-item-chuk">
@@ -175,7 +193,15 @@ function DetailOrder() {
                                                         <p className="mb-0 jax-chuk-title">
                                                             <FormattedMessage id="detailOrder.desThree" />
                                                         </p>
-                                                        <p className="jax-ds-render">01:03 24-10-2022</p>
+                                                        <p className="jax-ds-render">
+                                                            {detail.timeVC
+                                                                ? `${new Date(+detail.timeVC).toLocaleTimeString(
+                                                                      'vi-VI',
+                                                                  )} ${new Date(+detail.timeVC).toLocaleDateString(
+                                                                      'vi-VI',
+                                                                  )}`
+                                                                : 'Đang cập nhật'}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div className="jsx-item-chuk">
@@ -194,12 +220,20 @@ function DetailOrder() {
                                                         <p className="mb-0 jax-chuk-title">
                                                             <FormattedMessage id="detailOrder.desFour" />
                                                         </p>
-                                                        <p className="jax-ds-render">01:03 24-10-2022</p>
+                                                        <p className="jax-ds-render">
+                                                            {detail.timeDone
+                                                                ? `${new Date(+detail.timeDone).toLocaleTimeString(
+                                                                      'vi-VI',
+                                                                  )} ${new Date(+detail.timeDone).toLocaleDateString(
+                                                                      'vi-VI',
+                                                                  )}`
+                                                                : 'Đang cập nhật'}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div className="line-nowrap-jsx">
-                                                    <div class="stepper__line-background"></div>
-                                                    <div class="stepper__line-foreground"></div>
+                                                    <div className="stepper__line-background"></div>
+                                                    <div className="stepper__line-foreground"></div>
                                                 </div>
                                             </div>
                                             <div className="contact-jsx-overview">
@@ -220,7 +254,9 @@ function DetailOrder() {
                                                     {detail.statusId === 'S4' ? (
                                                         <button
                                                             className="jsx-button-chuk-details"
-                                                            onClick={() => handleRestoreProduct(detail.id)}
+                                                            onClick={() =>
+                                                                handleRestoreProduct(detail.id, detail.productId)
+                                                            }
                                                         >
                                                             <FormattedMessage id="detailOrder.btnRestore" />
                                                         </button>
@@ -300,8 +336,8 @@ function DetailOrder() {
                                                             <CurrencyFormat
                                                                 onValueChange={() => () => {}}
                                                                 value={handlePriceDisCount(
-                                                                    detail.productDataOder.price,
-                                                                    detail.productDataOder.discount,
+                                                                    detail.price,
+                                                                    detail.discount,
                                                                 )}
                                                                 thousandSeparator={true}
                                                                 suffix={' VND'}
