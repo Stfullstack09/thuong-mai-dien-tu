@@ -14,7 +14,6 @@ import Dashboard from './components/Client/Dashboard/dashboard';
 import DetailOrder from './components/Client/DetailOrder';
 import DetailPost from './components/Client/components/DetailPost';
 
-import './App.scss';
 import StyleWrapper from '../Styles';
 import Profile from './components/Client/profile';
 
