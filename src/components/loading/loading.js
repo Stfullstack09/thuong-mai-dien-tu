@@ -1,3 +1,4 @@
+import React from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import './loading.scss';

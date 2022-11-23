@@ -1,10 +1,6 @@
+import React from 'react';
 export const NotFound = () => (
-    <svg
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        // xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 800 600"
-    >
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
         <g>
             <defs>
                 <clipPath id="GlassClip">
@@ -667,14 +663,7 @@ export const NotFound = () => (
 );
 
 export const IconGoogle = () => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 40 40"
-        version="1.1"
-        // xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="40"
-        height="40"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" version="1.1" width="40" height="40">
         <circle cx="20" cy="20" r="20" fillRule="evenodd" clipRule="evenodd" fill="#fff"></circle>
         <path
             d="M31.5 20.3c0-.8-.1-1.5-.2-2.3H20v4.5h6.5c-.3 1.5-1.1 2.7-2.4 3.6v3H28c2.2-2.1 3.5-5.2 3.5-8.8z"
@@ -763,5 +752,102 @@ export const IconLogo = () => (
                 d="M450 384c26.509 0 48-21.491 48-48s-21.491-48-48-48-48 21.491-48 48 21.491 48 48 48"
             ></path>
         </g>
+    </svg>
+);
+
+export const IconGoogleAuth = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="img"
+        class="MuiBox-root css-1xm97k1 iconify iconify--eva"
+        sx="[object Object]"
+        width="1em"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+    >
+        <path
+            fill="currentColor"
+            d="M17.5 14a5.51 5.51 0 0 1-4.5 3.93a6.15 6.15 0 0 1-7-5.45A6 6 0 0 1 12 6a6.12 6.12 0 0 1 2.27.44a.5.5 0 0 0 .64-.21l1.44-2.65a.52.52 0 0 0-.23-.7A10 10 0 0 0 2 12.29A10.12 10.12 0 0 0 11.57 22A10 10 0 0 0 22 12.52v-2a.51.51 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h5"
+        ></path>
+    </svg>
+);
+
+export const IconFacebookAuth = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="img"
+        class="MuiBox-root css-1t0teiv iconify iconify--eva"
+        sx="[object Object]"
+        width="1em"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+    >
+        <path
+            fill="currentColor"
+            d="M17 3.5a.5.5 0 0 0-.5-.5H14a4.77 4.77 0 0 0-5 4.5v2.7H6.5a.5.5 0 0 0-.5.5v2.6a.5.5 0 0 0 .5.5H9v6.7a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-6.7h2.62a.5.5 0 0 0 .49-.37l.72-2.6a.5.5 0 0 0-.48-.63H13V7.5a1 1 0 0 1 1-.9h2.5a.5.5 0 0 0 .5-.5Z"
+        ></path>
+    </svg>
+);
+
+export const IconTwitterAuth = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="img"
+        class="MuiBox-root css-32732k iconify iconify--eva"
+        sx="[object Object]"
+        width="1em"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+    >
+        <path
+            fill="currentColor"
+            d="M8.08 20A11.07 11.07 0 0 0 19.52 9A8.09 8.09 0 0 0 21 6.16a.44.44 0 0 0-.62-.51a1.88 1.88 0 0 1-2.16-.38a3.89 3.89 0 0 0-5.58-.17A4.13 4.13 0 0 0 11.49 9C8.14 9.2 5.84 7.61 4 5.43a.43.43 0 0 0-.75.24a9.68 9.68 0 0 0 4.6 10.05A6.73 6.73 0 0 1 3.38 18a.45.45 0 0 0-.14.84A11 11 0 0 0 8.08 20"
+        ></path>
+    </svg>
+);
+
+export const IconShowPassWord = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="img"
+        class="MuiBox-root css-0 iconify iconify--eva"
+        sx="[object Object]"
+        width="1em"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+    >
+        <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+        <path
+            fill="currentColor"
+            d="M15.29 18.12L14 16.78l-.07-.07l-1.27-1.27a4.07 4.07 0 0 1-.61.06A3.5 3.5 0 0 1 8.5 12a4.07 4.07 0 0 1 .06-.61l-2-2L5 7.87a15.89 15.89 0 0 0-2.87 3.63a1 1 0 0 0 0 1c.63 1.09 4 6.5 9.89 6.5h.25a9.48 9.48 0 0 0 3.23-.67ZM8.59 5.76l2.8 2.8A4.07 4.07 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a4.07 4.07 0 0 1-.06.61l2.68 2.68l.84.84a15.89 15.89 0 0 0 2.91-3.63a1 1 0 0 0 0-1c-.64-1.11-4.16-6.68-10.14-6.5a9.48 9.48 0 0 0-3.23.67Zm12.12 13.53L19.41 18l-2-2l-9.52-9.53L6.42 5L4.71 3.29a1 1 0 0 0-1.42 1.42L5.53 7l1.75 1.7l7.31 7.3l.07.07L16 17.41l.59.59l2.7 2.71a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42Z"
+        ></path>
+    </svg>
+);
+
+export const IconHidePassWord = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="img"
+        class="MuiBox-root css-0 iconify iconify--eva"
+        sx="[object Object]"
+        width="1em"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24"
+    >
+        <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+        <path
+            fill="currentColor"
+            d="M21.87 11.5c-.64-1.11-4.16-6.68-10.14-6.5c-5.53.14-8.73 5-9.6 6.5a1 1 0 0 0 0 1c.63 1.09 4 6.5 9.89 6.5h.25c5.53-.14 8.74-5 9.6-6.5a1 1 0 0 0 0-1Zm-9.87 4a3.5 3.5 0 1 1 3.5-3.5a3.5 3.5 0 0 1-3.5 3.5Z"
+        ></path>
     </svg>
 );

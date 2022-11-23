@@ -7,14 +7,23 @@ import { faClose, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import validator from 'email-validator';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
 
 import './auth.scss';
 import Redirect from '../../../router/components/redirect';
 import * as actions from '../../.././store/actions';
 import { languages } from '../../../utils/constant';
-import { IconGoogle } from '../../../components/icons/icons';
+import {
+    IconFacebookAuth,
+    IconGoogleAuth,
+    IconHidePassWord,
+    IconLogo,
+    IconShowPassWord,
+    IconTwitterAuth,
+} from '../../../components/icons/icons';
 import { UserLogin, UserRegister } from '../../../services';
-import { faEye } from '@fortawesome/free-regular-svg-icons';
+import Bg from '../../.././assets/image/illustration_login.png';
+import Bg1 from '../../.././assets/image/illustration_register.png';
 
 class Auth extends Component {
     constructor(props) {
@@ -326,6 +335,7 @@ class Auth extends Component {
 
         return (
             <div className="auth-container" onKeyDown={(e) => this.handleKeyDownSubmit(e)}>
+                {/* <div className="wrapper-jax"> */}
                 {isLoggedIn && <Redirect link="/" />}
                 <div className="content-authentication">
                     <span
@@ -345,102 +355,139 @@ class Auth extends Component {
                     <Link to="/" className="nav-authentication" title="Back to home">
                         <FontAwesomeIcon icon={faClose} />
                     </Link>
-                    <div className="container">
-                        <div className="row row-authentication">
-                            <div className="col-md-6 col-0 jsx-lef-authentication"></div>
-                            <div className="col-md-6 jsx-right-authentication">
-                                <div className="row">
+                    <div className="row-authentication">
+                        <div className="col-0 jsx-lef-authentication">
+                            <div className="content-left">
+                                <Link to="/">
+                                    <IconLogo />
+                                </Link>
+                                <h3>{isLogin ? 'Hi, Welcome Back' : 'Manage the job more effectively with Minimal'}</h3>
+                                <img src={isLogin ? Bg : Bg1} alt="Bg" loading="lazy" />
+                            </div>
+                        </div>
+                        <div className="jsx-right-authentication">
+                            <span className="jax-sd">
+                                Don't have an account?{' '}
+                                <Link
+                                    to="/"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        this.handleOnInputClickSwitch();
+                                        this.setState({
+                                            isLogin: !this.state.isLogin,
+                                        });
+                                    }}
+                                >
                                     {isLogin ? (
-                                        <>
-                                            <div className="col-12 title-authentication login">
-                                                <h1>
-                                                    <Typewriter
-                                                        options={{
-                                                            strings: [
-                                                                language === languages.VI
-                                                                    ? 'Đăng nhập tài khoản của bạn'
-                                                                    : 'Log in to your account',
-                                                            ],
-                                                            autoStart: true,
-                                                            pauseFor: 20000,
-                                                            delay: 100,
-                                                            loop: true,
-                                                        }}
-                                                    />
-                                                </h1>
-                                            </div>
-                                            <div className="col-12 px-5 jsx-parents-input-and-label">
-                                                <label>Email</label>
-                                                <input
-                                                    value={this.state.email}
-                                                    className="jsx-input-authentication"
-                                                    placeholder={
-                                                        language === languages.VI
-                                                            ? 'Nhập email của bạn eg: abc@gmail.com'
-                                                            : 'Enter your email eg: abc@gmail.com'
-                                                    }
-                                                    onChange={(e) => {
-                                                        this.handleChangeInputAndSelect(e, 'email');
-                                                    }}
-                                                />
-                                                {!this.state.isEmail && (
-                                                    <span>
-                                                        <FormattedMessage id="authentication.together.valiEmail" />
-                                                    </span>
-                                                )}
-                                            </div>
-                                            <div className="col-12 px-5 jsx-parents-input-and-label login">
-                                                <label>Password</label>
-                                                <input
-                                                    type={this.state.isShowPassword ? 'text' : 'password'}
-                                                    value={this.state.password}
-                                                    className="jsx-input-authentication"
-                                                    placeholder={
-                                                        language === languages.VI
-                                                            ? 'Nhập password của bạn eg: matkhaucauban'
-                                                            : 'Enter your password eg: matkhaucauban'
-                                                    }
-                                                    onChange={(e) => this.handleChangeInputAndSelect(e, 'password')}
-                                                />
-                                                {!this.state.isPassword && (
-                                                    <span>
-                                                        <FormattedMessage id="authentication.together.isRequired" />
-                                                    </span>
-                                                )}
-                                                <p className="show-password" onClick={this.handleIsShowPassWord}>
-                                                    {this.state.isShowPassword ? (
-                                                        <FontAwesomeIcon icon={faEye} />
-                                                    ) : (
-                                                        <FontAwesomeIcon icon={faEyeSlash} />
-                                                    )}
-                                                </p>
-                                            </div>
-                                            <div className="col-12 text-center button-submit-jsx login">
-                                                <button onClick={this.handleSubmit}>
-                                                    <FormattedMessage id="authentication.together.btnLogin" />
-                                                </button>
-                                            </div>
-                                        </>
+                                        <FormattedMessage id="authentication.together.btnRegister" />
                                     ) : (
-                                        <>
-                                            <div className="col-12 title-authentication">
-                                                <h1>
-                                                    <Typewriter
-                                                        options={{
-                                                            strings: [
-                                                                language === languages.VI
-                                                                    ? 'Đăng ký tài khoản của bạn'
-                                                                    : 'Register your account',
-                                                            ],
-                                                            autoStart: true,
-                                                            pauseFor: 20000,
-                                                            delay: 100,
-                                                            loop: true,
-                                                        }}
-                                                    />
-                                                </h1>
-                                            </div>
-                                            <div className="col-12 col-md-12 col-lg-6 jsx-parents-input-and-label">
+                                        <FormattedMessage id="authentication.together.btnLogin" />
+                                    )}
+                                </Link>
+                            </span>
+
+                            <div className="row-jax">
+                                {isLogin ? (
+                                    <div className="chuk-jax-auth login-jax">
+                                        <div className="title-authentication login">
+                                            <h1>Sign in to Minimal</h1>
+                                            <p>Enter your details below.</p>
+                                        </div>
+                                        <div className="py-3 login-mildware">
+                                            <button>
+                                                <IconGoogleAuth />
+                                            </button>
+                                            <button>
+                                                <IconFacebookAuth />
+                                            </button>
+                                            <button>
+                                                <IconTwitterAuth />
+                                            </button>
+                                        </div>
+                                        <div className="text-center jsx-or-options">
+                                            <b></b>
+                                            <span>or</span>
+                                            <b></b>
+                                        </div>
+                                        <div className="jsx-parents-input-and-label">
+                                            <label>Email</label>
+                                            <input
+                                                value={this.state.email}
+                                                className="jsx-input-authentication"
+                                                placeholder={
+                                                    language === languages.VI
+                                                        ? 'Nhập email của bạn eg: abc@gmail.com'
+                                                        : 'Enter your email eg: abc@gmail.com'
+                                                }
+                                                onChange={(e) => {
+                                                    this.handleChangeInputAndSelect(e, 'email');
+                                                }}
+                                            />
+                                            {!this.state.isEmail && (
+                                                <span>
+                                                    <FormattedMessage id="authentication.together.valiEmail" />
+                                                </span>
+                                            )}
+                                        </div>
+                                        <div className="jsx-parents-input-and-label login">
+                                            <label>Password</label>
+                                            <input
+                                                type={this.state.isShowPassword ? 'text' : 'password'}
+                                                value={this.state.password}
+                                                className="jsx-input-authentication"
+                                                placeholder={
+                                                    language === languages.VI
+                                                        ? 'Nhập password của bạn eg: matkhaucauban'
+                                                        : 'Enter your password eg: matkhaucauban'
+                                                }
+                                                onChange={(e) => this.handleChangeInputAndSelect(e, 'password')}
+                                            />
+                                            {!this.state.isPassword && (
+                                                <span>
+                                                    <FormattedMessage id="authentication.together.isRequired" />
+                                                </span>
+                                            )}
+                                            <p className="show-password" onClick={this.handleIsShowPassWord}>
+                                                {this.state.isShowPassword ? (
+                                                    <IconShowPassWord />
+                                                ) : (
+                                                    <IconHidePassWord />
+                                                )}
+                                            </p>
+                                        </div>
+                                        <div className="py-1 d-flex justify-content-end forgot-pass">
+                                            <button>Forgot password?</button>
+                                        </div>
+                                        <div className="text-center button-submit-jsx login">
+                                            <button onClick={this.handleSubmit}>
+                                                <FormattedMessage id="authentication.together.btnLogin" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="chuk-jax-auth login-jax">
+                                        <div className="title-authentication login my-0">
+                                            <h1>Register to UNOMO</h1>
+                                            <p>Free forever. No credit card needed.</p>
+                                        </div>
+                                        <div className="py-3 login-mildware">
+                                            <button>
+                                                <IconGoogleAuth />
+                                            </button>
+                                            <button>
+                                                <IconFacebookAuth />
+                                            </button>
+                                            <button>
+                                                <IconTwitterAuth />
+                                            </button>
+                                        </div>
+                                        <div className="text-center jsx-or-options">
+                                            <b></b>
+                                            <span>or</span>
+                                            <b></b>
+                                        </div>
+                                        <div className="register-jax">
+                                            <div className="jsx-parents-input-and-label c-6">
                                                 <label>First Name</label>
                                                 <input
                                                     value={this.state.firstName}
@@ -458,7 +505,7 @@ class Auth extends Component {
                                                     </span>
                                                 )}
                                             </div>
-                                            <div className="col-12 col-md-12 col-lg-6 jsx-parents-input-and-label">
+                                            <div className="jsx-parents-input-and-label c-6">
                                                 <label>Last Name</label>
                                                 <input
                                                     value={this.state.lastName}
@@ -476,7 +523,7 @@ class Auth extends Component {
                                                     </span>
                                                 )}
                                             </div>
-                                            <div className="col-12 col-md-12 col-lg-6 jsx-parents-input-and-label">
+                                            <div className="jsx-parents-input-and-label c-12">
                                                 <label>Email</label>
                                                 <input
                                                     value={this.state.email}
@@ -494,7 +541,7 @@ class Auth extends Component {
                                                     </span>
                                                 )}
                                             </div>
-                                            <div className="col-12 col-md-12 col-lg-6 jsx-parents-input-and-label">
+                                            <div className="jsx-parents-input-and-label c-12">
                                                 <label>Password</label>
                                                 <input
                                                     type={this.state.isShowPassword ? 'text' : 'password'}
@@ -517,13 +564,14 @@ class Auth extends Component {
                                                     onClick={this.handleIsShowPassWord}
                                                 >
                                                     {this.state.isShowPassword ? (
-                                                        <FontAwesomeIcon icon={faEye} />
+                                                        <IconShowPassWord />
                                                     ) : (
-                                                        <FontAwesomeIcon icon={faEyeSlash} />
+                                                        <IconHidePassWord />
                                                     )}
                                                 </p>
                                             </div>
-                                            <div className="col-12 col-md-12 col-lg-6 jsx-parents-input-and-label">
+
+                                            <div className="jsx-parents-input-and-label c-6">
                                                 <label>
                                                     <FormattedMessage id="authentication.together.address" />
                                                 </label>
@@ -553,7 +601,8 @@ class Auth extends Component {
                                                     </span>
                                                 )}
                                             </div>
-                                            <div className="col-12 col-md-12 col-lg-6 jsx-parents-input-and-label">
+
+                                            <div className="jsx-parents-input-and-label c-6">
                                                 <label>
                                                     <FormattedMessage id="authentication.together.gender" />
                                                 </label>
@@ -583,69 +632,19 @@ class Auth extends Component {
                                                     </span>
                                                 )}
                                             </div>
-                                            <div className="col-12 text-center button-submit-jsx">
-                                                <button onClick={this.handleSubmit}>
-                                                    <FormattedMessage id="authentication.together.btnRegister" />
-                                                </button>
-                                            </div>
-                                        </>
-                                    )}
-
-                                    <div className="col-12 text-center jsx-or-options">
-                                        <b></b>
-                                        <span>or</span>
-                                        <b></b>
+                                        </div>
+                                        <div className="col-12 text-center button-submit-jsx">
+                                            <button onClick={this.handleSubmit}>
+                                                <FormattedMessage id="authentication.together.btnRegister" />
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="col-12 text-center jsx-sign-with-google">
-                                        <span>
-                                            <IconGoogle />
-                                            <FormattedMessage id="authentication.together.loginWithGoogle" />
-                                        </span>
-                                    </div>
-                                    <div className="col-12 text-center jsx-switch-login-register">
-                                        <span>
-                                            {isLogin ? (
-                                                <>
-                                                    <FormattedMessage id="authentication.together.switchRegister" />
-                                                    <button
-                                                        onClick={() => {
-                                                            this.handleOnInputClickSwitch();
-                                                            this.setState({
-                                                                isLogin: !this.state.isLogin,
-                                                            });
-                                                        }}
-                                                    >
-                                                        {isLogin ? (
-                                                            <FormattedMessage id="authentication.together.btnRegister" />
-                                                        ) : (
-                                                            <FormattedMessage id="authentication.together.btnLogin" />
-                                                        )}
-                                                    </button>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <FormattedMessage id="authentication.together.switchLogin" />
-                                                    <button
-                                                        onClick={() => {
-                                                            this.handleOnInputClickSwitch();
-                                                            this.handleSwitchLoginAndRegister();
-                                                        }}
-                                                    >
-                                                        {isLogin ? (
-                                                            <FormattedMessage id="authentication.together.btnRegister" />
-                                                        ) : (
-                                                            <FormattedMessage id="authentication.together.btnLogin" />
-                                                        )}
-                                                    </button>
-                                                </>
-                                            )}
-                                        </span>
-                                    </div>
-                                </div>
+                                )}
                             </div>
                         </div>
                     </div>
                 </div>
+                {/* </div> */}
             </div>
         );
     }
