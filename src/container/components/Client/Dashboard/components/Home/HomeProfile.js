@@ -12,6 +12,7 @@ import * as actions from '../../../../../../store/actions';
 
 import PropTypes from 'prop-types';
 import PacmanLoaderLoading from '../../../../../../components/loading/PacmanLoader';
+import { toast } from 'react-toastify';
 
 HomeProfile.propTypes = {
     getAgain: PropTypes.func,
@@ -130,6 +131,16 @@ function HomeProfile({ getAgain = () => {} }) {
 
                 setIsLoading(false);
 
+                toast.success('🦄 Chúc mừng bạn dã update profile thành công ^^!', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                });
                 if (res && res.errCode === 0) {
                     dispatch(actions.getCurrentUser());
                 }
@@ -154,6 +165,17 @@ function HomeProfile({ getAgain = () => {} }) {
             const Res = await UpdateCurrentUser(dataBuild);
 
             setIsLoading(false);
+
+            toast.success('🦄 Chúc mừng bạn dã update profile thành công ^^!', {
+                position: 'top-right',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+            });
 
             if (Res && Res.errCode === 0) {
                 dispatch(actions.getCurrentUser());

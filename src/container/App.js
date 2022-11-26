@@ -13,9 +13,11 @@ import RouterCheckOut from './components/Client/checkout/RouterCheckOut';
 import Dashboard from './components/Client/Dashboard/dashboard';
 import DetailOrder from './components/Client/DetailOrder';
 import DetailPost from './components/Client/components/DetailPost';
+import { ToastContainer } from 'react-toastify';
 
 import StyleWrapper from '../Styles';
 import Profile from './components/Client/profile';
+import ManageOrder from './components/Client/ManageOrder';
 
 function App() {
     const System = lazy(() => import('../router/System'));
@@ -40,10 +42,25 @@ function App() {
                         )}
                         <Route path={path.detailOrder} element={<DetailOrder />} />
                         <Route path={path.detailPost} element={<DetailPost />} />
+                        <Route path={path.manageOrder} element={<ManageOrder />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Suspense>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            {/* Same as */}
+            <ToastContainer />
         </StyleWrapper>
     );
 }

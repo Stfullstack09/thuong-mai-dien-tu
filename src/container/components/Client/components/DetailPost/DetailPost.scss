@@ -204,6 +204,36 @@
 
                 .render-content {
 
+                    pre {
+                        background-color: #f5f5f5;
+                        font-size       : 14px;
+                        border-radius   : 0;
+                        overflow-x      : auto;
+                        padding         : 8px;
+
+                        &::-webkit-scrollbar-thumb {
+                            width        : 6px;
+                            border-radius: 4px;
+                        }
+                    }
+
+                    li {
+                        position    : relative;
+                        padding-left: 14px;
+
+                        &::after {
+                            position        : absolute;
+                            content         : "";
+                            width           : 6px;
+                            height          : 6px;
+                            background-color: #000;
+                            border-radius   : 50%;
+                            z-index         : 9999;
+                            left            : 0;
+                            top             : 8px;
+                        }
+                    }
+
                     blockquote {
                         position      : relative;
                         margin        : 16px 0;
@@ -259,15 +289,15 @@
                 .post-related-post {
 
                     .post-related {
-                        display        : flex;
-                        flex-wrap      : wrap;
-                        justify-content: space-between;
+                        display  : flex;
+                        flex-wrap: wrap;
+                        gap      : 10px;
                     }
 
                     .post-title-related {
 
                         p {
-                            font-size : 34px;
+                            font-size : 26px;
                             margin    : 0;
                             margin    : 10px 0;
                             margin-top: 30px;
@@ -276,8 +306,7 @@
                     }
 
                     .post-related-render {
-                        border-bottom: 1px solid #ccc;
-                        width        : 48%;
+                        width: 22%;
 
                         @include media-breakpoint-down(lg) {
                             width: 73%;
@@ -295,11 +324,17 @@
 
 
                         h3 {
-                            padding    : 0;
-                            margin     : 0;
-                            font-size  : 20px;
-                            font-weight: 600;
-                            margin     : 6px 0;
+                            font-weight       : bold;
+                            font-size         : 15px;
+                            line-height       : 22px;
+                            font-style        : normal;
+                            text-decoration   : none;
+                            color             : #202124;
+                            font-family       : 'Roboto', Arial, Helvetica, sans-serif;
+                            display           : -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 3;
+                            overflow          : hidden;
 
                             &:hover {
                                 cursor: pointer;
@@ -307,7 +342,8 @@
                         }
 
                         .image {
-                            height         : 234px;
+                            // height         : 234px;
+                            height         : 125px;
                             width          : 100%;
                             position       : relative;
                             display        : flex;
@@ -342,6 +378,7 @@
                             border    : 0.1px solid #eee;
                             cursor    : pointer;
                             transition: all linear .2s;
+                            object-fit: cover;
                         }
 
                         &:last-child {

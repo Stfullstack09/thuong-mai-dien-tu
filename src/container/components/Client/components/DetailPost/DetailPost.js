@@ -44,8 +44,6 @@ function DetailPost() {
                     setDetail(Res.data);
                 }
 
-                console.log('check Res.errCode === 4', Res.errCode === 4);
-
                 if (Res && Res.errCode === 4) {
                     setIsValid(false);
                 }
@@ -202,17 +200,6 @@ function DetailPost() {
                                                     listPost.length > 0 &&
                                                     listPost.map((item) => (
                                                         <div className="post-related-render py-2" key={item.id}>
-                                                            {/* <a href={`/detail-post-create-new-by-customer/${item.id}`}> */}
-                                                            <h3
-                                                                className="py-2"
-                                                                onClick={() =>
-                                                                    handleRedirect(
-                                                                        `/detail-post-create-new-by-customer/${item.id}`,
-                                                                    )
-                                                                }
-                                                            >
-                                                                {item.title}
-                                                            </h3>
                                                             <div
                                                                 className="image"
                                                                 onClick={() =>
@@ -225,7 +212,16 @@ function DetailPost() {
                                                                 <span>xem bài viết</span>
                                                                 <img src={item.thumbnail} alt={item.thumbnail} />
                                                             </div>
-                                                            {/* </a> */}
+                                                            <h3
+                                                                className="my-2"
+                                                                onClick={() =>
+                                                                    handleRedirect(
+                                                                        `/detail-post-create-new-by-customer/${item.id}`,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {item.title}
+                                                            </h3>
                                                         </div>
                                                     ))}
                                             </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import _ from 'lodash';
 
 import CoVietNam from '../../../../../../assets/image/Hinh-nen-co-Viet-Nam-full-HD-4K-1.webp';
 import CoEngland from '../../../../../../assets/image/united-kingdom-flag_16x9.webp';
@@ -8,7 +9,6 @@ import { languages } from '../../../../../../utils/constant';
 import * as actions from '../../../../../../store/actions';
 import './HeaderDashBoard.scss';
 import SearchHeader from '../../../components/Header/components/Search/Search';
-import _ from 'lodash';
 
 function HeaderDashBoard() {
     const dispatch = useDispatch();

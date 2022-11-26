@@ -9,6 +9,7 @@ import Lightbox from 'react-image-lightbox';
 import { CreateNewPostServices, UploadImageComment } from '../../../../../../../../services';
 import Loadingske from '../../../../../../../../components/loadingSkeloton/Loadingske';
 import PacmanLoaderLoading from '../../../../../../../../components/loading/PacmanLoader';
+import { toast } from 'react-toastify';
 
 function CreateNewPost() {
     const [valueTitle, setValueTitle] = useState('');
@@ -185,7 +186,16 @@ function CreateNewPost() {
         setLoadingTwo(false);
 
         if (Res && Res.errCode === 0) {
-            alert('Bạn đã tạo thành công bài viết !');
+            toast.success('🦄 Bạn đã tạo thành công bài viết !', {
+                position: 'top-right',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+            });
             setValueTitle('');
             setContentHtml('');
             setContentText('');

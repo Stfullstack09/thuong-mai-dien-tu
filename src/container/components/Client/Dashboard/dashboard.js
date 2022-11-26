@@ -18,6 +18,7 @@ import SellerChannelRedirect from './components/SellerChannelRedirect';
 import * as actions from '../../../../store/actions';
 
 import './dashboard.scss';
+import SendEmail from './components/sendEmail';
 
 function Dashboard() {
     const dispatch = useDispatch();
@@ -175,6 +176,7 @@ function Dashboard() {
                             <Route path="/sales-registration" element={<RegisterSell />} />
                             <Route path="/post/*" element={<Post />} />
                             <Route path="/order-management" element={<SellerChannelRedirect />} />
+                            <Route path="/sendemail" element={<SendEmail />} />
                         </Routes>
                     </div>
                 </div>

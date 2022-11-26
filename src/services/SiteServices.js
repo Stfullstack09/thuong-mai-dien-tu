@@ -278,3 +278,9 @@ export const UpdatePostEdit = (data) => {
         withCredentials: true,
     });
 };
+
+export const SearchProductInShop = (q) => {
+    return axios.get(`/api/v1/app/search-product-in-shop?q=${q}`, {
+        withCredentials: true,
+    });
+};

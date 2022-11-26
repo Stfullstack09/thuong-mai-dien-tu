@@ -190,3 +190,13 @@
         margin-bottom: 8px;
     }
 }
+
+.Toastify__toast-container {
+    overflow: hidden !important;
+    margin  : 8px !important;
+}
+
+.Toastify__close-button {
+    padding : 4px;
+    overflow: hidden;
+}

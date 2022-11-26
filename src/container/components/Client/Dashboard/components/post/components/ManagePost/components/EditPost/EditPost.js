@@ -7,6 +7,7 @@ import _ from 'lodash';
 import { GetDetailPostEdit, UpdatePostEdit, UploadImageComment } from '../../../../../../../../../../services';
 import Loadingske from '../../../../../../../../../../components/loadingSkeloton/Loadingske';
 import PacmanLoaderLoading from '../../../../../../../../../../components/loading/PacmanLoader';
+import { toast } from 'react-toastify';
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
@@ -168,6 +169,16 @@ function EditPost() {
         setIsLoadingTwo(false);
 
         if (Res && Res.errCode === 0) {
+            toast.success('🦄 Bạn đã cập nhật thành công bài viết của mình^^', {
+                position: 'top-right',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'dark',
+            });
             setImg(null);
             fetch();
         } else {
