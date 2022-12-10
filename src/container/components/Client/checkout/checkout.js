@@ -202,7 +202,7 @@ function CheckOut() {
                                         <FormattedMessage id="checkout.cart" />
                                     </span>
                                 </p>
-                                <div className="row">
+                                <div className="row flex-sm-column-reverse">
                                     <div className="col-12 col-lg-7 left-content">
                                         <h2 className="my-3">
                                             <FormattedMessage id="checkout.shipAddress" />
@@ -322,7 +322,7 @@ function CheckOut() {
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="col-12 col-lg-5 right-content px-4 mt-mobile-2">
+                                    <div className="col-12 col-lg-5 right-content px-4 mb-mobile-2">
                                         <p className="my-3 p-0 d-flex justify-content-between align-items-center">
                                             <span>
                                                 <strong>

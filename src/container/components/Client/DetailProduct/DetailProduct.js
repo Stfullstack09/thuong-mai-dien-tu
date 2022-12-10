@@ -149,6 +149,7 @@ function DetailProduct() {
             count,
             userId: userInfo.id,
             productId: params.id,
+            shopId: +detail.userId,
         };
 
         const Res = await AddProductToCart(dataBuild);
@@ -164,6 +165,8 @@ function DetailProduct() {
     const handleViewCart = () => {
         history('/cart');
     };
+
+    console.log('check details : ', detail);
 
     return (
         <div className="detail-product-wrapper">

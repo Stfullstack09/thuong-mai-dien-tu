@@ -16,25 +16,28 @@ function TippyRender({ items = [], children, onChange = defaultFn, hdeOnClick = 
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 
-    const RenderItem = current.data.map((item) => {
-        const isParent = !!item.children;
+    const RenderItem =
+        current.data &&
+        current.data.length > 0 &&
+        current.data.map((item) => {
+            const isParent = !!item.children;
 
-        const uuid = uuidv4();
+            const uuid = uuidv4();
 
-        return (
-            <MenuItem
-                key={uuid}
-                data={item}
-                onClick={() => {
-                    if (isParent) {
-                        setHistory((prev) => [...prev, item.children]);
-                    } else {
-                        onChange(item);
-                    }
-                }}
-            />
-        );
-    });
+            return (
+                <MenuItem
+                    key={uuid}
+                    data={item}
+                    onClick={() => {
+                        if (isParent) {
+                            setHistory((prev) => [...prev, item.children]);
+                        } else {
+                            onChange(item);
+                        }
+                    }}
+                />
+            );
+        });
 
     const RenderResult = (attrs) => (
         <div className={cx('content')} tabIndex="-1" {...attrs}>

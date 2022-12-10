@@ -224,15 +224,17 @@
                         &::after {
                             position        : absolute;
                             content         : "";
-                            width           : 6px;
-                            height          : 6px;
+                            width           : 4px;
+                            height          : 4px;
                             background-color: #000;
                             border-radius   : 50%;
                             z-index         : 9999;
                             left            : 0;
-                            top             : 8px;
+                            top             : 9.7px;
                         }
                     }
+
+
 
                     blockquote {
                         position      : relative;
@@ -252,7 +254,23 @@
                     h2 {
                         font-size  : 20px;
                         font-weight: 600;
+                        padding    : 8px 0;
                         margin     : 2px 0 12px 0;
+                    }
+
+                    h3 {
+                        font-size: 17px;
+                        padding  : 6px 0;
+                    }
+
+                    h4 {
+                        font-size: 15px;
+                        padding  : 6px 0;
+                    }
+
+                    h5 {
+                        font-size: 14px;
+                        padding  : 6px 0;
                     }
 
                     p {

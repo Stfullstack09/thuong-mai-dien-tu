@@ -57,6 +57,12 @@ function DetailPost() {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        if (!_.isEmpty(detail)) {
+            document.title = detail.title;
+        }
+    }, [detail]);
+
     const handleRedirect = (link) => {
         setDetail({});
         setListPost([]);
@@ -120,15 +126,13 @@ function DetailPost() {
                                         </p>
                                     </div>
                                     <div className="col-xl-10 col-12 right-content">
-                                        <h1 className="title-post">
-                                            {detail.title}{' '}
-                                            <span className="mx-2 jax-show-mobile">
-                                                <span className="me-1">
-                                                    <FontAwesomeIcon icon={faEye} />
-                                                </span>
-                                                <span>{handleFormatcount(detail.countLike)}</span>
+                                        <h1 className="title-post">{detail.title}</h1>
+                                        <span className="mx-2 jax-show-mobile">
+                                            <span className="me-1">
+                                                <FontAwesomeIcon icon={faEye} />
                                             </span>
-                                        </h1>
+                                            <span>{handleFormatcount(detail.countLike)}</span>
+                                        </span>
                                         <div className="p-2 my-4 profile-author">
                                             <div className="d-flex align-items-center">
                                                 <div>

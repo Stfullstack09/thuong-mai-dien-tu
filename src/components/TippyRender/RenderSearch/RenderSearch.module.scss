@@ -1,9 +1,4 @@
-.menu-body {
-    min-width : 400px;
-    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
-    max-width : 400px;
-}
-
+.render-search-wrapper {}
 
 .item-result-wrapper {
     padding      : 10px 10px;
@@ -43,6 +38,7 @@
             cursor   : text;
             padding  : 0;
             margin   : 0;
+            display  : inline-block;
         }
     }
 

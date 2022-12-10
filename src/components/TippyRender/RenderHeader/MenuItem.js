@@ -12,8 +12,6 @@ MenuItem.propTypes = {
 };
 
 function MenuItem({ data, onClick = () => {} }) {
-    console.log('check data :', data);
-
     return (
         <Button onClick={onClick} to={data.to} className={cx('jax-chuk')}>
             <span className={cx('menu-span')}>{data.icon}</span>

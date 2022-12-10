@@ -1,3 +1,5 @@
+@import '../../../../../.././Styles/base.scss';
+
 .post-wrapper {
 
     .create-new-post-wrapper {
@@ -202,33 +204,41 @@
             font-size: 14px;
             top      : 8px;
             color    : rgb(117, 117, 117);
+
+            @include media-breakpoint-down(sm) {
+                display: none !important;
+            }
         }
     }
 
-    .rc-md-editor {
-        background-color: transparent;
-        border-radius   : 4px;
-        border-color    : transparent;
+    // .rc-md-editor {
+    //     background-color: transparent;
+    //     border-radius   : 4px;
+    //     border-color    : transparent;
 
-        .button {
-            overflow: hidden;
-        }
+    //     .button {
+    //         overflow: hidden;
+    //     }
 
-        .editor-container {
-            background-color: transparent;
-        }
+    //     .editor-container {
+    //         background-color: transparent;
 
-        .section {
-            background-color: transparent;
-        }
+    //         @include media-breakpoint-down(sm) {
+    //             flex-direction: column !important;
+    //         }
+    //     }
 
-        .section-container {
-            background-color: transparent;
-        }
+    //     .section {
+    //         background-color: transparent;
+    //     }
 
-        .rc-md-navigation {
-            background-color: transparent;
-            border-color    : transparent;
-        }
-    }
+    //     .section-container {
+    //         background-color: transparent;
+    //     }
+
+    //     .rc-md-navigation {
+    //         background-color: transparent;
+    //         border-color    : transparent;
+    //     }
+    // }
 }

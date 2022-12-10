@@ -254,8 +254,6 @@ export const getCurrentUser = () => {
         try {
             const Res = await GetCurrentUser();
 
-            console.log('check Res', Res.data);
-
             if (Res && Res.errCode === 0) {
                 dispatch(getCurrentUserSuccess(Res.data));
             } else {

@@ -1,13 +1,32 @@
+@import url('../../../../Styles/base.scss');
+
+.jax-extend-header-manage-order-one {
+    position : absolute;
+    top      : 50%;
+    transform: translateY(-50%);
+    right    : 10px;
+    cursor   : pointer;
+}
+
 .manage-order-wrapper {
-    color: red;
+    color           : red;
+    height          : 100vh;
+    display         : flex;
+    flex-direction  : column;
+    position        : fixed;
+    top             : 0;
+    right           : 0;
+    bottom          : 0;
+    left            : 0;
+    z-index         : 1049;
+    background-color: #fff;
 
     .header-manage-order-wrapper {
-        height       : 70px;
-        border-bottom: 1px solid #ccc;
-        padding      : 0 20px;
-        background   : #fff;
-        box-shadow   : 0 1px 4px #0000001f;
-        z-index      : 999;
+        height    : 70px;
+        padding   : 0 20px;
+        background: #fff;
+        box-shadow: 0 0 50px 2px rgb(1 1 1 / 9%);
+        z-index   : 999;
 
         .container-customize {
             display        : flex;
@@ -42,12 +61,12 @@
                         padding-left : 10px;
                     }
 
+                    svg {
+                        @extend .jax-extend-header-manage-order-one;
+                    }
+
                     i {
-                        position : absolute;
-                        top      : 50%;
-                        transform: translateY(-50%);
-                        right    : 10px;
-                        cursor   : pointer;
+                        @extend .jax-extend-header-manage-order-one;
                     }
                 }
 
@@ -62,4 +81,81 @@
             }
         }
     }
+}
+
+.menu-body {
+    min-width : 400px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+    max-width : 400px;
+    max-height: 450px;
+    overflow  : auto;
+}
+
+.body-content {
+    padding: 10px 20px;
+    flex   : 1;
+
+
+    .title {
+        font-size  : 18px;
+        font-weight: 600;
+        color      : rgb(22, 24, 35);
+        padding    : 10px 0;
+    }
+
+    .product-as {
+        padding: 8px 0;
+
+        .select {
+            padding: 6px 0;
+
+            select {
+                outline      : none;
+                padding      : 6px;
+                border       : none;
+                border-bottom: 1px solid #ccc;
+                cursor       : pointer;
+                min-height   : 37px;
+            }
+
+            button {
+                margin          : 0 6px;
+                border          : none;
+                background-color: transparent;
+                padding         : 6px;
+                border-bottom   : 1px solid #ccc;
+            }
+        }
+    }
+
+    .send-email-modal {
+        font-size: 16px;
+    }
+
+
+
+
+}
+
+.title-modal-body {
+    font-size  : 14px;
+    font-weight: 600;
+}
+
+.preview-pdf {
+    position: absolute;
+    top     : 0;
+    height  : 100%;
+    left    : 0;
+    right   : 0;
+    width   : 100%;
+    z-index : 999999999;
+}
+
+
+.jsx-input-add {
+    border          : none;
+    outline         : none;
+    background-color: transparent;
+
 }

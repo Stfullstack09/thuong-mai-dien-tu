@@ -5,8 +5,6 @@ export const addUserSuccess = () => ({
 });
 
 export const userLoginSuccess = (userInfo) => {
-    console.log('check user info: ', userInfo);
-
     return {
         type: actionTypes.USER_LOGIN_SUCCESS,
         userInfo, // ES6 <=> userInfo: userInfo

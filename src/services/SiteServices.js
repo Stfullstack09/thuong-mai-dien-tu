@@ -284,3 +284,15 @@ export const SearchProductInShop = (q) => {
         withCredentials: true,
     });
 };
+
+export const GetAllInformationByAdmin = () => {
+    return axios.get(`/api/v1/app/get-all-infomation-customers`, {
+        withCredentials: true,
+    });
+};
+
+export const SendEmailToCustomer = (data) => {
+    return axios.post(`/api/v1/app/send-data-email-by-admin`, data, {
+        withCredentials: true,
+    });
+};
