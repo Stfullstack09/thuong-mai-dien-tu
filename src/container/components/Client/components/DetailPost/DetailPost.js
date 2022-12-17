@@ -13,6 +13,7 @@ import Header from '../Header/Header';
 import * as actions from '../../../../../store/actions';
 import './DetailPost.scss';
 import Comment from '../../../../../components/Plugin/Comment';
+import FooterChuk from '../../FooterChuk';
 
 function DetailPost() {
     const [detail, setDetail] = useState({});
@@ -242,7 +243,7 @@ function DetailPost() {
                     )}
                 </div>
             </div>
-            <Footer />
+            <FooterChuk />
         </>
     );
 }

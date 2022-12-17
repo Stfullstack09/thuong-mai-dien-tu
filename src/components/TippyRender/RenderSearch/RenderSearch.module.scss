@@ -1,8 +1,11 @@
-.render-search-wrapper {}
+.render-search-wrapper {
+    border-radius: 4px;
+}
 
 .item-result-wrapper {
     padding      : 10px 10px;
     border-radius: 4px;
+
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.08);

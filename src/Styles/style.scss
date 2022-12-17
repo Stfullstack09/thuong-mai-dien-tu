@@ -138,7 +138,7 @@ html *::-webkit-scrollbar-track {
 }
 
 @include media-breakpoint-down(sm) {
-    .flex-sm-column-reverse {
+    .flex-sm-column-reverse-customize {
         flex-direction: column-reverse !important;
     }
 }

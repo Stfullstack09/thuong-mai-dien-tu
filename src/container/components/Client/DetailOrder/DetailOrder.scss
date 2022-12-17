@@ -6,7 +6,7 @@
     .header-wrapper {
         background-color: #f5f5f5;
         border-color    : transparent;
-        z-index         : 99999999999999;
+        z-index         : 9999;
 
         .Phone {
             color : rgba(0, 0, 0, 0.65) !important;
@@ -62,7 +62,7 @@
     .content-jsx {
         margin-top: 100px;
         min-height: calc(100vh - 100px - 241px);
-        z-index   : 1;
+        z-index   : 999999999999999999999999;
 
         .container {
             // background-color: #eee;

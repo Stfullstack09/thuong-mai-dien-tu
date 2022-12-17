@@ -12,6 +12,7 @@ ModalWrapper.propTypes = {
     className: PropTypes.string,
     centered: PropTypes.bool,
     size: PropTypes.string,
+    isSubmit: PropTypes.bool,
 };
 
 ModalWrapper.defaultProps = {
@@ -23,18 +24,21 @@ ModalWrapper.defaultProps = {
     centered: false,
     bodyRender: `<div></div>`,
     size: 'lg',
+    isSubmit: true,
 };
 
-function ModalWrapper({ size, isOpen, handleToggle, centered, handleSubmit, title, bodyRender, className }) {
+function ModalWrapper({ size, isOpen, isSubmit, handleToggle, centered, handleSubmit, title, bodyRender, className }) {
     return (
         <div>
             <Modal size={size} centered={centered} isOpen={isOpen} toggle={handleToggle} className={className}>
                 <ModalHeader toggle={handleToggle}>{title}</ModalHeader>
                 <ModalBody>{bodyRender}</ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={handleSubmit}>
-                        Do Something
-                    </Button>{' '}
+                    {isSubmit && (
+                        <Button color="primary" onClick={handleSubmit}>
+                            Do Something
+                        </Button>
+                    )}
                     <Button color="secondary" onClick={handleToggle}>
                         Cancel
                     </Button>

@@ -296,3 +296,9 @@ export const SendEmailToCustomer = (data) => {
         withCredentials: true,
     });
 };
+
+export const UpdateStatusProductOrder = (data) => {
+    return axios.post(`/api/v1/app/update-status-product-order`, data, {
+        withCredentials: true,
+    });
+};

@@ -15,6 +15,10 @@ const initialState = {
     isLoading: false,
     toggleIsLoading: false,
     currentUser: {},
+
+    // kenh nguoi ban | manage sales
+
+    listAllProduct: [],
 };
 
 const SiteReducer = (state = initialState, action) => {
@@ -135,6 +139,20 @@ const SiteReducer = (state = initialState, action) => {
 
             return {
                 ...cloneStateCurrentUser,
+            };
+        }
+
+        case actionType.GET_ALL_ORDER_PRODUCT_SUCCESS: {
+            console.log('check data redux == > ', action.data);
+
+            const cloneStateGetAllProductOrder = {
+                ...state,
+            };
+
+            cloneStateGetAllProductOrder.listAllProduct = action.data;
+
+            return {
+                ...cloneStateGetAllProductOrder,
             };
         }
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import Footer from '../components/Footer';
 import Header from '../components/Header/Header';
+import FooterChuk from '../FooterChuk';
 import PostNews from './components/SecsionIntroduction/PostNews';
 import ProductChildren from './components/SecsionIntroduction/ProductChildren';
 import ProductFeMale from './components/SecsionIntroduction/ProductFeMale';
@@ -114,7 +114,7 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <Footer />
+            <FooterChuk />
         </div>
     );
 }

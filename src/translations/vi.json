@@ -163,6 +163,7 @@
         "btnCancel": "Hủy Đơn Hàng",
         "btnRestore": "Mua Lại",
         "addRess": "Địa Chỉ Nhận Hàng",
-        "note": "Lời nhắc với chủ shop"
+        "note": "Lời nhắc với chủ shop",
+        "btnConfirm": "Đã nhận được hàng"
     }
 }

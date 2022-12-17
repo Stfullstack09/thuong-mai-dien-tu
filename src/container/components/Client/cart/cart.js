@@ -14,6 +14,7 @@ import './cart.scss';
 import * as actions from '../../../.././store/actions';
 import { handlePriceDisCount } from '../../../../components/handlePriceDisCount';
 import { ChangeCountProductToCart, RemoveProductCart } from '../../../../services';
+import _ from 'lodash';
 
 function Cart() {
     const [listCart, setListCart] = useState([]);
@@ -27,7 +28,9 @@ function Cart() {
     const listAllProduct = useSelector((state) => state.SiteReducer.listAllProduct);
 
     useEffect(() => {
-        setListCart(listAllProduct);
+        if (!_.isEmpty(listAllProduct)) {
+            setListCart(listAllProduct);
+        }
     }, [listAllProduct]);
 
     useEffect(() => {
@@ -145,107 +148,117 @@ function Cart() {
                                     </div>
                                     <div className="row jsx-render-pro w-sm-600">
                                         {listCart && listCart.length > 0 ? (
-                                            listCart.map((item) => (
-                                                <div className="col-12 item" key={item.id}>
-                                                    <div className="row">
-                                                        <div className="col-4 introduce">
-                                                            <div
-                                                                className="image"
-                                                                style={{
-                                                                    backgroundImage: `url('${item.productData.thumbnail}')`,
-                                                                }}
-                                                            ></div>
-                                                            <div className="introduction">
-                                                                <p>
-                                                                    <strong
+                                            listCart.map(
+                                                (item) =>
+                                                    !_.isEmpty(item) &&
+                                                    item.productData && (
+                                                        <div className="col-12 item" key={item.id}>
+                                                            <div className="row">
+                                                                <div className="col-4 introduce">
+                                                                    <div
+                                                                        className="image"
+                                                                        style={{
+                                                                            backgroundImage: `url('${item.productData.thumbnail}')`,
+                                                                        }}
+                                                                    ></div>
+                                                                    <div className="introduction">
+                                                                        <p>
+                                                                            <strong
+                                                                                onClick={() =>
+                                                                                    handleViewProduct(item.productId)
+                                                                                }
+                                                                            >
+                                                                                {item.productData.title}
+                                                                            </strong>
+                                                                        </p>
+                                                                        <span>size: {item.sizeData.valueVI}</span>
+                                                                        {item.productData.discount && (
+                                                                            <span className="mx-2">
+                                                                                giảm {item.productData.discount}%
+                                                                            </span>
+                                                                        )}
+                                                                    </div>
+                                                                </div>
+                                                                <div className="col-2 price-pro d-inline-flex justify-content-center align-items-center customize-jsx-format">
+                                                                    {item.productData.discount ? (
+                                                                        <CurrencyFormat
+                                                                            onValueChange={() => () => {}}
+                                                                            value={handlePriceDisCount(
+                                                                                item.productData.price,
+                                                                                item.productData.discount,
+                                                                            )}
+                                                                            thousandSeparator={true}
+                                                                            suffix={' VND'}
+                                                                            disabled
+                                                                            className="jsx-input-add disable"
+                                                                        />
+                                                                    ) : (
+                                                                        <CurrencyFormat
+                                                                            onValueChange={() => () => {}}
+                                                                            value={item.productData.price}
+                                                                            thousandSeparator={true}
+                                                                            suffix={' VND'}
+                                                                            disabled
+                                                                            className="jsx-input-add disable"
+                                                                        />
+                                                                    )}
+                                                                </div>
+                                                                <div className="col-2 count-pro d-inline-flex justify-content-center align-items-center">
+                                                                    <button
                                                                         onClick={() =>
-                                                                            handleViewProduct(item.productId)
+                                                                            handleClickChangeCountBtn('down', item.id)
                                                                         }
                                                                     >
-                                                                        {item.productData.title}
-                                                                    </strong>
-                                                                </p>
-                                                                <span>size: {item.sizeData.valueVI}</span>
-                                                                {item.productData.discount && (
-                                                                    <span className="mx-2">
-                                                                        giảm {item.productData.discount}%
+                                                                        -
+                                                                    </button>
+                                                                    <input disabled type="text" value={item.count} />
+                                                                    <button
+                                                                        onClick={() =>
+                                                                            handleClickChangeCountBtn('up', item.id)
+                                                                        }
+                                                                    >
+                                                                        +
+                                                                    </button>
+                                                                </div>
+                                                                <div className="col-3 total-pro d-inline-flex justify-content-end align-items-center customize-jsx-format">
+                                                                    {item.productData.discount ? (
+                                                                        <CurrencyFormat
+                                                                            onValueChange={() => () => {}}
+                                                                            value={
+                                                                                handlePriceDisCount(
+                                                                                    item.productData.price,
+                                                                                    item.productData.discount,
+                                                                                ) * item.count
+                                                                            }
+                                                                            thousandSeparator={true}
+                                                                            suffix={' VND'}
+                                                                            disabled
+                                                                            className="jsx-input-add disable"
+                                                                        />
+                                                                    ) : (
+                                                                        <CurrencyFormat
+                                                                            onValueChange={() => () => {}}
+                                                                            value={item.productData.price * item.count}
+                                                                            thousandSeparator={true}
+                                                                            suffix={' VND'}
+                                                                            disabled
+                                                                            className="jsx-input-add disable"
+                                                                        />
+                                                                    )}
+                                                                </div>
+                                                                <div className="col-1 total-pro d-inline-flex justify-content-end align-items-center cursor-pointer">
+                                                                    <span
+                                                                        onClick={() =>
+                                                                            handleRemoveProduct(item.productId)
+                                                                        }
+                                                                    >
+                                                                        <FontAwesomeIcon icon={faClose} />
                                                                     </span>
-                                                                )}
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div className="col-2 price-pro d-inline-flex justify-content-center align-items-center customize-jsx-format">
-                                                            {item.productData.discount ? (
-                                                                <CurrencyFormat
-                                                                    onValueChange={() => () => {}}
-                                                                    value={handlePriceDisCount(
-                                                                        item.productData.price,
-                                                                        item.productData.discount,
-                                                                    )}
-                                                                    thousandSeparator={true}
-                                                                    suffix={' VND'}
-                                                                    disabled
-                                                                    className="jsx-input-add disable"
-                                                                />
-                                                            ) : (
-                                                                <CurrencyFormat
-                                                                    onValueChange={() => () => {}}
-                                                                    value={item.productData.price}
-                                                                    thousandSeparator={true}
-                                                                    suffix={' VND'}
-                                                                    disabled
-                                                                    className="jsx-input-add disable"
-                                                                />
-                                                            )}
-                                                        </div>
-                                                        <div className="col-2 count-pro d-inline-flex justify-content-center align-items-center">
-                                                            <button
-                                                                onClick={() =>
-                                                                    handleClickChangeCountBtn('down', item.id)
-                                                                }
-                                                            >
-                                                                -
-                                                            </button>
-                                                            <input disabled type="text" value={item.count} />
-                                                            <button
-                                                                onClick={() => handleClickChangeCountBtn('up', item.id)}
-                                                            >
-                                                                +
-                                                            </button>
-                                                        </div>
-                                                        <div className="col-3 total-pro d-inline-flex justify-content-end align-items-center customize-jsx-format">
-                                                            {item.productData.discount ? (
-                                                                <CurrencyFormat
-                                                                    onValueChange={() => () => {}}
-                                                                    value={
-                                                                        handlePriceDisCount(
-                                                                            item.productData.price,
-                                                                            item.productData.discount,
-                                                                        ) * item.count
-                                                                    }
-                                                                    thousandSeparator={true}
-                                                                    suffix={' VND'}
-                                                                    disabled
-                                                                    className="jsx-input-add disable"
-                                                                />
-                                                            ) : (
-                                                                <CurrencyFormat
-                                                                    onValueChange={() => () => {}}
-                                                                    value={item.productData.price * item.count}
-                                                                    thousandSeparator={true}
-                                                                    suffix={' VND'}
-                                                                    disabled
-                                                                    className="jsx-input-add disable"
-                                                                />
-                                                            )}
-                                                        </div>
-                                                        <div className="col-1 total-pro d-inline-flex justify-content-end align-items-center cursor-pointer">
-                                                            <span onClick={() => handleRemoveProduct(item.productId)}>
-                                                                <FontAwesomeIcon icon={faClose} />
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))
+                                                    ),
+                                            )
                                         ) : (
                                             <p className="mt-5 pt-5 text-center fz-13">
                                                 <span>

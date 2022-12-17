@@ -138,13 +138,16 @@ function History() {
                                                         <FontAwesomeIcon icon={faRotateLeft} />
                                                     </button>
                                                 ) : (
-                                                    <button
-                                                        className="btn btn-primary mx-1 mb-1"
-                                                        onClick={() => handleSubmit(item)}
-                                                        title="Hủy đơn hàng"
-                                                    >
-                                                        <i className="bi bi-trash2"></i>
-                                                    </button>
+                                                    item.statusId !== 'S5' &&
+                                                    item.statusId !== 'S6' && (
+                                                        <button
+                                                            className="btn btn-primary mx-1 mb-1"
+                                                            onClick={() => handleSubmit(item)}
+                                                            title="Hủy đơn hàng"
+                                                        >
+                                                            <i className="bi bi-trash2"></i>
+                                                        </button>
+                                                    )
                                                 )}
                                                 <button
                                                     className="btn btn-primary mx-1 mb-1"

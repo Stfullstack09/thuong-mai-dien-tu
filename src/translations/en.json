@@ -163,6 +163,7 @@
         "btnCancel": "Cancel Order",
         "btnRestore": "Repurchase",
         "addRess": "Delivery Address",
-        "note": "Reminder to the shop owner"
+        "note": "Reminder to the shop owner",
+        "btnConfirm": "Item received"
     }
 }

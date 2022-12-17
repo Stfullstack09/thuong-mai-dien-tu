@@ -63,6 +63,7 @@ function TippyRender({ items = [], children, onChange = defaultFn, hdeOnClick = 
 
     return (
         <Tippy
+            zIndex={99999999999}
             delay={[0, 700]}
             offset={[20, 8]}
             hideOnClick={hdeOnClick}

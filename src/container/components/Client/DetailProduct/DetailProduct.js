@@ -12,13 +12,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import ProductNew from '../HomePage/components/SecsionIntroduction/ProductNew';
 import ProductTrend from '../HomePage/components/SecsionIntroduction/ProductTrend';
-import Footer from '../components/Footer';
 import './DetailProduct.scss';
 import { AddProductToCart, GetAllSizeProduct, GetDetailProductByCustomer } from '../../../../services';
 import { languages } from '../../../../utils/constant';
 import { handlePriceDisCount } from '../../../../components/handlePriceDisCount';
 import * as actions from '../../../../store/actions';
 import Comment from '../../../../components/Plugin/Comment';
+import FooterChuk from '../FooterChuk';
 
 function DetailProduct() {
     const [isDescription, setDescription] = useState(true);
@@ -401,7 +401,7 @@ function DetailProduct() {
                     )}
                 </div>
             )}
-            <Footer />
+            <FooterChuk />
         </div>
     );
 }

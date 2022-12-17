@@ -11,22 +11,21 @@
 .manage-order-wrapper {
     color           : red;
     height          : 100vh;
-    display         : flex;
-    flex-direction  : column;
-    position        : fixed;
+    position        : relative;
     top             : 0;
     right           : 0;
     bottom          : 0;
     left            : 0;
-    z-index         : 1049;
+    z-index         : 1000;
     background-color: #fff;
+    overflow        : auto;
 
     .header-manage-order-wrapper {
         height    : 70px;
         padding   : 0 20px;
         background: #fff;
         box-shadow: 0 0 50px 2px rgb(1 1 1 / 9%);
-        z-index   : 999;
+        z-index   : 999999999999999999999;
 
         .container-customize {
             display        : flex;
@@ -92,9 +91,9 @@
 }
 
 .body-content {
-    padding: 10px 20px;
-    flex   : 1;
-
+    position  : relative;
+    min-height: 450px;
+    z-index   : 10;
 
     .title {
         font-size  : 18px;
@@ -105,6 +104,7 @@
 
     .product-as {
         padding: 8px 0;
+        padding: 18px 20px;
 
         .select {
             padding: 6px 0;
@@ -132,9 +132,6 @@
         font-size: 16px;
     }
 
-
-
-
 }
 
 .title-modal-body {
@@ -158,4 +155,41 @@
     outline         : none;
     background-color: transparent;
 
+}
+
+.scroll {
+    overflow      : auto;
+    // height  : 200vh;
+    display       : flex;
+    flex-direction: column;
+    height        : 100%;
+}
+
+.over-footer {
+    position: relative;
+}
+
+.render-list {
+    min-height: 100px;
+}
+
+.wrap-list {
+    flex   : 1;
+    z-index: 999999999;
+}
+
+.over-footer {
+    margin-top: auto;
+}
+
+.select-modal {
+    outline      : none;
+    border-color : #ccc;
+    border-radius: 4px;
+    text-align   : center;
+    padding      : 4px;
+
+    option {
+        cursor: pointer;
+    }
 }

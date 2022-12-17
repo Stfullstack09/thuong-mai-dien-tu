@@ -1,0 +1,30 @@
+# Đặc tả hệ thống UNOMO Front End ( dùng cho các người phát triển sau này )
+    - Nó được đồng bộ hóa với table AllCode của data base 
+    - Dữ liệu ở đây chỉ là những dữ liệu sử dụng ở phía Front End 
+
+# Một Số Công Nghệ Sử Dụng
+    - Front End : React JS version 18.2.0
+    - Node JS sử dụng version 16.0.0
+    - Thư Viện Sử Dụng : npm
+    - Back End : Famework Express Js trên môi trường Node Js
+    - JWT : Trình Xác Thực Người Dùng Json Web Token
+    - CSDL : CSDL Quan Hệ MySQL 
+    
+1. Status đơn hàng  ( trạng thái của đơn hàng )
+    * S1 : Đang chờ cửa hàng xác nhận
+    * S2 : Đã xác nhận bởi shop đơn hàng sớm giao cho nhà vận chuyển
+    * S3 : Đã giao cho nhà vận chuyển
+    * S4 : Đã hủy bởi khách hàng
+    * S5 : Đã hủy bởi cửa hàng
+    * S6 : Đã Nhận Được Hàng
+
+2. Phân quyền Website 
+    * R1 : Admin quản trị website
+    * R2 : Quản lí shop hoặc chủ shop
+    * R3 : Khách hàng
+
+3. Một số keywords 
+    * PRO_Number : Mã Tỉnh (VD Phú Thọ: PRO4)
+    * PROVINCE : Tỉnh Thành
+    * CATEGORY : Danh Mục Sản Phẩm
+    * SIZE : Kích Thước Của Sản Phẩm

@@ -1,140 +1,99 @@
 import classNames from 'classnames/bind';
 import _ from 'lodash';
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import MdEditor from 'react-markdown-editor-lite';
-import MarkdownIt from 'markdown-it';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import styles from '../../ManageOrder.module.scss';
-import PacmanLoaderLoading from '../../../../../../components/loading/PacmanLoader';
-import { UploadImageComment } from '../../../../../../services';
+import { SendEmailToCustomer } from '../../../../../../services';
+import ModalWrapper from '../../../../../../components/ModalWrapper/ModalWrapper';
+import WraperEmail from './components/WraperEmail';
 
 const cx = classNames.bind(styles);
 
-const RenderEmail = ({ setDataEmail, setContentHtml, dataEmail, setContentText, contentText, data, isLoadingSend }) => {
-    const [loading, setIsLoading] = useState(false);
+const RenderEmail = ({ isOpen, handleToggle }) => {
+    const [list, setList] = useState([]);
+    const [isLoadingSend, setIsLoadingSend] = useState(false);
+    const [dataEmail, setDataEmail] = useState({});
+    const [contentHtml, setContentHtml] = useState('');
+    const [contentText, setContentText] = useState('');
 
-    const mdParser = new MarkdownIt(/* Markdown-it options */);
+    const listAllProduct = useSelector((state) => state.SiteReducer.listAllProduct);
 
-    const handleImageUpload = async (file, callback) => {
-        if (!file) return;
+    useEffect(() => {
+        if (!_.isEmpty(listAllProduct)) {
+            const array = listAllProduct.map((item) => item.userData);
 
-        if (file) {
-            if (file.size >= 1500000) {
-                alert('Vui lòng chọn file có dung lượng dưới 1.5MB');
-                return;
-            }
+            const arrayRender = [];
+
+            // eslint-disable-next-line array-callback-return
+            array.map((item) => {
+                let arrayName = [];
+
+                if (arrayRender && arrayRender.length > 0) {
+                    arrayName = arrayRender.map((item) => item.email);
+                }
+
+                if (arrayRender && arrayRender.length > 0) {
+                    const bool = arrayName.includes(item.email);
+
+                    if (!bool) {
+                        arrayRender.push(item);
+                    }
+                } else {
+                    arrayRender.push(item);
+                }
+            });
+
+            setList(arrayRender);
         }
+    }, [listAllProduct]);
 
-        setIsLoading(true);
-
-        const Res = await UploadImageComment({
-            file: file,
-            upload_preset: process.env.REACT_APP_UPLOAD_PRESET_COMMENT,
-        });
-
-        setIsLoading(false);
-
-        if (_.isEmpty(Res)) {
-            alert('Có lỗi khi tải ảnh lên !');
+    const handleSubmit = async () => {
+        if (!contentHtml || _.isEmpty(dataEmail)) {
+            alert('Bạn đã nhập thiếu trường!');
             return;
         }
 
-        // setImage(link);
+        const dataBuild = {
+            contentHtml,
+            emailSend: dataEmail.email,
+        };
 
-        return Promise.resolve(Res.url);
-    };
+        setIsLoadingSend(true);
 
-    const handleEditorChange = ({ html, text }) => {
-        setContentHtml(html);
-        setContentText(text);
+        const Res = await SendEmailToCustomer(dataBuild);
+
+        if (Res && Res.errCode === 0) {
+            setIsLoadingSend(false);
+            setContentText('');
+            setContentText('');
+            setDataEmail({});
+        }
     };
 
     return (
         <>
-            {isLoadingSend && <PacmanLoaderLoading />}
-            {loading && <PacmanLoaderLoading />}
-            <div>
-                {!_.isEmpty(dataEmail) ? (
-                    <div>
-                        <div className="my-2">
-                            <p className="my-1">
-                                <span>
-                                    Email nhận thư : <b>{dataEmail.userData.email}</b>
-                                </span>
-                            </p>
-                            <p className="my-1">
-                                <span>
-                                    Tên khách hàng :{' '}
-                                    <b>{`${dataEmail.userData.firstName} ${dataEmail.userData.lastName}`}</b>
-                                </span>
-                            </p>
-                            <div className="my-2">
-                                <button className="btn btn-success my-2" onClick={() => setDataEmail({})}>
-                                    Thay đổi khách hàng
-                                </button>
-                            </div>
-                        </div>
-                        <MdEditor
-                            value={contentText ? contentText : ''}
-                            style={{ height: '500px' }}
-                            renderHTML={(text) => mdParser.render(text)}
-                            onChange={handleEditorChange}
-                            placeholder="Nhập thông tin ở đây..."
-                            onImageUpload={handleImageUpload}
-                        />
-                    </div>
-                ) : (
-                    <>
-                        <h4 className={cx('py-2', 'title-modal-body')}>Chọn khách hàng bạn muốn gửi email</h4>
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">STT</th>
-                                    <th scope="col">email</th>
-                                    <th scope="col">firstName</th>
-                                    <th scope="col">lastName</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {data && data.length > 0 ? (
-                                    data.map((item, index) => {
-                                        const id = uuidv4();
-                                        return (
-                                            <tr key={id}>
-                                                {!_.isEmpty(item) ? (
-                                                    <>
-                                                        <th scope="row">{index + 1}</th>
-                                                        <td>{item.userData.email}</td>
-                                                        <td>{item.userData.firstName}</td>
-                                                        <td>{item.userData.lastName}</td>
-                                                        <td>
-                                                            <button className="btn" onClick={() => setDataEmail(item)}>
-                                                                <i className="bi bi-send-check"></i>
-                                                            </button>
-                                                        </td>
-                                                    </>
-                                                ) : (
-                                                    <td className="text-center" colSpan={5}>
-                                                        Có một chút lỗi xảy ra với dữ liệu của bạn
-                                                    </td>
-                                                )}
-                                            </tr>
-                                        );
-                                    })
-                                ) : (
-                                    <tr>
-                                        <td className="text-center" colSpan={5}>
-                                            Có một chút lỗi xảy ra với dữ liệu của bạn
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
-                        </table>
-                    </>
-                )}
-            </div>
+            <ModalWrapper
+                isOpen={isOpen}
+                handleSubmit={handleSubmit}
+                handleToggle={handleToggle}
+                bodyRender={
+                    <WraperEmail
+                        setDataEmail={setDataEmail}
+                        setContentHtml={setContentHtml}
+                        setContentText={setContentText}
+                        contentText={contentText}
+                        isLoadingSend={isLoadingSend}
+                        dataEmail={dataEmail}
+                        data={list}
+                    />
+                }
+                isSubmit={!_.isEmpty(dataEmail)}
+                title="Gửi email đến khách hàng của bạn!"
+                centered
+                className={cx('send-email-modal')}
+            />
         </>
     );
 };

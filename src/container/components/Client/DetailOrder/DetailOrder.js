@@ -11,7 +11,12 @@ import { FormattedMessage } from 'react-intl';
 
 import { handlePriceDisCount } from '../../../../components/handlePriceDisCount';
 import Loading from '../../../../components/loading/loading';
-import { GetOrderByID, RestoreProductByCustomer, UpdateStatusOderByCustomer } from '../../../../services';
+import {
+    GetOrderByID,
+    RestoreProductByCustomer,
+    UpdateStatusOderByCustomer,
+    UpdateStatusProductOrder,
+} from '../../../../services';
 import { languages } from '../../../../utils/constant';
 import Footer from '../components/Footer';
 import Header from '../components/Header/Header';
@@ -86,6 +91,26 @@ function DetailOrder() {
             if (Res && Res.errCode === 0) {
                 fetch();
             }
+        }
+    };
+
+    const handleConfirm = async (data) => {
+        const dataBuid = {
+            type: 'done',
+            time: new Date(new Date().toLocaleString('en', { timeZone: 'Asia/Ho_Chi_Minh' })).getTime(),
+            id: data ? data.id : 0,
+        };
+
+        setIsLoading(true);
+
+        const Res = await UpdateStatusProductOrder(dataBuid);
+
+        if (Res && Res.errCode === 0) {
+            fetch();
+            setIsLoading(false);
+        } else {
+            setIsLoading(false);
+            alert(Res.msg);
         }
     };
 
@@ -252,22 +277,43 @@ function DetailOrder() {
                                                     </a>
                                                 </div>
                                                 <div className="jsx-chuk-contact-overview d-flex justify-content-end align-items-center">
-                                                    {detail.statusId === 'S4' ? (
-                                                        <button
-                                                            className="jsx-button-chuk-details"
-                                                            onClick={() =>
-                                                                handleRestoreProduct(detail.id, detail.productId)
-                                                            }
-                                                        >
-                                                            <FormattedMessage id="detailOrder.btnRestore" />
-                                                        </button>
+                                                    {detail.statusId !== 'S5' ? (
+                                                        detail.statusId === 'S4' ? (
+                                                            <button
+                                                                className="jsx-button-chuk-details"
+                                                                onClick={() =>
+                                                                    handleRestoreProduct(detail.id, detail.productId)
+                                                                }
+                                                            >
+                                                                <FormattedMessage id="detailOrder.btnRestore" />
+                                                            </button>
+                                                        ) : detail.statusId === 'S3' ? (
+                                                            <button
+                                                                onClick={() => handleConfirm(detail)}
+                                                                className="jsx-button-chuk-details"
+                                                            >
+                                                                <FormattedMessage id="detailOrder.btnConfirm" />
+                                                            </button>
+                                                        ) : detail.statusId === 'S6' ? (
+                                                            <span>
+                                                                Đơn hàng của bạn đã hoàn thành chúc bạn một ngày mới vui
+                                                                vẻ
+                                                            </span>
+                                                        ) : (
+                                                            <button
+                                                                onClick={() => handleSubmit(detail)}
+                                                                className="jsx-button-chuk-details"
+                                                            >
+                                                                <FormattedMessage id="detailOrder.btnCancel" />
+                                                            </button>
+                                                        )
                                                     ) : (
-                                                        <button
-                                                            onClick={() => handleSubmit(detail)}
-                                                            className="jsx-button-chuk-details"
-                                                        >
-                                                            <FormattedMessage id="detailOrder.btnCancel" />
-                                                        </button>
+                                                        <span>
+                                                            Đơn hàng của bạn đã xảy ra một chút mà chúng tôi không muốn
+                                                            xảy ra đó là đơn hàng của bạn đã bị hủy bởi của hàng, nhưng
+                                                            không sao chúng tôi còn có rất nhiều đơn vị bán mà bạn hoàn
+                                                            toàn có thể tham khảo
+                                                        </span>
                                                     )}
                                                 </div>
                                                 <div className="jsx-border-overview"></div>

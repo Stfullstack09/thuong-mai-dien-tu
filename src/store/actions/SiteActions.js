@@ -8,6 +8,7 @@ import {
     GetListGender,
     GetPostRelated,
     RefreshToken,
+    GetAllInformationByAdmin,
 } from '../../services';
 import actionType from './actionTypes';
 import { userLoginSuccess } from './userActions';
@@ -266,15 +267,46 @@ export const getCurrentUser = () => {
     };
 };
 
-const getCurrentUserSuccess = (data) => {
+export const getCurrentUserSuccess = (data) => {
     return {
         type: actionType.GET_CURRENT_USER_SUCCESS,
         data,
     };
 };
 
-const getCurrentUserFailed = () => {
+export const getCurrentUserFailed = () => {
     return {
         type: actionType.GET_CURRENT_USER_FAILED,
+    };
+};
+
+export const getAllOrderProduct = () => {
+    return async (dispatch, getState) => {
+        try {
+            const Res = await GetAllInformationByAdmin();
+
+            if (Res && Res.errCode === 0) {
+                dispatch(getAllOrderProductSuccess(Res.data));
+            } else {
+                console.log('check error :', Res.msg);
+                dispatch(getAllOrderProductFailed());
+            }
+        } catch (error) {
+            console.log(error);
+            dispatch(getAllOrderProductFailed());
+        }
+    };
+};
+
+export const getAllOrderProductSuccess = (data) => {
+    return {
+        type: actionType.GET_ALL_ORDER_PRODUCT_SUCCESS,
+        data,
+    };
+};
+
+export const getAllOrderProductFailed = () => {
+    return {
+        type: actionType.GET_ALL_ORDER_PRODUCT_FAILED,
     };
 };
